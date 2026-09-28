@@ -60,12 +60,25 @@
       .why { margin-top: 8px; color: var(--ink); }
       .status { color: var(--gold); font-weight: 700; }
       .note { color: var(--muted); margin: 0; font-size: 14px; }
+      nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+      nav a {
+        color: white;
+        border: 1px solid rgba(255,255,255,.35);
+        border-radius: 999px;
+        padding: 6px 12px;
+        text-decoration: none;
+        font-size: 14px;
+      }
     </style>
   </head>
   <body>
     <header>
       <h1>مجان <span dir="ltr">AI</span></h1>
       <p id="company-line">المناقصات المناسبة للشركة</p>
+      <nav>
+        <a href="https://majan-ai.vercel.app/guardian" target="_blank" rel="noreferrer">الحارس المالي</a>
+        <a href="https://majan-ai.vercel.app/icv" target="_blank" rel="noreferrer">القيمة المحلية المضافة</a>
+      </nav>
     </header>
     <main>
       <form class="panel" id="company-form">
@@ -89,6 +102,7 @@
               <option value="إنشاءات عامة">إنشاءات عامة</option>
             </select>
           </label>
+          <label>واتساب الشركة<input id="whatsapp" name="whatsapp" inputmode="tel" placeholder="9689XXXXXXX" /></label>
         </div>
         <fieldset>
           <legend>الولايات</legend>
@@ -107,6 +121,7 @@
         </div>
         <div class="row">
           <input id="q" type="search" placeholder="ابحث بالاسم أو المدينة أو الرقم" />
+          <button id="send-whatsapp" type="button">أرسل المناقصات على واتساب</button>
         </div>
         <p class="note" id="status-line"></p>
       </section>
@@ -161,6 +176,7 @@
           name: document.querySelector("#name").value.trim(),
           grade: document.querySelector("#grade").value,
           classification: document.querySelector("#classification").value,
+          whatsapp: document.querySelector("#whatsapp").value.trim(),
           governorates: [...governorateBox.querySelectorAll("input:checked")].map((input) => input.value),
         };
       }
@@ -168,6 +184,7 @@
         document.querySelector("#name").value = profile.name || "";
         document.querySelector("#grade").value = profile.grade || "2";
         document.querySelector("#classification").value = profile.classification || "إنشاءات عامة";
+        document.querySelector("#whatsapp").value = profile.whatsapp || "";
         const selected = new Set(profile.governorates || GOVERNORATES);
         governorateBox.innerHTML = GOVERNORATES.map((name) => `<label><input type="checkbox" value="${esc(name)}" ${selected.has(name) ? "checked" : ""} />${esc(name)}</label>`).join("");
       }
@@ -200,10 +217,14 @@
         more.hidden = rows.length >= filtered.length;
         list.innerHTML = rows.map((tender) => {
           const days = daysLeft(tender.deadlineIso);
+          const title = tender.url
+            ? `<a href="${esc(tender.url)}" target="_blank" rel="noreferrer">${esc(tender.title)}</a>`
+            : esc(tender.title);
           return `<article class="tender">
-            <h2><a href="${esc(tender.url)}" target="_blank" rel="noreferrer">${esc(tender.title)}</a></h2>
+            <h2>${title}</h2>
             <div class="meta">
               <span class="status">${days === 0 ? "آخر يوم" : `متبقي ${days} يوم`}</span>
+              <span>${esc(tender.sourceLabel || "ليست في إسناد")}</span>
               <span>${esc(tender.number || "بدون رقم")}</span>
               <span>${esc(tender.governorate)}</span>
               <span>${esc(tender.city || "—")}</span>
@@ -227,6 +248,45 @@
       more.addEventListener("click", () => {
         visible += 30;
         render();
+      });
+      function omanPhone(value) {
+        let digits = String(value || "").replace(/\D/g, "");
+        if (digits.startsWith("00")) digits = digits.slice(2);
+        if (digits.startsWith("0") && digits.length === 9) digits = `968${digits.slice(1)}`;
+        if (digits.length === 8 && digits.startsWith("9")) digits = `968${digits}`;
+        return digits.length >= 10 && digits.length <= 15 ? digits : "";
+      }
+      document.querySelector("#send-whatsapp").addEventListener("click", () => {
+        company = readForm();
+        const phone = omanPhone(company.whatsapp);
+        const matches = payload.tenders.filter(fits);
+        if (!phone) {
+          savedNote.textContent = "أدخل رقم واتساب عُمان، مثل 9689XXXXXXX.";
+          document.querySelector("#whatsapp").focus();
+          return;
+        }
+        if (!matches.length) {
+          savedNote.textContent = "لا توجد مناقصات مناسبة لإرسالها.";
+          return;
+        }
+        const grade = GRADE_LABELS[company.grade] || company.grade;
+        const lines = [
+          "مجان AI — مناقصات مناسبة",
+          `${company.name} · الدرجة ${grade} · ${company.classification}`,
+          "",
+        ];
+        matches.slice(0, 8).forEach((tender, index) => {
+          const days = daysLeft(tender.deadlineIso);
+          const left = days === 0 ? "آخر يوم" : `متبقي ${days} يوم`;
+          lines.push(`${index + 1}. ${tender.title}`);
+          lines.push(`${tender.governorate} · حتى ${tender.deadline} · ${left}`);
+          if (tender.url) lines.push(tender.url);
+          lines.push("");
+        });
+        if (matches.length > 8) lines.push(`و${matches.length - 8} مناقصة أخرى في صفحة مجان.`);
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join("\n"))}`;
+        window.open(url, "_blank", "noopener");
+        savedNote.textContent = "انفتحت رسالة واتساب. اضغط إرسال من هناك.";
       });
       form.addEventListener("submit", (event) => {
         event.preventDefault();
