@@ -143,6 +143,74 @@ function isUnrelated(title) {
   return BLOCKED_TITLES.some((phrase) => text.includes(norm(phrase)));
 }
 
+const PLATFORMS = [
+  {
+    label: "مطارات عُمان",
+    url: "https://www.omanairports.co.om/ar/content/tenders",
+    test: (text) => /مطارات\s*ع.?مان|oman airports/.test(text),
+  },
+  {
+    label: "منصة توريد",
+    url: "https://tawreed.oq.com/",
+    test: (text) => /majis|hcwtf|riyada card|cetrp|\bswip\b|ccws|rm terminal/.test(text),
+  },
+  {
+    label: "نماء لتوزيع الكهرباء",
+    url: "https://distribution.nama.om/Tender",
+    test: (text) => /\bnedc\b|substation/.test(text),
+  },
+  {
+    label: "نماء لإنتاج الكهرباء",
+    url: "https://negc.nama.om/ar/Home.aspx",
+    test: (text) => text.includes("انتاج الكهرباء") || text.includes("إنتاج الكهرباء"),
+  },
+  {
+    label: "جامعة الشرقية",
+    url: "https://www.asu.edu.om/",
+    test: (text) => text.includes("جامعة الشرقية"),
+  },
+  {
+    label: "عُمان سات",
+    url: "https://omansat.com/tenders/",
+    test: (text) => text.includes("omansat"),
+  },
+];
+
+function platformOf(title) {
+  const text = String(title || "").toLowerCase();
+  return PLATFORMS.find((item) => item.test(text)) || null;
+}
+
+function originLabel(row) {
+  const company = String(row?.tpb_company_name || "").trim();
+  if (company) return company;
+  const title = `${row?.tnd_name || ""} ${row?.tnd_name_en || ""}`;
+  return platformOf(title)?.label || "تندرز عُمان";
+}
+
+function assignPublisher(tender) {
+  const company = String(tender.buyer || "").trim();
+  if (company) {
+    tender.url = "";
+    tender.source = "buyer";
+    tender.sourceLabel = company;
+    tender.originLabel = company;
+    return;
+  }
+  const platform = platformOf(tender.title);
+  if (platform) {
+    tender.url = platform.url;
+    tender.source = "portal";
+    tender.sourceLabel = platform.label;
+    tender.originLabel = platform.label;
+    return;
+  }
+  tender.url = `https://www.tenderoman.com/TenderDetails.aspx?tdc_id=${encodeURIComponent(tender.id)}`;
+  tender.source = "tenderoman";
+  tender.sourceLabel = "تندرز عُمان";
+  tender.originLabel = "تندرز عُمان";
+}
+
 function mapRow(row) {
   const price = Number(row.tnd_copy_price);
   const city = (row.are_name || "").trim();
@@ -164,8 +232,10 @@ function mapRow(row) {
     deadlineIso: parseDate(row.tnd_buy_tender_date),
     documentPrice: Number.isFinite(price) && price > 0 && price < 999999 ? price : null,
     url: "",
-    source: "",
-    sourceLabel: "",
+    buyer: String(row.tpb_company_name || "").trim(),
+    source: "unknown",
+    sourceLabel: originLabel(row),
+    originLabel: originLabel(row),
   };
 }
 
@@ -311,9 +381,7 @@ function applyCatalog(tenders, raw) {
   for (const tender of tenders) {
     const notice = byKey.get(titleKey(tender.title)) || matchNotice(tender, notices);
     if (!notice) {
-      tender.url = "";
-      tender.source = "";
-      tender.sourceLabel = "";
+      assignPublisher(tender);
       continue;
     }
     matched += 1;
