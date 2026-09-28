@@ -3,88 +3,154 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>مجان AI — المناقصات المناسبة</title>
+    <title>مجـان AI — المناقصات المناسبة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       :root {
         color-scheme: light;
-        --ink: #172033;
-        --muted: #5d6b7c;
-        --line: #e4ddd0;
-        --paper: #f6f3ec;
-        --card: #fffdf8;
-        --navy: #142033;
-        --gold: #9a7433;
+        --ink: #1c2430;
+        --muted: #5a6570;
+        --line: #e6e1d8;
+        --paper: #f8f7f3;
+        --card: #ffffff;
+        --navy: #0b1f3a;
+        --gold: #8a6230;
+        --gold-bg: #f3e6c8;
+        --teal: #1a7a55;
+        --teal-bg: #e4f2eb;
       }
       * { box-sizing: border-box; }
       body {
         margin: 0;
-        font-family: "Segoe UI", Tahoma, sans-serif;
+        font-family: "IBM Plex Sans Arabic", Tahoma, sans-serif;
         background: var(--paper);
         color: var(--ink);
       }
-      header { background: var(--navy); color: white; padding: 28px 7vw 24px; }
-      header p { margin: 6px 0 0; color: #d7dee8; }
-      h1 { margin: 0; font-size: 32px; font-weight: 700; }
-      main { width: min(980px, 92vw); margin: -28px auto 48px; }
-      .panel, .tender {
+      .sidebar {
+        position: fixed;
+        inset-block: 0;
+        inset-inline-start: 0;
+        width: 248px;
+        background: var(--navy);
+        color: #f1efe8;
+        padding: 28px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        z-index: 2;
+      }
+      .brand small { display: block; letter-spacing: .14em; font-size: 11px; opacity: .7; }
+      .brand strong { display: block; font-size: 28px; font-weight: 700; margin-top: 4px; }
+      .company-name { margin: 0; font-size: 15px; font-weight: 600; }
+      .grade-pill {
+        align-self: flex-start;
+        background: var(--gold-bg);
+        color: var(--gold);
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      nav { display: grid; gap: 4px; }
+      nav a {
+        color: #f1efe8;
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 10px 12px;
+      }
+      nav a.active, nav a:hover { background: rgba(255,255,255,.08); }
+      .shell {
+        margin-inline-start: 248px;
+        min-height: 100vh;
+        padding: 28px 32px 48px;
+        background-color: var(--paper);
+        background-image:
+          linear-gradient(rgba(11, 31, 58, .045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(11, 31, 58, .045) 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
+      .eyebrow { margin: 0; color: var(--muted); font-size: 13px; }
+      h1 { margin: 4px 0 8px; font-size: 34px; font-weight: 700; }
+      .sub { margin: 0 0 18px; color: var(--muted); }
+      .card {
         background: var(--card);
         border: 1px solid var(--line);
         border-radius: 16px;
+        padding: 16px 18px;
+        margin-bottom: 14px;
       }
-      .panel { padding: 18px 20px; display: grid; gap: 14px; margin-bottom: 16px; }
       .stats { display: flex; flex-wrap: wrap; gap: 18px; }
-      .stats div { min-width: 140px; }
+      .stats div { min-width: 120px; }
       .label { color: var(--muted); font-size: 13px; }
-      strong { display: block; margin-top: 4px; font-size: 20px; }
+      strong.num { display: block; margin-top: 4px; font-size: 22px; }
       input, select, button {
         font: inherit;
         border-radius: 10px;
         border: 1px solid var(--line);
         padding: 10px 12px;
         background: white;
+        color: var(--ink);
       }
-      button { background: var(--navy); color: white; cursor: pointer; }
+      button { background: var(--navy); color: white; cursor: pointer; border-color: var(--navy); }
       button.ghost { background: white; color: var(--navy); }
       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
-      fieldset { border: 1px solid var(--line); border-radius: 12px; margin: 0; padding: 12px; }
-      legend { padding: 0 6px; color: var(--muted); }
+      label { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+      fieldset { border: 1px solid var(--line); border-radius: 12px; margin: 12px 0 0; padding: 12px; }
+      legend { padding: 0 6px; }
       .checks { display: flex; flex-wrap: wrap; gap: 8px 14px; }
-      .checks label { display: flex; gap: 6px; align-items: center; }
+      .checks label { display: flex; gap: 6px; align-items: center; color: var(--ink); font-size: 14px; }
       .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-      .list { display: grid; gap: 12px; }
-      .tender { padding: 16px 18px; }
-      .tender h2 { margin: 0 0 8px; font-size: 18px; line-height: 1.5; }
-      .tender a { color: inherit; text-decoration: none; }
-      .tender a:hover { color: var(--gold); }
-      .meta, .why { display: flex; flex-wrap: wrap; gap: 8px 14px; color: var(--muted); font-size: 14px; }
-      .why { margin-top: 8px; color: var(--ink); }
-      .status { color: var(--gold); font-weight: 700; }
-      .note { color: var(--muted); margin: 0; font-size: 14px; }
-      nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-      nav a {
-        color: white;
-        border: 1px solid rgba(255,255,255,.35);
+      #q { min-width: 240px; flex: 1; }
+      .note { color: var(--muted); margin: 8px 0 0; font-size: 14px; }
+      .table-wrap { padding: 0; overflow: auto; }
+      table { width: 100%; border-collapse: collapse; min-width: 760px; }
+      th, td { text-align: start; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      th { color: var(--muted); font-weight: 500; font-size: 13px; background: #f4f1ea; }
+      td a { color: var(--ink); font-weight: 600; text-decoration: none; }
+      td a:hover { color: var(--gold); }
+      .chip {
+        display: inline-flex;
         border-radius: 999px;
-        padding: 6px 12px;
-        text-decoration: none;
-        font-size: 14px;
+        padding: 3px 8px;
+        font-size: 12px;
+        font-weight: 600;
+        background: var(--teal-bg);
+        color: var(--teal);
+        white-space: nowrap;
+      }
+      .chip.warn { background: var(--gold-bg); color: var(--gold); }
+      .chip.muted { background: #f1efe8; color: var(--muted); font-weight: 500; }
+      .why { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; font-weight: 400; }
+      @media (max-width: 860px) {
+        .sidebar { position: static; width: auto; }
+        .shell { margin-inline-start: 0; padding: 18px 14px 32px; }
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>مجان <span dir="ltr">AI</span></h1>
-      <p id="company-line">المناقصات المناسبة للشركة</p>
+    <aside class="sidebar">
+      <div class="brand">
+        <small>MAJAN AI · SIRAJ</small>
+        <strong>مجـان AI</strong>
+      </div>
+      <p class="company-name" id="company-line">المناقصات المناسبة للشركة</p>
+      <span class="grade-pill" id="grade-pill">الدرجة الثانية — إنشاءات عامة</span>
       <nav>
+        <a class="active" href="./">المناقصات</a>
         <a href="https://majan-ai.vercel.app/guardian" target="_blank" rel="noreferrer">الحارس المالي</a>
         <a href="https://majan-ai.vercel.app/icv" target="_blank" rel="noreferrer">القيمة المحلية المضافة</a>
       </nav>
-    </header>
-    <main>
-      <form class="panel" id="company-form">
+    </aside>
+    <div class="shell">
+      <p class="eyebrow">تبويب المناقصات</p>
+      <h1>الفرص الحية المكتشفة</h1>
+      <p class="sub">مناقصات مفتوحة مناسبة لبيانات الشركة. إسناد يفتح الإعلان، والمنصة الأصلية تُذكر إذا عُرفت. مناقصات تندرز عُمان تفتح صفحتها هناك.</p>
+      <form class="card" id="company-form">
         <div>
           <span class="label">بيانات الشركة</span>
-          <strong>هذه البيانات هي أساس المطابقة</strong>
+          <strong class="num">هذه البيانات هي أساس المطابقة</strong>
         </div>
         <div class="grid">
           <label>اسم الشركة<input id="name" name="name" required /></label>
@@ -113,11 +179,11 @@
           <span class="note" id="saved-note"></span>
         </div>
       </form>
-      <section class="panel">
+      <section class="card">
         <div class="stats">
-          <div><span class="label">مناقصات مناسبة</span><strong id="count">—</strong></div>
-          <div><span class="label">آخر سحب</span><strong id="synced">—</strong></div>
-          <div><span class="label">التحديث</span><strong>كل 4 ساعات</strong></div>
+          <div><span class="label">مناقصات مناسبة</span><strong class="num" id="count">—</strong></div>
+          <div><span class="label">آخر سحب</span><strong class="num" id="synced">—</strong></div>
+          <div><span class="label">التحديث</span><strong class="num">كل 4 ساعات</strong></div>
         </div>
         <div class="row">
           <input id="q" type="search" placeholder="ابحث بالاسم أو المدينة أو الرقم" />
@@ -125,11 +191,25 @@
         </div>
         <p class="note" id="status-line"></p>
       </section>
-      <section class="list" id="list"></section>
-      <div class="row" style="margin-top: 16px">
+      <section class="card table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>المناقصة</th>
+              <th>الولاية</th>
+              <th>المدينة</th>
+              <th>حتى</th>
+              <th>المتبقي</th>
+              <th>المصدر</th>
+            </tr>
+          </thead>
+          <tbody id="list"></tbody>
+        </table>
+      </section>
+      <div class="row">
         <button class="ghost" id="more" type="button">عرض المزيد</button>
       </div>
-    </main>
+    </div>
     <script type="module">
       const GOVERNORATES = ["مسقط", "ظفار", "مسندم", "البريمي", "الداخلية", "شمال الباطنة", "جنوب الباطنة", "جنوب الشرقية", "شمال الشرقية", "الظاهرة", "الوسطى"];
       const GRADE_LABELS = { excellent: "ممتازة", 1: "الأولى", 2: "الثانية", 3: "الثالثة", 4: "الرابعة" };
@@ -139,6 +219,7 @@
       const synced = document.querySelector("#synced");
       const statusLine = document.querySelector("#status-line");
       const companyLine = document.querySelector("#company-line");
+      const gradePill = document.querySelector("#grade-pill");
       const more = document.querySelector("#more");
       const form = document.querySelector("#company-form");
       const governorateBox = document.querySelector("#governorates");
@@ -196,7 +277,7 @@
         if (company.classification === "إنشاءات عامة" && tender.classification !== "إنشاءات عامة") return false;
         if (blockedByGrade(tender, company.grade)) return false;
         const term = q.value.trim();
-        const haystack = `${tender.title} ${tender.city} ${tender.number} ${tender.category}`;
+        const haystack = `${tender.title} ${tender.city} ${tender.number} ${tender.category} ${tender.sourceLabel || ""}`;
         return !term || haystack.includes(term);
       }
       function reason(tender, days) {
@@ -210,9 +291,10 @@
         count.textContent = String(filtered.length);
         synced.textContent = when(payload.syncedAt);
         const grade = GRADE_LABELS[company.grade] || "";
-        companyLine.textContent = company.name ? `${company.name} · الدرجة ${grade} · ${company.classification}` : "أدخل بيانات الشركة";
+        companyLine.textContent = company.name || "أدخل بيانات الشركة";
+        gradePill.textContent = company.name ? `الدرجة ${grade} — ${company.classification}` : "";
         statusLine.textContent = company.governorates.length
-          ? "تظهر المناقصات المفتوحة فقط، بدون تكرار. غيّر اسم الشركة وولاياتها قبل إرسال الرابط للتجربة."
+          ? "تظهر المناقصات المفتوحة فقط، بدون تكرار."
           : "اختر ولاية واحدة على الأقل حتى تظهر المناقصات.";
         more.hidden = rows.length >= filtered.length;
         list.innerHTML = rows.map((tender) => {
@@ -220,19 +302,20 @@
           const title = tender.url
             ? `<a href="${esc(tender.url)}" target="_blank" rel="noreferrer">${esc(tender.title)}</a>`
             : esc(tender.title);
-          return `<article class="tender">
-            <h2>${title}</h2>
-            <div class="meta">
-              <span class="status">${days === 0 ? "آخر يوم" : `متبقي ${days} يوم`}</span>
-              <span>${esc(tender.sourceLabel || "ليست في إسناد")}</span>
-              <span>${esc(tender.number || "بدون رقم")}</span>
-              <span>${esc(tender.governorate)}</span>
-              <span>${esc(tender.city || "—")}</span>
-              <span>${esc(tender.category || "")}</span>
-              <span>حتى ${esc(tender.deadline || "—")}</span>
-            </div>
-            <p class="why">${esc(reason(tender, days))}</p>
-          </article>`;
+          const left = days === 0 ? "آخر يوم" : `${days} يوم`;
+          const leftClass = days === 0 ? "chip warn" : "chip";
+          const known = tender.source === "esnad" || tender.source === "portal" || tender.source === "buyer";
+          const source = known
+            ? `<span class="chip">${esc(tender.sourceLabel)}</span>`
+            : `<span class="chip muted">${esc(tender.sourceLabel || "تندرز عُمان")}</span>`;
+          return `<tr>
+            <td>${title}<span class="why">${esc(reason(tender, days))}</span></td>
+            <td>${esc(tender.governorate)}</td>
+            <td>${esc(tender.city || "—")}</td>
+            <td>${esc(tender.deadline || "—")}</td>
+            <td><span class="${leftClass}">${left}</span></td>
+            <td>${source}</td>
+          </tr>`;
         }).join("");
       }
 
