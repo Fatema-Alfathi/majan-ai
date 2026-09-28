@@ -1,10 +1,12 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = dirname(fileURLToPath(import.meta.url));
-const outputPath = join(root, "public", "tenders.json");
+const outputPath = join(root, "docs", "tenders.json");
 const SOURCE = "https://www.tenderoman.com/Default.aspx";
+const ESNAD = "https://etendering.tenderboard.gov.om";
 const PAGE_SIZE = 100;
 const CATEGORY_ID = "6";
 
@@ -161,7 +163,184 @@ function mapRow(row) {
     publishedIso: parseDate(row.tnd_publish_date),
     deadlineIso: parseDate(row.tnd_buy_tender_date),
     documentPrice: Number.isFinite(price) && price > 0 && price < 999999 ? price : null,
-    url: `https://www.tenderoman.com/TenderDetails.aspx?tdc_id=${encodeURIComponent(row.tdc_id)}`,
+    url: "",
+    source: "",
+    sourceLabel: "",
+  };
+}
+
+function decodeHtml(value) {
+  return String(value || "")
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+}
+
+function titleKey(value) {
+  return fold(value)
+    .replace(/\u0640/g, "")
+    .replace(/[^\p{L}\p{N}]+/gu, "")
+    .toLowerCase();
+}
+
+function esnadUrl(tenderNo) {
+  const mode = "public";
+  const publicUrl = "1";
+  const direction = "RTL";
+  const randomno = "fixedrandomno";
+  const hashval = createHash("sha256").update(`${mode}${tenderNo}${publicUrl}${direction}${randomno}`).digest("hex");
+  return `${ESNAD}/product/nitParameterView?mode=${mode}&tenderNo=${tenderNo}&PublicUrl=${publicUrl}&CTRL_STRDIRECTION=${direction}&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=${hashval}`;
+}
+
+const STOP_TOKENS = new Set(
+  "اعمال عمل انشاء صيانة توريد تركيب تصميم تنفيذ ولاية محافظة منطقة مدرسة بمدرسة و في من على الى عدد اخرى مرافق المطلوبة المرحلة الاولى الثانية الثالثة للتعليم الاساسي الصفوف مبنى تاهيل تطوير مشروع خدمات عقد قائمة الكميات بناء بولاية بمحافظة غرفة غرف تربوية الاعمال"
+    .split(/\s+/)
+    .map((word) => titleKey(word)),
+);
+
+function tokensOf(value) {
+  return fold(value)
+    .toLowerCase()
+    .split(/[^\p{L}\p{N}]+/u)
+    .flatMap((token) => {
+      if (token.startsWith("ال") && token.length > 5) return [token.slice(2)];
+      if (/^[بوفلك]/.test(token) && token.length > 5) return [token.slice(1)];
+      return [token];
+    })
+    .filter((token) => token.length >= 4 && !STOP_TOKENS.has(token) && !/^\d+$/.test(token));
+}
+
+function matchNotice(tender, notices) {
+  const exact = notices.find((notice) => notice.key === titleKey(tender.title));
+  if (exact) return exact;
+  const wanted = [...new Set(tokensOf(tender.title))];
+  if (wanted.length < 2) return null;
+  let best = null;
+  let bestScore = 0;
+  let second = 0;
+  for (const notice of notices) {
+    let shared = 0;
+    for (const token of wanted) {
+      if (notice.tokens.has(token) || notice.key.includes(token)) shared += 1;
+    }
+    const score = shared / wanted.length;
+    if (score > bestScore) {
+      second = bestScore;
+      bestScore = score;
+      best = notice;
+    } else if (score > second) {
+      second = score;
+    }
+  }
+  if (!best || bestScore < 0.6 || bestScore - second < 0.15) return null;
+  return best;
+}
+
+function parseNotices(html) {
+  const notices = [];
+  for (const chunk of html.split(/<tr\b/i)) {
+    const titleMatch = /name="tendDesc\d+"\s+value="([^"]*)"/i.exec(chunk);
+    const nitMatch = /getNit\('(\d+)'\)/.exec(chunk);
+    if (!titleMatch || !nitMatch) continue;
+    const numberMatch = /showTndDesc\([^)]*\)\s*>\s*([^<]+)/.exec(chunk);
+    notices.push({
+      tenderNo: nitMatch[1],
+      title: decodeHtml(titleMatch[1]).trim(),
+      number: numberMatch ? decodeHtml(numberMatch[1]).replace(/\s+/g, " ").trim() : "",
+    });
+  }
+  return notices;
+}
+
+async function fetchText(url) {
+  const response = await fetch(url, {
+    headers: { Accept: "text/html", "User-Agent": "MajanAI/1.0" },
+    signal: AbortSignal.timeout(30000),
+  });
+  if (!response.ok) throw new Error(`إسناد رد بحالة ${response.status}`);
+  return response.text();
+}
+
+async function mapPool(items, limit, worker) {
+  const out = new Array(items.length);
+  let index = 0;
+  async function run() {
+    while (index < items.length) {
+      const current = index;
+      index += 1;
+      out[current] = await worker(items[current]);
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, () => run()));
+  return out;
+}
+
+async function fetchBoard(viewFlag) {
+  const pageUrl = (page) => `${ESNAD}/product/publicDash?viewFlag=${viewFlag}&pageNo=${page}`;
+  const first = await fetchText(pageUrl(1));
+  const max = Number((/name='hidMax'\s+value='(\d+)'/.exec(first) || [])[1] || 0);
+  console.log(`${viewFlag} pages ${max || 1}`);
+  const notices = parseNotices(first);
+  if (max > 1) {
+    const rest = await mapPool(
+      Array.from({ length: max - 1 }, (_, index) => index + 2),
+      4,
+      async (page) => parseNotices(await fetchText(pageUrl(page))),
+    );
+    for (const rows of rest) notices.push(...rows);
+  }
+  return { viewFlag, pages: max || 1, notices };
+}
+
+function applyCatalog(tenders, raw) {
+  const notices = raw.map((notice) => ({
+    ...notice,
+    key: titleKey(notice.title),
+    tokens: new Set(tokensOf(notice.title)),
+  }));
+  if (!notices.length) throw new Error("تعذر قراءة مناقصات إسناد");
+  const byKey = new Map();
+  for (const notice of notices) {
+    if (notice.key && !byKey.has(notice.key)) byKey.set(notice.key, notice);
+  }
+  let matched = 0;
+  for (const tender of tenders) {
+    const notice = byKey.get(titleKey(tender.title)) || matchNotice(tender, notices);
+    if (!notice) {
+      tender.url = "";
+      tender.source = "";
+      tender.sourceLabel = "";
+      continue;
+    }
+    matched += 1;
+    tender.url = esnadUrl(notice.tenderNo);
+    tender.source = "esnad";
+    tender.sourceLabel = "إسناد";
+    if (!tender.number && notice.number) tender.number = notice.number;
+  }
+  return { matched, catalog: notices.length };
+}
+
+export async function attachSourceUrls(tenders) {
+  const boards = [];
+  for (const viewFlag of ["NewTenders", "InProcessTenders"]) {
+    boards.push(await fetchBoard(viewFlag));
+  }
+  const raw = boards.flatMap((board) => board.notices);
+  await mkdir(join(root, "data"), { recursive: true });
+  await writeFile(
+    join(root, "data", "esnad-catalog.json"),
+    JSON.stringify(raw.map((notice) => ({ tenderNo: notice.tenderNo, title: notice.title, number: notice.number }))),
+    "utf8",
+  );
+  const stats = applyCatalog(tenders, raw);
+  return {
+    ...stats,
+    boards: boards.map((board) => ({ viewFlag: board.viewFlag, pages: board.pages, notices: board.notices.length })),
   };
 }
 
@@ -240,6 +419,7 @@ export async function pullTenders(onProgress) {
     await sleep(200);
   }
   const tenders = dedupeOpen(collected, today);
+  await attachSourceUrls(tenders);
   return {
     source: SOURCE,
     syncedAt: new Date().toISOString(),
@@ -259,9 +439,21 @@ export async function writeTenders(payload) {
 
 const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 if (isMain) {
-  const payload = await pullTenders((progress) => {
-    console.log(`fetched ${progress.fetched}/${progress.totalAvailable || "?"}`);
-  });
-  await writeTenders(payload);
-  console.log(`saved ${payload.count} open tenders`);
+  if (process.argv.includes("--sources") || process.argv.includes("--cached")) {
+    const payload = JSON.parse(await readFile(outputPath, "utf8"));
+    const stats = process.argv.includes("--cached")
+      ? applyCatalog(payload.tenders, JSON.parse(await readFile(join(root, "data", "esnad-catalog.json"), "utf8")))
+      : await attachSourceUrls(payload.tenders);
+    const missed = payload.tenders.filter((tender) => !tender.url).map((tender) => tender.title);
+    await writeFile(join(root, "data", "_match.txt"), missed.join("\n"), "utf8");
+    await writeTenders(payload);
+    console.log(`matched ${stats.matched}/${payload.tenders.length} catalog ${stats.catalog}`);
+    console.log(JSON.stringify(stats.boards));
+  } else {
+    const payload = await pullTenders((progress) => {
+      console.log(`fetched ${progress.fetched}/${progress.totalAvailable || "?"}`);
+    });
+    await writeTenders(payload);
+    console.log(`saved ${payload.count} open tenders`);
+  }
 }
