@@ -1,4 +1,5 @@
 name: Sync tenders
+# Pulls open tenders, then publishes the list.
 
 on:
   schedule:
