@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>مجان AI — المناقصات المناسبة</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #172033;
+        --muted: #5d6b7c;
+        --line: #e4ddd0;
+        --paper: #f6f3ec;
+        --card: #fffdf8;
+        --navy: #142033;
+        --gold: #9a7433;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+      }
+      header { background: var(--navy); color: white; padding: 28px 7vw 24px; }
+      header p { margin: 6px 0 0; color: #d7dee8; }
+      h1 { margin: 0; font-size: 32px; font-weight: 700; }
+      main { width: min(980px, 92vw); margin: -28px auto 48px; }
+      .panel, .tender {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+      }
+      .panel { padding: 18px 20px; display: grid; gap: 14px; margin-bottom: 16px; }
+      .stats { display: flex; flex-wrap: wrap; gap: 18px; }
+      .stats div { min-width: 140px; }
+      .label { color: var(--muted); font-size: 13px; }
+      strong { display: block; margin-top: 4px; font-size: 20px; }
+      input, select, button {
+        font: inherit;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        padding: 10px 12px;
+        background: white;
+      }
+      button { background: var(--navy); color: white; cursor: pointer; }
+      button.ghost { background: white; color: var(--navy); }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+      fieldset { border: 1px solid var(--line); border-radius: 12px; margin: 0; padding: 12px; }
+      legend { padding: 0 6px; color: var(--muted); }
+      .checks { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+      .checks label { display: flex; gap: 6px; align-items: center; }
+      .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+      .list { display: grid; gap: 12px; }
+      .tender { padding: 16px 18px; }
+      .tender h2 { margin: 0 0 8px; font-size: 18px; line-height: 1.5; }
+      .tender a { color: inherit; text-decoration: none; }
+      .tender a:hover { color: var(--gold); }
+      .meta, .why { display: flex; flex-wrap: wrap; gap: 8px 14px; color: var(--muted); font-size: 14px; }
+      .why { margin-top: 8px; color: var(--ink); }
+      .status { color: var(--gold); font-weight: 700; }
+      .note { color: var(--muted); margin: 0; font-size: 14px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>مجان <span dir="ltr">AI</span></h1>
+      <p id="company-line">المناقصات المناسبة للشركة</p>
+    </header>
+    <main>
+      <form class="panel" id="company-form">
+        <div>
+          <span class="label">بيانات الشركة</span>
+          <strong>هذه البيانات هي أساس المطابقة</strong>
+        </div>
+        <div class="grid">
+          <label>اسم الشركة<input id="name" name="name" required /></label>
+          <label>الدرجة
+            <select id="grade" name="grade">
+              <option value="excellent">ممتازة</option>
+              <option value="1">الأولى</option>
+              <option value="2">الثانية</option>
+              <option value="3">الثالثة</option>
+              <option value="4">الرابعة</option>
+            </select>
+          </label>
+          <label>التصنيف
+            <select id="classification" name="classification">
+              <option value="إنشاءات عامة">إنشاءات عامة</option>
+            </select>
+          </label>
+        </div>
+        <fieldset>
+          <legend>الولايات</legend>
+          <div class="checks" id="governorates"></div>
+        </fieldset>
+        <div class="row">
+          <button type="submit">احفظ بيانات الشركة</button>
+          <span class="note" id="saved-note"></span>
+        </div>
+      </form>
+      <section class="panel">
+        <div class="stats">
+          <div><span class="label">مناقصات مناسبة</span><strong id="count">—</strong></div>
+          <div><span class="label">آخر سحب</span><strong id="synced">—</strong></div>
+          <div><span class="label">التحديث</span><strong>كل 4 ساعات</strong></div>
+        </div>
+        <div class="row">
+          <input id="q" type="search" placeholder="ابحث بالاسم أو المدينة أو الرقم" />
+        </div>
+        <p class="note" id="status-line"></p>
+      </section>
+      <section class="list" id="list"></section>
+      <div class="row" style="margin-top: 16px">
+        <button class="ghost" id="more" type="button">عرض المزيد</button>
+      </div>
+    </main>
+    <script type="module">
+      const GOVERNORATES = ["مسقط", "ظفار", "مسندم", "البريمي", "الداخلية", "شمال الباطنة", "جنوب الباطنة", "جنوب الشرقية", "شمال الشرقية", "الظاهرة", "الوسطى"];
+      const GRADE_LABELS = { excellent: "ممتازة", 1: "الأولى", 2: "الثانية", 3: "الثالثة", 4: "الرابعة" };
+      const list = document.querySelector("#list");
+      const q = document.querySelector("#q");
+      const count = document.querySelector("#count");
+      const synced = document.querySelector("#synced");
+      const statusLine = document.querySelector("#status-line");
+      const companyLine = document.querySelector("#company-line");
+      const more = document.querySelector("#more");
+      const form = document.querySelector("#company-form");
+      const governorateBox = document.querySelector("#governorates");
+      const savedNote = document.querySelector("#saved-note");
+      let payload = { tenders: [] };
+      let visible = 30;
+      let company = null;
+
+      function esc(value) {
+        return String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      }
+      function norm(value) {
+        return String(value || "").replace(/[أإآ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه").replace(/\s+/g, "").toLowerCase();
+      }
+      function muscatToday() {
+        return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Muscat", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+      }
+      function daysLeft(iso) {
+        if (!iso) return null;
+        const start = Date.parse(`${muscatToday()}T00:00:00Z`);
+        const end = Date.parse(`${iso}T00:00:00Z`);
+        return Math.round((end - start) / 86400000);
+      }
+      function when(value) {
+        if (!value) return "—";
+        return new Intl.DateTimeFormat("ar-OM", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Muscat" }).format(new Date(value));
+      }
+      function blockedByGrade(tender, grade) {
+        if (grade === "excellent") return false;
+        const text = norm(`${tender.title} ${tender.category}`);
+        return text.includes("ممتاز") && text.includes("فقط");
+      }
+      function readForm() {
+        return {
+          name: document.querySelector("#name").value.trim(),
+          grade: document.querySelector("#grade").value,
+          classification: document.querySelector("#classification").value,
+          governorates: [...governorateBox.querySelectorAll("input:checked")].map((input) => input.value),
+        };
+      }
+      function fillForm(profile) {
+        document.querySelector("#name").value = profile.name || "";
+        document.querySelector("#grade").value = profile.grade || "2";
+        document.querySelector("#classification").value = profile.classification || "إنشاءات عامة";
+        const selected = new Set(profile.governorates || GOVERNORATES);
+        governorateBox.innerHTML = GOVERNORATES.map((name) => `<label><input type="checkbox" value="${esc(name)}" ${selected.has(name) ? "checked" : ""} />${esc(name)}</label>`).join("");
+      }
+      function fits(tender) {
+        const days = daysLeft(tender.deadlineIso);
+        if (days === null || days < 0) return false;
+        if (tender.governorate === "خارج عُمان") return false;
+        if (!company.governorates.includes(tender.governorate)) return false;
+        if (company.classification === "إنشاءات عامة" && tender.classification !== "إنشاءات عامة") return false;
+        if (blockedByGrade(tender, company.grade)) return false;
+        const term = q.value.trim();
+        const haystack = `${tender.title} ${tender.city} ${tender.number} ${tender.category}`;
+        return !term || haystack.includes(term);
+      }
+      function reason(tender, days) {
+        const grade = GRADE_LABELS[company.grade] || company.grade;
+        const whenText = days === 0 ? "آخر يوم للتقديم" : `متبقي ${days} يوماً`;
+        return `مناسبة لأن تصنيفها إنشاءات أبنية يطابق ${company.classification}، وولايتها ${tender.governorate} ضمن نطاق الشركة درجة ${grade}، والموعد مفتوح (${whenText}).`;
+      }
+      function render() {
+        const filtered = payload.tenders.filter(fits);
+        const rows = filtered.slice(0, visible);
+        count.textContent = String(filtered.length);
+        synced.textContent = when(payload.syncedAt);
+        const grade = GRADE_LABELS[company.grade] || "";
+        companyLine.textContent = company.name ? `${company.name} · الدرجة ${grade} · ${company.classification}` : "أدخل بيانات الشركة";
+        statusLine.textContent = company.governorates.length
+          ? "تظهر المناقصات المفتوحة فقط، بدون تكرار. غيّر اسم الشركة وولاياتها قبل إرسال الرابط للتجربة."
+          : "اختر ولاية واحدة على الأقل حتى تظهر المناقصات.";
+        more.hidden = rows.length >= filtered.length;
+        list.innerHTML = rows.map((tender) => {
+          const days = daysLeft(tender.deadlineIso);
+          return `<article class="tender">
+            <h2><a href="${esc(tender.url)}" target="_blank" rel="noreferrer">${esc(tender.title)}</a></h2>
+            <div class="meta">
+              <span class="status">${days === 0 ? "آخر يوم" : `متبقي ${days} يوم`}</span>
+              <span>${esc(tender.number || "بدون رقم")}</span>
+              <span>${esc(tender.governorate)}</span>
+              <span>${esc(tender.city || "—")}</span>
+              <span>${esc(tender.category || "")}</span>
+              <span>حتى ${esc(tender.deadline || "—")}</span>
+            </div>
+            <p class="why">${esc(reason(tender, days))}</p>
+          </article>`;
+        }).join("");
+      }
+
+      form.addEventListener("input", () => {
+        company = readForm();
+        visible = 30;
+        render();
+      });
+      q.addEventListener("input", () => {
+        visible = 30;
+        render();
+      });
+      more.addEventListener("click", () => {
+        visible += 30;
+        render();
+      });
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        company = readForm();
+        if (!company.name) return;
+        localStorage.setItem("majan-company", JSON.stringify(company));
+        savedNote.textContent = "تم الحفظ على هذا المتصفح.";
+        visible = 30;
+        render();
+      });
+
+      const defaults = await fetch("company.json").then((response) => response.json());
+      const stored = localStorage.getItem("majan-company");
+      fillForm(stored ? JSON.parse(stored) : defaults);
+      company = readForm();
+      payload = await fetch("tenders.json").then((response) => response.json());
+      render();
+    </script>
+  </body>
+</html>
