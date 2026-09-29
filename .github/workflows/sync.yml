@@ -1,45 +1,20 @@
 name: Sync tenders
-# Pulls open tenders, then publishes the list.
+# Pulls open tenders and saves the list. Vercel publishes that commit.
 
 on:
   schedule:
     - cron: "0 */4 * * *"
   workflow_dispatch:
-    inputs:
-      check_only:
-        description: Check Vercel access only
-        type: boolean
-        default: false
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: sync-tenders
   cancel-in-progress: false
 
 jobs:
-  access:
-    if: ${{ inputs.check_only }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Check Vercel access
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          set +e
-          npx --yes vercel@60.1.3 whoami --token "$VERCEL_TOKEN"
-          echo "whoami_exit:$?"
-          npx --yes vercel@60.1.3 teams ls --token "$VERCEL_TOKEN"
-          echo "teams_exit:$?"
-          npx --yes vercel@60.1.3 project ls --token "$VERCEL_TOKEN"
-          echo "projects_exit:$?"
   sync:
-    if: ${{ github.event_name == 'schedule' || !inputs.check_only }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -48,16 +23,12 @@ jobs:
         with:
           node-version: 22
       - run: node sync.mjs
-      - name: Link the Vercel project
-        working-directory: docs
-        env:
-          VERCEL_ORG_ID: team_DYOXCFBg8L0vU6KFMJdHsRX9
-          VERCEL_PROJECT_ID: prj_prW1Te1Daeo57QsZwqhxzIDsEVo1
+      - name: Save the updated list
         run: |
-          mkdir -p .vercel
-          printf '%s\n' "{\"orgId\":\"$VERCEL_ORG_ID\",\"projectId\":\"$VERCEL_PROJECT_ID\"}" > .vercel/project.json
-      - name: Publish the updated list
-        working-directory: docs
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: npx --yes vercel@60.1.3 deploy --prod --yes --token "$VERCEL_TOKEN"
+          git add -- docs/tenders.json
+          if git diff --cached --quiet; then
+            echo "No tender changes to save."
+            exit 0
+          fi
+          git -c user.name="Fatema-Alfathi" -c user.email="132199582+Fatema-Alfathi@users.noreply.github.com" commit -m "حدّث قائمة المناقصات المفتوحة."
+          git push origin HEAD:master
