@@ -35,6 +35,4 @@ jobs:
         working-directory: docs
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: team_DYOXCFBg8L0vU6KFMJdHsRX9
-          VERCEL_PROJECT_ID: prj_prW1Te1Daeo57QsZwqhxzIDsEVo1
-        run: npx --yes vercel@60.1.3 deploy --prod --yes --token "$VERCEL_TOKEN" --scope fatema7
+        run: npx --yes vercel@60.1.3 deploy --prod --yes --token "$VERCEL_TOKEN"
