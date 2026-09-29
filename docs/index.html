@@ -263,7 +263,9 @@
 
       const defaults = await fetch("company.json").then((response) => response.json());
       const stored = localStorage.getItem("majan-company");
-      fillForm(stored ? JSON.parse(stored) : defaults);
+      const profile = stored ? { ...defaults, ...JSON.parse(stored) } : defaults;
+      if (!profile.whatsapp) profile.whatsapp = defaults.whatsapp || "";
+      fillForm(profile);
       company = readForm();
       payload = await fetch("tenders.json").then((response) => response.json());
       render();
