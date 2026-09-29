@@ -80,6 +80,7 @@
               <th>المدينة</th>
               <th>حتى</th>
               <th>المتبقي</th>
+              <th>الدرجة</th>
               <th>المصدر</th>
             </tr>
           </thead>
@@ -127,10 +128,18 @@
         if (!value) return "—";
         return new Intl.DateTimeFormat("ar-OM", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Muscat" }).format(new Date(value));
       }
-      function blockedByGrade(tender, grade) {
-        if (grade === "excellent") return false;
-        const text = norm(`${tender.title} ${tender.category}`);
-        return text.includes("ممتاز") && text.includes("فقط");
+      const GRADE_WORDS = { excellent: "ممتازه", 1: "الاولي", 2: "الثانيه", 3: "الثالثه", 4: "الرابعه" };
+      function gradeAllowed(tender, grade) {
+        const listed = tender.grades || [];
+        if (!listed.length) {
+          if (grade === "excellent") return true;
+          const text = norm(`${tender.title} ${tender.category}`);
+          return !(text.includes("ممتاز") && text.includes("فقط"));
+        }
+        const folded = listed.map(norm).join(" ");
+        if (folded.includes("جميع") || folded.includes("كافه")) return true;
+        const word = GRADE_WORDS[grade] || GRADE_WORDS[String(grade)];
+        return Boolean(word && folded.includes(word));
       }
       function readForm() {
         return {
@@ -155,7 +164,7 @@
         if (tender.governorate === "خارج عُمان") return false;
         if (!company.governorates.includes(tender.governorate)) return false;
         if (company.classification === "إنشاءات عامة" && tender.classification !== "إنشاءات عامة") return false;
-        if (blockedByGrade(tender, company.grade)) return false;
+        if (!gradeAllowed(tender, company.grade)) return false;
         const term = q.value.trim();
         const haystack = `${tender.title} ${tender.city} ${tender.number} ${tender.category} ${tender.sourceLabel || ""}`;
         return !term || haystack.includes(term);
@@ -163,7 +172,8 @@
       function reason(tender, days) {
         const grade = GRADE_LABELS[company.grade] || company.grade;
         const whenText = days === 0 ? "آخر يوم للتقديم" : `متبقي ${days} يوماً`;
-        return `مناسبة لأن تصنيفها إنشاءات أبنية يطابق ${company.classification}، وولايتها ${tender.governorate} ضمن نطاق الشركة درجة ${grade}، والموعد مفتوح (${whenText}).`;
+        const listed = tender.grades?.length ? `، ودرجتها المعلنة ${tender.grades.join("، ")}` : "";
+        return `مناسبة لأن تصنيفها إنشاءات أبنية يطابق ${company.classification}، وولايتها ${tender.governorate} ضمن نطاق الشركة درجة ${grade}${listed}، والموعد مفتوح (${whenText}).`;
       }
       function render() {
         const filtered = payload.tenders.filter(fits);
@@ -184,6 +194,7 @@
             : esc(tender.title);
           const left = days === 0 ? "آخر يوم" : `${days} يوم`;
           const leftClass = days === 0 ? "chip warn" : "chip";
+          const grades = tender.grades?.length ? esc(tender.grades.join("، ")) : "—";
           const known = tender.source === "esnad" || tender.source === "portal" || tender.source === "buyer";
           const source = known
             ? `<span class="chip">${esc(tender.sourceLabel)}</span>`
@@ -194,6 +205,7 @@
             <td>${esc(tender.city || "—")}</td>
             <td>${esc(tender.deadline || "—")}</td>
             <td><span class="${leftClass}">${left}</span></td>
+            <td>${grades}</td>
             <td>${source}</td>
           </tr>`;
         }).join("");
