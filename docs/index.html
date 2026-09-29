@@ -43,13 +43,12 @@
               <option value="4">الرابعة</option>
             </select>
           </label>
-          <label>التصنيف
-            <select id="classification" name="classification">
-              <option value="إنشاءات عامة">إنشاءات عامة</option>
-            </select>
-          </label>
           <label>واتساب الشركة<input id="whatsapp" name="whatsapp" inputmode="tel" placeholder="9689XXXXXXX" /></label>
         </div>
+        <fieldset>
+          <legend>التصنيفات</legend>
+          <div class="checks" id="classifications"></div>
+        </fieldset>
         <fieldset>
           <legend>الولايات</legend>
           <div class="checks" id="governorates"></div>
@@ -81,6 +80,7 @@
               <th>حتى</th>
               <th>المتبقي</th>
               <th>الدرجة</th>
+              <th>التصنيف</th>
               <th>المصدر</th>
             </tr>
           </thead>
@@ -93,6 +93,7 @@
     </div>
     <script type="module">
       const GOVERNORATES = ["مسقط", "ظفار", "مسندم", "البريمي", "الداخلية", "شمال الباطنة", "جنوب الباطنة", "جنوب الشرقية", "شمال الشرقية", "الظاهرة", "الوسطى"];
+      const CLASSIFICATIONS = ["إنشاءات عامة", "طرق وجسور وأنفاق", "مياه وصرف صحي", "كهرباء وميكانيك", "دراسات واستشارات"];
       const GRADE_LABELS = { excellent: "ممتازة", 1: "الأولى", 2: "الثانية", 3: "الثالثة", 4: "الرابعة" };
       const list = document.querySelector("#list");
       const q = document.querySelector("#q");
@@ -103,6 +104,7 @@
       const gradePill = document.querySelector("#grade-pill");
       const more = document.querySelector("#more");
       const form = document.querySelector("#company-form");
+      const classificationBox = document.querySelector("#classifications");
       const governorateBox = document.querySelector("#governorates");
       const savedNote = document.querySelector("#saved-note");
       let payload = { tenders: [] };
@@ -145,7 +147,10 @@
         return {
           name: document.querySelector("#name").value.trim(),
           grade: document.querySelector("#grade").value,
-          classification: document.querySelector("#classification").value,
+          classifications: [...classificationBox.querySelectorAll("input:checked")].map((input) => input.value),
+          get classification() {
+            return this.classifications.join("، ");
+          },
           whatsapp: document.querySelector("#whatsapp").value.trim(),
           governorates: [...governorateBox.querySelectorAll("input:checked")].map((input) => input.value),
         };
@@ -153,8 +158,9 @@
       function fillForm(profile) {
         document.querySelector("#name").value = profile.name || "";
         document.querySelector("#grade").value = profile.grade || "2";
-        document.querySelector("#classification").value = profile.classification || "إنشاءات عامة";
         document.querySelector("#whatsapp").value = profile.whatsapp || "";
+        const picked = new Set(profile.classifications?.length ? profile.classifications : [profile.classification || "إنشاءات عامة"]);
+        classificationBox.innerHTML = CLASSIFICATIONS.map((name) => `<label><input type="checkbox" value="${esc(name)}" ${picked.has(name) ? "checked" : ""} />${esc(name)}</label>`).join("");
         const selected = new Set(profile.governorates || GOVERNORATES);
         governorateBox.innerHTML = GOVERNORATES.map((name) => `<label><input type="checkbox" value="${esc(name)}" ${selected.has(name) ? "checked" : ""} />${esc(name)}</label>`).join("");
       }
@@ -163,7 +169,7 @@
         if (days === null || days < 0) return false;
         if (tender.governorate === "خارج عُمان") return false;
         if (!company.governorates.includes(tender.governorate)) return false;
-        if (company.classification === "إنشاءات عامة" && tender.classification !== "إنشاءات عامة") return false;
+        if (!(company.classifications || []).includes(tender.classification)) return false;
         if (!gradeAllowed(tender, company.grade)) return false;
         const term = q.value.trim();
         const haystack = `${tender.title} ${tender.city} ${tender.number} ${tender.category} ${tender.sourceLabel || ""}`;
@@ -173,7 +179,7 @@
         const grade = GRADE_LABELS[company.grade] || company.grade;
         const whenText = days === 0 ? "آخر يوم للتقديم" : `متبقي ${days} يوماً`;
         const listed = tender.grades?.length ? `، ودرجتها المعلنة ${tender.grades.join("، ")}` : "";
-        return `مناسبة لأن تصنيفها إنشاءات أبنية يطابق ${company.classification}، وولايتها ${tender.governorate} ضمن نطاق الشركة درجة ${grade}${listed}، والموعد مفتوح (${whenText}).`;
+        return `مناسبة لأن تصنيفها ${tender.classification}، وولايتها ${tender.governorate} ضمن نطاق الشركة درجة ${grade}${listed}، والموعد مفتوح (${whenText}).`;
       }
       function render() {
         const filtered = payload.tenders.filter(fits);
@@ -182,10 +188,13 @@
         synced.textContent = when(payload.syncedAt);
         const grade = GRADE_LABELS[company.grade] || "";
         companyLine.textContent = company.name || "أدخل بيانات الشركة";
-        gradePill.textContent = company.name ? `الدرجة ${grade} — ${company.classification}` : "";
-        statusLine.textContent = company.governorates.length
-          ? "تظهر المناقصات المفتوحة فقط، بدون تكرار."
-          : "اختر ولاية واحدة على الأقل حتى تظهر المناقصات.";
+        const chosen = (company.classifications || []).join("، ");
+        gradePill.textContent = company.name ? `الدرجة ${grade}${chosen ? ` — ${chosen}` : ""}` : "";
+        statusLine.textContent = !company.classifications?.length
+          ? "اختر تصنيفًا واحدًا على الأقل حتى تظهر المناقصات."
+          : company.governorates.length
+            ? "تظهر المناقصات المفتوحة للتصنيفات المختارة، بدون تكرار."
+            : "اختر ولاية واحدة على الأقل حتى تظهر المناقصات.";
         more.hidden = rows.length >= filtered.length;
         list.innerHTML = rows.map((tender) => {
           const days = daysLeft(tender.deadlineIso);
@@ -206,6 +215,7 @@
             <td>${esc(tender.deadline || "—")}</td>
             <td><span class="${leftClass}">${left}</span></td>
             <td>${grades}</td>
+            <td>${esc(tender.classification || "—")}</td>
             <td>${source}</td>
           </tr>`;
         }).join("");
