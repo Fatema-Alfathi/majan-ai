@@ -8,7 +8,13 @@ const outputPath = join(root, "docs", "tenders.json");
 const SOURCE = "https://www.tenderoman.com/Default.aspx";
 const ESNAD = "https://etendering.tenderboard.gov.om";
 const PAGE_SIZE = 100;
-const CATEGORY_ID = "6";
+const CLASSIFICATIONS = [
+  { id: "6", label: "إنشاءات عامة" },
+  { id: "36", label: "طرق وجسور وأنفاق" },
+  { id: "37", label: "مياه وصرف صحي" },
+  { id: "38", label: "كهرباء وميكانيك" },
+  { id: "35", label: "دراسات واستشارات" },
+];
 
 const CITY_GOVERNORATE = {
   مسقط: "مسقط",
@@ -211,7 +217,7 @@ function assignPublisher(tender) {
   tender.originLabel = "تندرز عُمان";
 }
 
-function mapRow(row) {
+function mapRow(row, classification) {
   const price = Number(row.tnd_copy_price);
   const city = (row.are_name || "").trim();
   const title = (row.tnd_name || "").trim();
@@ -219,9 +225,9 @@ function mapRow(row) {
     id: String(row.tdc_id),
     number: row.tnd_number || "",
     title,
-    category: row.cat_Name || "إنشاءات الأبنية",
-    parentCategory: row.cat_ParentName || "إنشاءات الأبنية",
-    classification: "إنشاءات عامة",
+    category: row.cat_Name || classification,
+    parentCategory: row.cat_ParentName || classification,
+    classification,
     city,
     governorate: governorateFromTitle(title) || governorateFor(city),
     status: row.tnd_sts || "",
@@ -440,11 +446,11 @@ export async function attachSourceUrls(tenders) {
   };
 }
 
-async function fetchPage(from, to) {
+async function fetchPage(from, to, categoryId) {
   const params = new URLSearchParams({
     id: "1",
     Country_Code: "om",
-    catidvalue: CATEGORY_ID,
+    catidvalue: categoryId,
     buyerid: "",
     cityid: "",
     tendertypeid: "",
@@ -494,25 +500,29 @@ export async function pullTenders(onProgress) {
   const seen = new Set();
   const collected = [];
   let totalAvailable = 0;
-  for (let from = 1; from < 20000; from += PAGE_SIZE) {
-    const rows = await fetchPage(from, from + PAGE_SIZE - 1);
-    if (!rows.length) break;
-    totalAvailable = Number(rows[0].TenderCount) || totalAvailable;
-    let fresh = 0;
-    for (const row of rows) {
-      const id = String(row.tdc_id || "");
-      if (!id || seen.has(id)) continue;
-      seen.add(id);
-      fresh += 1;
-      if (isClosed(row.tnd_sts) || isUnrelated(row.tnd_name)) continue;
-      const parent = norm(row.cat_ParentName);
-      if (parent && !parent.includes(norm("انشاءات الابنية"))) continue;
-      collected.push(mapRow(row));
+  for (const item of CLASSIFICATIONS) {
+    let categoryTotal = 0;
+    let processed = 0;
+    for (let from = 1; from < 20000; from += PAGE_SIZE) {
+      const rows = await fetchPage(from, from + PAGE_SIZE - 1, item.id);
+      if (!rows.length) break;
+      categoryTotal = Number(rows[0].TenderCount) || categoryTotal;
+      let fresh = 0;
+      for (const row of rows) {
+        const id = String(row.tdc_id || "");
+        if (!id || seen.has(id)) continue;
+        seen.add(id);
+        fresh += 1;
+        processed += 1;
+        if (isClosed(row.tnd_sts) || isUnrelated(row.tnd_name)) continue;
+        collected.push(mapRow(row, item.label));
+      }
+      onProgress?.({ label: item.label, fetched: processed, totalAvailable: categoryTotal });
+      if (fresh === 0 || rows.length < PAGE_SIZE) break;
+      if (categoryTotal && processed >= categoryTotal) break;
+      await sleep(200);
     }
-    onProgress?.({ fetched: seen.size, totalAvailable });
-    if (fresh === 0 || rows.length < PAGE_SIZE) break;
-    if (totalAvailable && seen.size >= totalAvailable) break;
-    await sleep(200);
+    totalAvailable += categoryTotal;
   }
   const tenders = dedupeOpen(collected, today);
   await attachSourceUrls(tenders);
@@ -521,7 +531,8 @@ export async function pullTenders(onProgress) {
     source: SOURCE,
     syncedAt: new Date().toISOString(),
     classification: "إنشاءات عامة",
-    categoryLabel: "إنشاءات الأبنية",
+    classifications: CLASSIFICATIONS.map((item) => item.label),
+    categoryLabel: CLASSIFICATIONS.map((item) => item.label).join("، "),
     totalAvailable,
     fetched: seen.size,
     count: tenders.length,
@@ -555,7 +566,7 @@ if (isMain) {
     console.log(JSON.stringify(stats.boards));
   } else {
     const payload = await pullTenders((progress) => {
-      console.log(`fetched ${progress.fetched}/${progress.totalAvailable || "?"}`);
+      console.log(`${progress.label || ""} ${progress.fetched}/${progress.totalAvailable || "?"}`);
     });
     await writeTenders(payload);
     console.log(`saved ${payload.count} open tenders`);

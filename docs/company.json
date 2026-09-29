@@ -2,6 +2,7 @@
   "name": "الشركة",
   "grade": "2",
   "classification": "إنشاءات عامة",
+  "classifications": ["إنشاءات عامة"],
   "whatsapp": "",
   "governorates": [
     "مسقط",
