@@ -255,21 +255,25 @@
           return;
         }
         const grade = GRADE_LABELS[company.grade] || company.grade;
-        const lines = [
-          "مجان AI — مناقصات مناسبة",
-          `${company.name} · الدرجة ${grade} · ${company.classification}`,
+        const names = (company.classifications || []).join("، ");
+        const header = [
+          `مجان — ${company.name} · درجة ${grade}${names ? ` · ${names}` : ""}`,
+          "https://majan-ai-mu.vercel.app/",
           "",
         ];
-        matches.slice(0, 8).forEach((tender, index) => {
-          const days = daysLeft(tender.deadlineIso);
-          const left = days === 0 ? "آخر يوم" : `متبقي ${days} يوم`;
-          lines.push(`${index + 1}. ${tender.title}`);
-          lines.push(`${tender.governorate} · حتى ${tender.deadline} · ${left}`);
-          if (tender.url) lines.push(tender.url);
-          lines.push("");
+        const blocks = matches.map((tender) => {
+          const title = tender.title.length > 50 ? `${tender.title.slice(0, 50)}…` : tender.title;
+          return `${title} · ${tender.governorate} · ${tender.deadline}`;
         });
-        if (matches.length > 8) lines.push(`و${matches.length - 8} مناقصة أخرى في صفحة مجان.`);
-        const url = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join("\n"))}`;
+        let count = Math.min(blocks.length, 4);
+        let url = "";
+        while (count > 0) {
+          const lines = [...header, ...blocks.slice(0, count).map((block, index) => `${index + 1}. ${block}`)];
+          if (matches.length > count) lines.push(`و${matches.length - count} مناقصة أخرى في الموقع.`);
+          url = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join("\n"))}`;
+          if (url.length <= 1800) break;
+          count -= 1;
+        }
         window.open(url, "_blank", "noopener");
         savedNote.textContent = "انفتحت رسالة واتساب. اضغط إرسال من هناك.";
       });
