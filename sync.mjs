@@ -326,6 +326,34 @@ function parseNotices(html) {
   return notices;
 }
 
+function parseGrades(html) {
+  const match = /<b>\s*الدرجة\s*:?\s*<\/b>[\s\S]{0,1200}?<\/td>\s*<td[^>]*>([\s\S]*?)<\/td>/i.exec(html);
+  if (!match) return [];
+  const text = decodeHtml(match[1].replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+  return text
+    .split(/[,،]/)
+    .map((part) => part.trim())
+    .filter((part) => part && part !== "-" && part !== "—");
+}
+
+async function attachGrades(tenders) {
+  const targets = tenders.filter((tender) => tender.source === "esnad" && tender.url);
+  let done = 0;
+  await mapPool(targets, 4, async (tender) => {
+    try {
+      tender.grades = parseGrades(await fetchText(tender.url));
+    } catch (error) {
+      tender.grades = [];
+      console.log(`grade miss ${tender.id}: ${error.message}`);
+    }
+    done += 1;
+    if (done % 20 === 0 || done === targets.length) console.log(`grades ${done}/${targets.length}`);
+  });
+  for (const tender of tenders) {
+    if (!Array.isArray(tender.grades)) tender.grades = [];
+  }
+}
+
 async function fetchText(url) {
   const response = await fetch(url, {
     headers: { Accept: "text/html", "User-Agent": "MajanAI/1.0" },
@@ -488,6 +516,7 @@ export async function pullTenders(onProgress) {
   }
   const tenders = dedupeOpen(collected, today);
   await attachSourceUrls(tenders);
+  await attachGrades(tenders);
   return {
     source: SOURCE,
     syncedAt: new Date().toISOString(),
@@ -507,13 +536,20 @@ export async function writeTenders(payload) {
 
 const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 if (isMain) {
-  if (process.argv.includes("--sources") || process.argv.includes("--cached")) {
+  if (process.argv.includes("--grades")) {
+    const payload = JSON.parse(await readFile(outputPath, "utf8"));
+    await attachGrades(payload.tenders);
+    await writeTenders(payload);
+    const withGrades = payload.tenders.filter((tender) => tender.grades?.length).length;
+    console.log(`grades on ${withGrades}/${payload.tenders.length}`);
+  } else if (process.argv.includes("--sources") || process.argv.includes("--cached")) {
     const payload = JSON.parse(await readFile(outputPath, "utf8"));
     const stats = process.argv.includes("--cached")
       ? applyCatalog(payload.tenders, JSON.parse(await readFile(join(root, "data", "esnad-catalog.json"), "utf8")))
       : await attachSourceUrls(payload.tenders);
     const missed = payload.tenders.filter((tender) => !tender.url).map((tender) => tender.title);
     await writeFile(join(root, "data", "_match.txt"), missed.join("\n"), "utf8");
+    await attachGrades(payload.tenders);
     await writeTenders(payload);
     console.log(`matched ${stats.matched}/${payload.tenders.length} catalog ${stats.catalog}`);
     console.log(JSON.stringify(stats.boards));
