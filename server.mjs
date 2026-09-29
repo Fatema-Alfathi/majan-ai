@@ -38,12 +38,16 @@ async function sync() {
 const files = {
   "/": "index.html",
   "/index.html": "index.html",
+  "/guardian.html": "guardian.html",
+  "/icv.html": "icv.html",
+  "/site.css": "site.css",
   "/tenders.json": "tenders.json",
   "/company.json": "company.json",
 };
 
 function contentType(pathname) {
   if (pathname.endsWith(".json")) return "application/json; charset=utf-8";
+  if (pathname.endsWith(".css")) return "text/css; charset=utf-8";
   return "text/html; charset=utf-8";
 }
 
