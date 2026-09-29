@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>مجـان AI — الحارس المالي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./site.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <small>MAJAN AI · SIRAJ</small>
+        <strong>مجـان AI</strong>
+      </div>
+      <p class="company-name" id="company-line">Skills للمقاولات</p>
+      <span class="grade-pill" id="grade-pill">الدرجة الثانية — إنشاءات عامة</span>
+      <nav>
+        <a href="./">المناقصات</a>
+        <a class="active" href="./guardian.html">الحارس المالي</a>
+        <a href="./icv.html">القيمة المحلية المضافة</a>
+      </nav>
+    </aside>
+    <div class="shell">
+      <p class="eyebrow">محطة الفحص</p>
+      <h1>فحص فواتير الحديد والإسمنت</h1>
+      <p class="sub">يقارن سعر الفاتورة بأمر الشراء، ثم يفحص شهادة القيمة المحلية. الأرقام هنا نموذج حتى تُربط فواتير الشركة.</p>
+      <div id="alerts"></div>
+      <section class="card">
+        <h3>مسار الفحص</h3>
+        <div class="steps">
+          <div class="step"><b>1</b>قراءة الفاتورة</div>
+          <div class="step"><b>2</b>مطابقة أمر الشراء</div>
+          <div class="step"><b>3</b>مطابقة المستودع</div>
+          <div class="step"><b>4</b>فحص ICV</div>
+        </div>
+      </section>
+      <div class="split">
+        <section class="card">
+          <h3>حد التحمّل</h3>
+          <p class="note" id="tolerance-note"></p>
+          <input id="tolerance" type="range" min="0" max="10" step="0.5" value="2" />
+          <div class="row"><span>0%</span><span>10%</span></div>
+        </section>
+        <section class="card">
+          <div class="drop">
+            <strong>ارفع فاتورة PDF</strong>
+            <p class="note">الملف يُحفظ اسمه هنا. الفحص الحالي يعمل على فواتير النموذج الثلاث.</p>
+            <input id="file" type="file" accept="application/pdf,.pdf" />
+            <p class="note" id="file-note"></p>
+          </div>
+          <div class="row">
+            <button type="button" data-sample="INV-SEED-01">فاتورة 1 — مطابقة تامة</button>
+            <button type="button" data-sample="INV-SEED-02">فاتورة 2 — حديد +5 ر.ع</button>
+            <button type="button" data-sample="INV-SEED-03">فاتورة 3 — ICV منتهية</button>
+          </div>
+        </section>
+      </div>
+      <section class="card">
+        <h3>سجل انحراف الأسعار</h3>
+        <p class="note">حديد بالأخضر وإسمنت بالذهبي. سجل توضيحي شهري، ليس أسعار السوق الحية.</p>
+        <svg class="chart" viewBox="0 0 640 190" role="img" aria-label="سجل انحراف أسعار الحديد والإسمنت">
+          <line x1="36" y1="20" x2="36" y2="160" stroke="#e6e1d8" />
+          <line x1="36" y1="160" x2="620" y2="160" stroke="#e6e1d8" />
+          <polyline fill="none" stroke="#1a7a55" stroke-width="3" points="50,120 140,110 230,128 320,90 410,100 500,70 590,84" />
+          <polyline fill="none" stroke="#8a6230" stroke-width="3" points="50,140 140,136 230,130 320,124 410,118 500,112 590,108" />
+        </svg>
+      </section>
+      <section class="card">
+        <div class="row">
+          <h3>سجل فواتير المواد الخام</h3>
+          <button class="ghost" id="excel" type="button">Excel</button>
+          <button class="ghost" id="pdf" type="button">PDF للمحاسب</button>
+        </div>
+        <div id="invoices"></div>
+      </section>
+    </div>
+    <script type="module">
+      const GRADE_LABELS = { excellent: "ممتازة", 1: "الأولى", 2: "الثانية", 3: "الثالثة", 4: "الرابعة" };
+      const invoices = [
+        { id: "INV-SEED-01", title: "إسمنت بورتلاند — طن", po: 28, price: 28, icv: true, text: "الفاتورة مطابقة تماماً لأمر الشراء وإيصال المستودع. اعتماد الصرف." },
+        { id: "INV-SEED-02", title: "حديد تسليح 16 مم — طن", po: 248, price: 253, icv: true, text: "سعر طن الحديد في الفاتورة أعلى بـ 5 ر.ع من أمر الشراء (248 → 253)." },
+        { id: "INV-SEED-03", title: "حديد تسليح 12 مم — طن", po: 240, price: 240, icv: false, text: "السعر والكمية مطابقان، لكن شهادة ICV-OM-1188 انتهت في 31 ديسمبر 2025. لا تُحتسب في نسبة الشركة." },
+      ];
+      const slider = document.querySelector("#tolerance");
+      const selected = { id: "" };
+
+      function company() {
+        try { return JSON.parse(localStorage.getItem("majan-company")) || {}; }
+        catch { return {}; }
+      }
+      function paintCompany() {
+        const profile = company();
+        const name = profile.name || "Skills للمقاولات";
+        const grade = GRADE_LABELS[profile.grade] || "الثانية";
+        document.querySelector("#company-line").textContent = name;
+        document.querySelector("#grade-pill").textContent = `الدرجة ${grade} — ${profile.classification || "إنشاءات عامة"}`;
+      }
+      function gap(invoice) {
+        return ((invoice.price - invoice.po) / invoice.po) * 100;
+      }
+      function stateOf(invoice, limit) {
+        if (!invoice.icv) return "warn";
+        return gap(invoice) > limit ? "bad" : "good";
+      }
+      function labelOf(state) {
+        if (state === "bad") return "أوقف الصرف";
+        if (state === "warn") return "تنبيه ICV";
+        return "اعتماد الصرف";
+      }
+      function render() {
+        const limit = Number(slider.value);
+        document.querySelector("#tolerance-note").textContent = `زيادة السعر المسموحة قبل الأحمر: ${limit}% . مثال الحديد +5 ر.ع ≈ 2.0% — ارفع الحد فوقها فتتحول لأخضر.`;
+        const states = invoices.map((invoice) => stateOf(invoice, limit));
+        const reds = states.filter((state) => state === "bad").length;
+        const warns = states.filter((state) => state === "warn").length;
+        document.querySelector("#alerts").innerHTML = `
+          <div class="banner bad">كشف أحمر: ${reds} فاتورة فوق حد التحمّل (${limit}%)</div>
+          <div class="banner warn">تنبيه ICV: ${warns} مورد</div>`;
+        document.querySelector("#invoices").innerHTML = invoices.map((invoice, index) => {
+          const state = states[index];
+          return `<article class="card invoice ${state}" id="${invoice.id}">
+            <div class="row"><strong>${invoice.id} — ${invoice.title}</strong><span class="chip ${state === "good" ? "" : state}">${labelOf(state)}</span></div>
+            <p class="note">${invoice.text}</p>
+          </article>`;
+        }).join("");
+        if (selected.id) document.getElementById(selected.id)?.scrollIntoView({ block: "nearest" });
+      }
+      document.querySelectorAll("[data-sample]").forEach((button) => {
+        button.addEventListener("click", () => {
+          selected.id = button.dataset.sample;
+          render();
+        });
+      });
+      slider.addEventListener("input", render);
+      document.querySelector("#file").addEventListener("change", (event) => {
+        const file = event.target.files?.[0];
+        document.querySelector("#file-note").textContent = file ? `تم اختيار ${file.name}. الفحص ما زال على فواتير النموذج.` : "";
+      });
+      document.querySelector("#excel").addEventListener("click", () => {
+        const limit = Number(slider.value);
+        const rows = [["الفاتورة", "البند", "أمر الشراء", "الفاتورة", "الحالة"]];
+        invoices.forEach((invoice) => rows.push([invoice.id, invoice.title, invoice.po, invoice.price, labelOf(stateOf(invoice, limit))]));
+        const blob = new Blob(["\uFEFF" + rows.map((row) => row.join(",")).join("\n")], { type: "text/csv;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "majan-invoices.csv";
+        link.click();
+      });
+      document.querySelector("#pdf").addEventListener("click", () => window.print());
+      paintCompany();
+      render();
+    </script>
+  </body>
+</html>

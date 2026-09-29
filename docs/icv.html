@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>مجـان AI — القيمة المحلية المضافة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./site.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <small>MAJAN AI · SIRAJ</small>
+        <strong>مجـان AI</strong>
+      </div>
+      <p class="company-name" id="company-line">Skills للمقاولات</p>
+      <span class="grade-pill" id="grade-pill">الدرجة الثانية — إنشاءات عامة</span>
+      <nav>
+        <a href="./">المناقصات</a>
+        <a href="./guardian.html">الحارس المالي</a>
+        <a class="active" href="./icv.html">القيمة المحلية المضافة</a>
+      </nav>
+    </aside>
+    <div class="shell">
+      <p class="eyebrow">تبويب القيمة المحلية المضافة</p>
+      <h1>مؤشر الثقة — القيمة المحلية المضافة</h1>
+      <p class="sub">النسبة تُحسب من شهادات الموردين في هذا النموذج. ليست من فواتير الشركة الحقيقية بعد.</p>
+      <div class="banner warn" id="expired-banner"></div>
+      <section class="metrics">
+        <article class="card">
+          <div class="gauge" id="gauge"><span id="gauge-label"></span></div>
+          <p class="note" id="gauge-state" style="text-align:center"></p>
+        </article>
+        <article class="card"><span class="label">نسبة القيمة المحلية المضافة</span><strong class="num" id="current">47.5%</strong></article>
+        <article class="card"><span class="label">الهدف التنافسي</span><strong class="num">40%</strong><p class="note">ICV Target</p></article>
+        <article class="card"><span class="label">الفجوة</span><strong class="num" id="gap">0%</strong><p class="note">مشتريات 498,000 ر.ع</p></article>
+      </section>
+      <section class="card">
+        <h3>محاكي «ماذا لو»</h3>
+        <div class="grid">
+          <label>من مورد (أجنبي/ضعيف)<select id="from"></select></label>
+          <label>إلى مورد (محلي)<select id="to"></select></label>
+        </div>
+        <div class="stats">
+          <div><span class="label">الحالي</span><strong class="num" id="now">47.5%</strong></div>
+          <div><span class="label">بعد التحويل</span><strong class="num" id="after">68.2%</strong></div>
+          <div><span class="label">الأثر</span><strong class="num delta" id="delta">+20.7 نقطة</strong></div>
+        </div>
+      </section>
+      <section class="card">
+        <h3>تقويم انتهاء الشهادات</h3>
+        <p class="note">تذكير قبل 30 و15 و7 أيام.</p>
+        <div id="calendar"></div>
+      </section>
+      <section class="card">
+        <h3>بطاقات الشهادات</h3>
+        <div class="suppliers" id="cards"></div>
+      </section>
+      <section class="card">
+        <h3>اقتراحات</h3>
+        <p>جدّد شهادة مسقط ستيل أو أوقف الشراء منها. شهادة ICV-OM-1188 انتهت في 31 ديسمبر 2025.</p>
+        <p>حوّل شراء الحديد من الخليج للاستيراد إلى حديد عُمان لرفع النسبة.</p>
+        <p>أبقِ الركام من ظفار للحصى والرمال. المؤسسة العمانية الصغيرة ترفع القيمة المحلية.</p>
+      </section>
+    </div>
+    <script type="module">
+      const TARGET = 40;
+      const TOTAL = 498000;
+      const suppliers = [
+        { id: "oman", name: "حديد عُمان", place: "صحار · حديد تسليح · مواد", cert: "ICV-OM-4412", rate: 86, spend: 100004, expires: "2027-03-31" },
+        { id: "import", name: "الخليج للاستيراد المعدني", place: "مسقط · حديد تسليح · مواد", cert: "", rate: 12, spend: 139305, expires: "" },
+        { id: "cement", name: "إسمنت عُمان", place: "الرسيل · إسمنت · مواد", cert: "ICV-OM-2281", rate: 79, spend: 80000, expires: "2027-06-30" },
+        { id: "dhofar", name: "ظفار للحصى والرمال", place: "صلالة · ركام ورمال · مواد", cert: "ICV-SME-901", rate: 91, spend: 45000, expires: "2027-01-15" },
+        { id: "electro", name: "الباطن للكهرباء — مؤسسة عمانية", place: "السيب · أعمال كهربائية · باطن", cert: "ICV-SUB-118", rate: 74, spend: 35000, expires: "2026-11-30" },
+        { id: "hvac", name: "جلف كول للتكييف", place: "مسقط · تكييف · باطن", cert: "", rate: 21, spend: 18000, expires: "" },
+        { id: "muscat", name: "مسقط ستيل للتجارة", place: "مسقط · حديد تسليح · مواد", cert: "ICV-OM-1188", rate: 0, spend: 80691, expires: "2025-12-31" },
+      ];
+      const GRADE_LABELS = { excellent: "ممتازة", 1: "الأولى", 2: "الثانية", 3: "الثالثة", 4: "الرابعة" };
+      const fromBox = document.querySelector("#from");
+      const toBox = document.querySelector("#to");
+
+      function profile() {
+        try { return JSON.parse(localStorage.getItem("majan-company")) || {}; }
+        catch { return {}; }
+      }
+      function paintCompany() {
+        const company = profile();
+        const name = company.name || "Skills للمقاولات";
+        const grade = GRADE_LABELS[company.grade] || "الثانية";
+        document.querySelector("#company-line").textContent = name;
+        document.querySelector("#grade-pill").textContent = `الدرجة ${grade} — ${company.classification || "إنشاءات عامة"}`;
+      }
+      function today() {
+        return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Muscat" }).format(new Date());
+      }
+      function daysUntil(iso) {
+        if (!iso) return null;
+        const start = new Date(`${today()}T00:00:00+04:00`);
+        const end = new Date(`${iso}T00:00:00+04:00`);
+        return Math.round((end - start) / 86400000);
+      }
+      function percent(value) {
+        return `${value.toFixed(1)}%`;
+      }
+      function score(list) {
+        const weighted = list.reduce((sum, item) => sum + item.spend * (item.rate / 100), 0);
+        return (weighted / TOTAL) * 100;
+      }
+      function paintGauge(value) {
+        const reached = value >= TARGET;
+        document.querySelector("#gauge").style.background = `conic-gradient(${reached ? "#1a7a55" : "#8a6230"} ${value * 3.6}deg, #efeae2 0)`;
+        document.querySelector("#gauge-label").innerHTML = `${percent(value)}<small style="font-weight:500;color:#5a6570">القيمة المحلية</small>`;
+        document.querySelector("#gauge-state").textContent = reached ? "بلغت الهدف" : "تحت الهدف";
+        document.querySelector("#current").textContent = percent(value);
+        document.querySelector("#gap").textContent = percent(Math.max(0, TARGET - value));
+      }
+      function render() {
+        const base = score(suppliers);
+        const from = suppliers.find((item) => item.id === fromBox.value);
+        const to = suppliers.find((item) => item.id === toBox.value);
+        const moved = suppliers.map((item) => {
+          if (item.id === from.id) return { ...item, rate: to.rate };
+          return item;
+        });
+        const next = score(moved);
+        const delta = next - base;
+        paintGauge(base);
+        document.querySelector("#now").textContent = percent(base);
+        document.querySelector("#after").textContent = percent(next);
+        document.querySelector("#delta").textContent = `${delta >= 0 ? "+" : ""}${delta.toFixed(1)} نقطة`;
+        const expired = suppliers.filter((item) => item.expires && daysUntil(item.expires) < 0);
+        document.querySelector("#expired-banner").textContent = expired.length
+          ? `تنبيه: شهادات منتهية — ${expired.map((item) => item.name).join("، ")}`
+          : "لا توجد شهادات منتهية في النموذج.";
+        document.querySelector("#calendar").innerHTML = suppliers.filter((item) => item.expires).map((item) => {
+          const left = daysUntil(item.expires);
+          const when = left < 0 ? `منتهية منذ ${Math.abs(left)} يوماً` : `متبقٍ ${left} يوماً`;
+          return `<div class="cal"><span>${item.name}<small class="note">${item.cert}</small></span><strong>${when}</strong></div>`;
+        }).join("");
+        document.querySelector("#cards").innerHTML = suppliers.map((item) => `
+          <article class="supplier">
+            <strong>${item.name}</strong>
+            <small class="note">${item.place}</small>
+            <div class="row"><span class="chip ${item.expires && daysUntil(item.expires) < 0 ? "bad" : ""}">${item.cert || "بدون شهادة"}</span><b>${item.rate}</b></div>
+            ${item.expires && daysUntil(item.expires) < 0 ? `<p class="note">شهادة منتهية — لا تُحتسب</p>` : ""}
+          </article>`).join("");
+      }
+      fromBox.innerHTML = suppliers.map((item) => `<option value="${item.id}">${item.name}</option>`).join("");
+      toBox.innerHTML = fromBox.innerHTML;
+      fromBox.value = "import";
+      toBox.value = "oman";
+      fromBox.addEventListener("change", render);
+      toBox.addEventListener("change", render);
+      paintCompany();
+      render();
+    </script>
+  </body>
+</html>

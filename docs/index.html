@@ -7,127 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>
-      :root {
-        color-scheme: light;
-        --ink: #1c2430;
-        --muted: #5a6570;
-        --line: #e6e1d8;
-        --paper: #f8f7f3;
-        --card: #ffffff;
-        --navy: #0b1f3a;
-        --gold: #8a6230;
-        --gold-bg: #f3e6c8;
-        --teal: #1a7a55;
-        --teal-bg: #e4f2eb;
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font-family: "IBM Plex Sans Arabic", Tahoma, sans-serif;
-        background: var(--paper);
-        color: var(--ink);
-      }
-      .sidebar {
-        position: fixed;
-        inset-block: 0;
-        inset-inline-start: 0;
-        width: 248px;
-        background: var(--navy);
-        color: #f1efe8;
-        padding: 28px 18px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        z-index: 2;
-      }
-      .brand small { display: block; letter-spacing: .14em; font-size: 11px; opacity: .7; }
-      .brand strong { display: block; font-size: 28px; font-weight: 700; margin-top: 4px; }
-      .company-name { margin: 0; font-size: 15px; font-weight: 600; }
-      .grade-pill {
-        align-self: flex-start;
-        background: var(--gold-bg);
-        color: var(--gold);
-        border-radius: 999px;
-        padding: 4px 10px;
-        font-size: 12px;
-        font-weight: 600;
-      }
-      nav { display: grid; gap: 4px; }
-      nav a {
-        color: #f1efe8;
-        text-decoration: none;
-        border-radius: 10px;
-        padding: 10px 12px;
-      }
-      nav a.active, nav a:hover { background: rgba(255,255,255,.08); }
-      .shell {
-        margin-inline-start: 248px;
-        min-height: 100vh;
-        padding: 28px 32px 48px;
-        background-color: var(--paper);
-        background-image:
-          linear-gradient(rgba(11, 31, 58, .045) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(11, 31, 58, .045) 1px, transparent 1px);
-        background-size: 28px 28px;
-      }
-      .eyebrow { margin: 0; color: var(--muted); font-size: 13px; }
-      h1 { margin: 4px 0 8px; font-size: 34px; font-weight: 700; }
-      .sub { margin: 0 0 18px; color: var(--muted); }
-      .card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 16px 18px;
-        margin-bottom: 14px;
-      }
-      .stats { display: flex; flex-wrap: wrap; gap: 18px; }
-      .stats div { min-width: 120px; }
-      .label { color: var(--muted); font-size: 13px; }
-      strong.num { display: block; margin-top: 4px; font-size: 22px; }
-      input, select, button {
-        font: inherit;
-        border-radius: 10px;
-        border: 1px solid var(--line);
-        padding: 10px 12px;
-        background: white;
-        color: var(--ink);
-      }
-      button { background: var(--navy); color: white; cursor: pointer; border-color: var(--navy); }
-      button.ghost { background: white; color: var(--navy); }
-      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
-      label { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
-      fieldset { border: 1px solid var(--line); border-radius: 12px; margin: 12px 0 0; padding: 12px; }
-      legend { padding: 0 6px; }
-      .checks { display: flex; flex-wrap: wrap; gap: 8px 14px; }
-      .checks label { display: flex; gap: 6px; align-items: center; color: var(--ink); font-size: 14px; }
-      .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-      #q { min-width: 240px; flex: 1; }
-      .note { color: var(--muted); margin: 8px 0 0; font-size: 14px; }
-      .table-wrap { padding: 0; overflow: auto; }
-      table { width: 100%; border-collapse: collapse; min-width: 760px; }
-      th, td { text-align: start; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
-      th { color: var(--muted); font-weight: 500; font-size: 13px; background: #f4f1ea; }
-      td a { color: var(--ink); font-weight: 600; text-decoration: none; }
-      td a:hover { color: var(--gold); }
-      .chip {
-        display: inline-flex;
-        border-radius: 999px;
-        padding: 3px 8px;
-        font-size: 12px;
-        font-weight: 600;
-        background: var(--teal-bg);
-        color: var(--teal);
-        white-space: nowrap;
-      }
-      .chip.warn { background: var(--gold-bg); color: var(--gold); }
-      .chip.muted { background: #f1efe8; color: var(--muted); font-weight: 500; }
-      .why { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; font-weight: 400; }
-      @media (max-width: 860px) {
-        .sidebar { position: static; width: auto; }
-        .shell { margin-inline-start: 0; padding: 18px 14px 32px; }
-      }
-    </style>
+    <link rel="stylesheet" href="./site.css" />
   </head>
   <body>
     <aside class="sidebar">
@@ -139,8 +19,8 @@
       <span class="grade-pill" id="grade-pill">الدرجة الثانية — إنشاءات عامة</span>
       <nav>
         <a class="active" href="./">المناقصات</a>
-        <a href="https://majan-ai.vercel.app/guardian" target="_blank" rel="noreferrer">الحارس المالي</a>
-        <a href="https://majan-ai.vercel.app/icv" target="_blank" rel="noreferrer">القيمة المحلية المضافة</a>
+        <a href="./guardian.html">الحارس المالي</a>
+        <a href="./icv.html">القيمة المحلية المضافة</a>
       </nav>
     </aside>
     <div class="shell">
