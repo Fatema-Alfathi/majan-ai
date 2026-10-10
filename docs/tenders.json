@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-10T19:56:19.367Z",
+  "syncedAt": "2026-10-10T23:24:11.152Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -12,37 +12,8 @@
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
   "totalAvailable": 8922,
   "fetched": 8922,
-  "count": 359,
+  "count": 358,
   "tenders": [
-    {
-      "id": "1375037",
-      "number": "",
-      "title": "توفير قطع غيار لاجهزة التبريد والتكييف بجامعة التقنية والعلوم التطبيقية بمسقط",
-      "category": "التكييف، التبريد، التهوية، والمداخن",
-      "parentCategory": "مقاولات الكهرباء والميكانيك",
-      "classification": "كهرباء وميكانيك",
-      "city": "عبري",
-      "governorate": "مسقط",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "06/10/2026",
-      "deadline": "10/10/2026",
-      "publishedIso": "2026-10-06",
-      "deadlineIso": "2026-10-10",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99246&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=2163b7417464fe5e2ec63f7f64348b9deda33baae93a3d05da2a1d78ebddfbae",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
-    },
     {
       "id": "1361685",
       "number": "",
