@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-14T09:40:01.974Z",
+  "syncedAt": "2026-10-14T16:43:46.883Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -10,9 +10,9 @@
     "دراسات واستشارات"
   ],
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
-  "totalAvailable": 9038,
-  "fetched": 9038,
-  "count": 395,
+  "totalAvailable": 9045,
+  "fetched": 9044,
+  "count": 401,
   "tenders": [
     {
       "id": "1368779",
@@ -563,6 +563,35 @@
       "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
       "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
+      "id": "1393468",
+      "number": "",
+      "title": "التميز في تجربة المستفيد وجودة الخدمات بمراكز القبول والتسجيل",
+      "category": "دراسات واستشارات عامة",
+      "parentCategory": "الدراسات والاستشارات",
+      "classification": "دراسات واستشارات",
+      "city": "عبري",
+      "governorate": "الظاهرة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "14/10/2026",
+      "deadline": "15/10/2026",
+      "publishedIso": "2026-10-14",
+      "deadlineIso": "2026-10-15",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99638&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=651888977d04f9345fa4862a021526cfa9c543c363661e68f730b284db96563c",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
         "الثالثة",
         "الرابعة"
       ]
@@ -1638,6 +1667,35 @@
       ]
     },
     {
+      "id": "1393532",
+      "number": "",
+      "title": "توريد مكيفات",
+      "category": "التكييف، التبريد، التهوية، والمداخن",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "عبري",
+      "governorate": "الظاهرة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "14/10/2026",
+      "deadline": "18/10/2026",
+      "publishedIso": "2026-10-14",
+      "deadlineIso": "2026-10-18",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99824&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d7798f331e0424b24da4157d42d386a6e87309c738e140da40f44ae04218957e",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1367226",
       "number": "",
       "title": "توريد مواد كيميائية خاصة بمحطة تنقية المياه بمستشفى عبري",
@@ -2006,7 +2064,7 @@
       "publishedIso": "2026-09-13",
       "deadlineIso": "2026-10-18",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=97680&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=5027e10dfd2f5e6270301fa39d158388d18f80d8bd89a1eef944c234b611d32b",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=97834&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=4a4b45246c1ea6dedbbdadc710cb46b2f958d1a00db3e38120d587bee9d2919b",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -2846,12 +2904,15 @@
       "publishedIso": "2026-09-07",
       "deadlineIso": "2026-10-20",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1345375",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=97087&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=e5650b75780c1454c39cc05bd18df266e0777635669d275fe359d1cb2c7f0b78",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الثانية",
+        "الثالثة"
+      ]
     },
     {
       "id": "1360963",
@@ -3815,12 +3876,15 @@
       "publishedIso": "2026-10-07",
       "deadlineIso": "2026-10-21",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1225608",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99276&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=bfa8aad6850d822bbd3c46681330778a41caca037cf9ede6660c0d8245f03b93",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الثانية",
+        "الثالثة"
+      ]
     },
     {
       "id": "1275298",
@@ -4548,6 +4612,29 @@
       "grades": []
     },
     {
+      "id": "1393558",
+      "number": "",
+      "title": "تكييف",
+      "category": "التكييف، التبريد، التهوية، والمداخن",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "14/10/2026",
+      "deadline": "22/10/2026",
+      "publishedIso": "2026-10-14",
+      "deadlineIso": "2026-10-22",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1393558",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
       "id": "1376612",
       "number": "",
       "title": "توريد قطع غيار لتعزيز مخزون قسم انظمة التحكم والمراقبة المرئية",
@@ -4992,14 +5079,12 @@
       "publishedIso": "2026-10-04",
       "deadlineIso": "2026-10-22",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=97510&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=ae9a0bba5d015eac01f69688335ce7ca933b9952b06cc247567c25a732cec47f",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1371495",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1361756",
@@ -6078,15 +6163,12 @@
       "publishedIso": "2026-10-05",
       "deadlineIso": "2026-10-26",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99041&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=9614e762915519d01b01d7dc88de5f374f53b6dd457ee26ede38ff23cac44a76",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1321838",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الأولى",
-        "الثانية"
-      ]
+      "grades": []
     },
     {
       "id": "1371974",
@@ -6428,15 +6510,12 @@
       "publishedIso": "2026-10-04",
       "deadlineIso": "2026-10-27",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98983&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=fb615a154143ddb1ad417450d4ef60fcb55961842254778dc91f7708b7f278f0",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1074070",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1300995",
@@ -6777,6 +6856,32 @@
       "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
       "grades": [
+        "الرابعة"
+      ]
+    },
+    {
+      "id": "1393475",
+      "number": "",
+      "title": "صيانة مستشفى البيطري بصلالة بمحافظة ظفار",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "ظفار",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "14/10/2026",
+      "deadline": "27/10/2026",
+      "publishedIso": "2026-10-14",
+      "deadlineIso": "2026-10-27",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99752&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=246067ae886fe45a326d76ef009f6d9fece7bd5e17e03673faca97602b402200",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة",
         "الرابعة"
       ]
     },
@@ -7411,6 +7516,61 @@
       "grades": [
         "الثانية",
         "الثالثة"
+      ]
+    },
+    {
+      "id": "1393478",
+      "number": "",
+      "title": "توريد وتركيب قطع غيار لوحدة التكييف المركزية لدائرة الامن الغذائي في محافظة مسقط",
+      "category": "التكييف، التبريد، التهوية، والمداخن",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "14/10/2026",
+      "deadline": "29/10/2026",
+      "publishedIso": "2026-10-14",
+      "deadlineIso": "2026-10-29",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99702&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=ea64a42fa54c0c6a85af54c9546bde04b9fb00e3f5d20a98972b664efc4dad69",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
+      "id": "1393537",
+      "number": "",
+      "title": "توريد وتوصيل كهرباء لمستشفى وادى بني خالد",
+      "category": "اعمال الكهرباء والميكانيك",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "14/10/2026",
+      "deadline": "29/10/2026",
+      "publishedIso": "2026-10-14",
+      "deadlineIso": "2026-10-29",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99115&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=1df89b139712af99c2b99727500e61e4aa31424c166813ee7cc4ecd8f06c3164",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة",
+        "الرابعة"
       ]
     },
     {
@@ -8913,15 +9073,12 @@
       "publishedIso": "2026-09-30",
       "deadlineIso": "2026-11-10",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98677&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d64bc445a044d300ca7c74e2b37ccb14e91ab245a1bd3a51f45e6e1f2c9ed2c5",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1369784",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثانية",
-        "الثالثة"
-      ]
+      "grades": []
     },
     {
       "id": "1369786",
@@ -9254,15 +9411,12 @@
       "publishedIso": "2026-10-07",
       "deadlineIso": "2026-11-16",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98426&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=676acc2fc1b6286f7315c9175de26e12dc8e09cccdd1386942152d950ef562c9",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1376409",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى"
-      ]
+      "grades": []
     },
     {
       "id": "1378287",
@@ -9338,58 +9492,6 @@
       "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
       "grades": []
-    },
-    {
-      "id": "1374988",
-      "number": "",
-      "title": "اعمال الصيانة لجميع اجهزة التكييف بالمدارس والمباني التابعة للمديرية العامة للتعليم لولايتي - ادم و منح بمحافظة الداخلية 2026-2027م",
-      "category": "التكييف، التبريد، التهوية، والمداخن",
-      "parentCategory": "مقاولات الكهرباء والميكانيك",
-      "classification": "كهرباء وميكانيك",
-      "city": "مسقط",
-      "governorate": "الداخلية",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "06/10/2026",
-      "deadline": "17/11/2026",
-      "publishedIso": "2026-10-06",
-      "deadlineIso": "2026-11-17",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99465&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=845501509b536e87146b668bc02ef400d9887091cc8262bed5e8159b75554fff",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثالثة",
-        "الرابعة"
-      ]
-    },
-    {
-      "id": "1373387",
-      "number": "",
-      "title": "اعمال الصيانة لجميع اجهزة التكييف بالمدارس والمباني التابعة للمديرية العامة للتعليم لولايتي - بهلاء والحمراء - بمحافظة الداخلية لعام 2026-2027",
-      "category": "التكييف، التبريد، التهوية، والمداخن",
-      "parentCategory": "مقاولات الكهرباء والميكانيك",
-      "classification": "كهرباء وميكانيك",
-      "city": "مسقط",
-      "governorate": "الداخلية",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "05/10/2026",
-      "deadline": "17/11/2026",
-      "publishedIso": "2026-10-05",
-      "deadlineIso": "2026-11-17",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99464&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=b1fe5b517ca2f260c05b638ae05b59c4cc0d1fa58849f9eb42188c3d63e4336b",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثالثة",
-        "الرابعة"
-      ]
     },
     {
       "id": "1265396",
@@ -9734,14 +9836,12 @@
       "publishedIso": "2026-10-12",
       "deadlineIso": "2026-11-23",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99514&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=47232315cf6746cb29085b343fd6563bd6d073c20c1a7fa2cad011dee1ed25b7",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1380080",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة"
-      ]
+      "grades": []
     },
     {
       "id": "1380097",
@@ -9885,6 +9985,58 @@
       "grades": []
     },
     {
+      "id": "1374988",
+      "number": "",
+      "title": "اعمال الصيانة لجميع اجهزة التكييف بالمدارس والمباني التابعة للمديرية العامة للتعليم لولايتي - ادم و منح بمحافظة الداخلية 2026-2027م",
+      "category": "التكييف، التبريد، التهوية، والمداخن",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "الداخلية",
+      "status": "تمديد",
+      "type": "مناقصة",
+      "publishedOn": "14/10/2026",
+      "deadline": "24/11/2026",
+      "publishedIso": "2026-10-14",
+      "deadlineIso": "2026-11-24",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99465&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=845501509b536e87146b668bc02ef400d9887091cc8262bed5e8159b75554fff",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
+      "id": "1373387",
+      "number": "",
+      "title": "اعمال الصيانة لجميع اجهزة التكييف بالمدارس والمباني التابعة للمديرية العامة للتعليم لولايتي - بهلاء والحمراء - بمحافظة الداخلية لعام 2026-2027",
+      "category": "التكييف، التبريد، التهوية، والمداخن",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "الداخلية",
+      "status": "تمديد",
+      "type": "مناقصة",
+      "publishedOn": "14/10/2026",
+      "deadline": "24/11/2026",
+      "publishedIso": "2026-10-14",
+      "deadlineIso": "2026-11-24",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99464&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=b1fe5b517ca2f260c05b638ae05b59c4cc0d1fa58849f9eb42188c3d63e4336b",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1373357",
       "number": "",
       "title": "اعمال الصيانة لجميع اجهزة التكييف بالمدارس والمباني التابعة للمديرية العامة للتعليم لولايتي - نزوى وازكي - بمحافظة الداخلية 2026 -2027",
@@ -9975,15 +10127,12 @@
       "publishedIso": "2026-10-13",
       "deadlineIso": "2026-11-24",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99437&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=aa277c8f5070b3fbcd654beca30d6f0551a26a3900af8430cef7c1d459355b23",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1392502",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثانية",
-        "الثالثة"
-      ]
+      "grades": []
     },
     {
       "id": "1392501",
@@ -10082,14 +10231,12 @@
       "publishedIso": "2026-10-12",
       "deadlineIso": "2026-11-29",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99514&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=47232315cf6746cb29085b343fd6563bd6d073c20c1a7fa2cad011dee1ed25b7",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1380685",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة"
-      ]
+      "grades": []
     },
     {
       "id": "1392636",
