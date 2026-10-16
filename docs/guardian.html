@@ -138,7 +138,8 @@
         return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Muscat" }).format(new Date());
       }
       function money(value) {
-        return `${Number(value).toLocaleString("ar-OM", { minimumFractionDigits: 3, maximumFractionDigits: 3 })} ر.ع`;
+        const amount = Number(value).toLocaleString("en-GB", { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+        return `<bdi dir="ltr">${amount}</bdi> ر.ع`;
       }
       function gap(invoice) {
         return ((invoice.price - invoice.po) / invoice.po) * 100;

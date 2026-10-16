@@ -17,6 +17,7 @@
 body {
   margin: 0;
   font-family: "IBM Plex Sans Arabic", Tahoma, sans-serif;
+  font-feature-settings: "locl" 0;
   background: var(--paper);
   color: var(--ink);
 }
@@ -94,6 +95,7 @@ input, select, button {
   background: white;
   color: var(--ink);
 }
+input, select, button { font-feature-settings: "locl" 0; }
 .grid input, .grid select, .audit-form input, .audit-form select { width: 100%; }
 button { background: var(--navy); color: white; cursor: pointer; border-color: var(--navy); width: auto; }
 button.ghost { background: white; color: var(--navy); }

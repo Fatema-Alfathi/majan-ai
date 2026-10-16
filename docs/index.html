@@ -128,7 +128,9 @@
       }
       function when(value) {
         if (!value) return "—";
-        return new Intl.DateTimeFormat("ar-OM", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Muscat" }).format(new Date(value));
+        const parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Muscat", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date(value));
+        const pick = (type) => parts.find((part) => part.type === type)?.value || "";
+        return `${pick("day")}/${pick("month")}/${pick("year")} ${pick("hour")}:${pick("minute")}`;
       }
       const GRADE_WORDS = { excellent: "ممتازه", 1: "الاولي", 2: "الثانيه", 3: "الثالثه", 4: "الرابعه" };
       function gradeAllowed(tender, grade) {
@@ -185,7 +187,7 @@
         const filtered = payload.tenders.filter(fits);
         const rows = filtered.slice(0, visible);
         count.textContent = String(filtered.length);
-        synced.textContent = when(payload.syncedAt);
+        synced.innerHTML = `<bdi dir="ltr">${esc(when(payload.syncedAt))}</bdi>`;
         const grade = GRADE_LABELS[company.grade] || "";
         companyLine.textContent = company.name || "أدخل بيانات الشركة";
         const chosen = (company.classifications || []).join("، ");
@@ -212,8 +214,8 @@
             <td>${title}<span class="why">${esc(reason(tender, days))}</span></td>
             <td>${esc(tender.governorate)}</td>
             <td>${esc(tender.city || "—")}</td>
-            <td>${esc(tender.deadline || "—")}</td>
-            <td><span class="${leftClass}">${left}</span></td>
+            <td><bdi dir="ltr">${esc(tender.deadline || "—")}</bdi></td>
+            <td><span class="${leftClass}"><bdi dir="ltr">${left}</bdi></span></td>
             <td>${grades}</td>
             <td>${esc(tender.classification || "—")}</td>
             <td>${source}</td>
