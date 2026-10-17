@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-17T15:08:52.838Z",
+  "syncedAt": "2026-10-17T18:21:28.811Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -10,9 +10,9 @@
     "دراسات واستشارات"
   ],
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
-  "totalAvailable": 9065,
-  "fetched": 9065,
-  "count": 366,
+  "totalAvailable": 9089,
+  "fetched": 9089,
+  "count": 384,
   "tenders": [
     {
       "id": "1371095",
@@ -558,6 +558,32 @@
       "grades": [
         "الأولى",
         "الثانية"
+      ]
+    },
+    {
+      "id": "1395816",
+      "number": "",
+      "title": "توريد وتركيب انترلوك",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "عبري",
+      "governorate": "الظاهرة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "18/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-18",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=86601&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=e0b17a1588d6c13da201d6bb8382ed7168b182e1af3531db1736dd0051efe32b",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة",
+        "الرابعة"
       ]
     },
     {
@@ -2255,6 +2281,31 @@
       ]
     },
     {
+      "id": "1395734",
+      "number": "",
+      "title": "طلب عمل نظام تهوية للفرن الانبوبي في مختبر بقسم العلوم بجامعة التقنية والعلوم التطبيقية بمسقط",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "عبري",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "20/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-20",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99722&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=11e76c4a5c366af452222ea976b0ce9082ed2d1308963951c6c71bacc6299524",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1348873",
       "number": "",
       "title": "مشروع تأهيل حديقة حمراء الدروع",
@@ -2736,6 +2787,35 @@
       "deadlineIso": "2026-10-21",
       "documentPrice": null,
       "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99343&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=20833142fc9afcf564b841c2f43c8d620e6351b9a8f0293ec7f45f761a246c5e",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
+      "id": "1395728",
+      "number": "",
+      "title": "توريد كمبيرسر",
+      "category": "المضخات، الضواغط، الصنابير، والصمامات",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "عبري",
+      "governorate": "الظاهرة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "21/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-21",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99879&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=8b6ee3773056eb128806967c65290a4bdc110f3df01b9bb4af79df4693d69f67",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -3336,6 +3416,35 @@
       "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
       "grades": []
+    },
+    {
+      "id": "1395740",
+      "number": "",
+      "title": "تأهيل وصبغ البهو الامامي للمباني مع معالجة السطح بمادة مانع الرطوبة بفرع الجامعة مسقط",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "عبري",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "22/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-22",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99877&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=e13486c286fa2796eb67979a620fed7d18a1be454e31e4d001121b336fb3a8e4",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
     },
     {
       "id": "1363272",
@@ -4092,6 +4201,32 @@
       "grades": []
     },
     {
+      "id": "1395769",
+      "number": "",
+      "title": "تغيير بلاط الارضية لمدخل مبنى بيت صديق البيئة بفرع مسقط",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "عبري",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "24/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-24",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99913&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d26e7fb6bc6e6a9e43481a33f8d4bb93b07cd1a9d32cafbaff575c8b8270d4ce",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1353982",
       "number": "",
       "title": "الاعمال المرتبطة بالمجمعات الكهربائية",
@@ -4603,6 +4738,31 @@
       ]
     },
     {
+      "id": "1341632",
+      "number": "",
+      "title": "صيانة وتأهيل السور الخارجي لدائرة الثروة الزراعية وموارد المياه بالمضيبي",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "شمال الشرقية",
+      "status": "اعادة طرح",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "25/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-25",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99918&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=116dacb559d7b904fe3a17b6dd2df0893be054fc9f1bbda6bd2c3d09daec56b7",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1375065",
       "number": "",
       "title": "طلب تطوير وتحسين بمبنى مركز تنمية الموارد البشرية - توفير اجهزة شبكة ومقويات الارسال",
@@ -5000,6 +5160,34 @@
       "grades": []
     },
     {
+      "id": "1395827",
+      "number": "",
+      "title": "تقييم العقارات كما في 31 ديسمبر 2026م، لاغراض التدقيق القانوني للسنة المالية 2026م",
+      "category": "الانشطة المعمارية والهندسية والخدمات الاستشارية",
+      "parentCategory": "الدراسات والاستشارات",
+      "classification": "دراسات واستشارات",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "26/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-26",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99892&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=eb19fcd423475318dba858566e5e74b0c9e762eff4b8d1a5f8c59fb16166b259",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة"
+      ]
+    },
+    {
       "id": "1371974",
       "number": "",
       "title": "توريد قطع غيار محطة تنقية المياه - وحدة غسيل الكلى - بمستشفى عبري",
@@ -5192,6 +5380,31 @@
       "originLabel": "تندرز عُمان",
       "grades": [
         "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
+      "id": "1333854",
+      "number": "",
+      "title": "صيانة وتأهيل السور الخارجي بدائرة الثروة الزراعية وموارد المياه بسمد الشأن",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "اعادة طرح",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "26/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-26",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99930&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=1f2e123d766a303d3035ce93cc0ea6d6e88bb64a089bf7539a5369712b59e18f",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
         "الرابعة"
       ]
     },
@@ -5644,6 +5857,35 @@
       ]
     },
     {
+      "id": "1355915",
+      "number": "",
+      "title": "صيانة المجفف وضاغط الهواء الطبي بمستشفى مصيرة",
+      "category": "التكييف، التبريد، التهوية، والمداخن",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "جنوب الشرقية",
+      "status": "اعادة طرح",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "27/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-27",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99927&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=57edb0b7faa08f4a212351eff64634550fa41a88e0883484a795c96633a2d098",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1266891",
       "number": "",
       "title": "صيانة المصاعد الكهربائية بمباني مديرية التعليم بمحافظة شمال الشرقية",
@@ -6069,6 +6311,32 @@
       ]
     },
     {
+      "id": "1395760",
+      "number": "",
+      "title": "اعمال حماية لمولد الكهرباء الاحتياطي واعمال مدنية لحماية منطقة الواح الطاقة الشمسية",
+      "category": "اعمال الكهرباء والميكانيك",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "عبري",
+      "governorate": "الظاهرة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "28/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-28",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99887&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=e45ab750b2beb3de97ca0ff4ef23497102c8ae01d01d761d426617369fd4f853",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1282010",
       "number": "",
       "title": "اعمال صيانة بمدرسة السوادي بولاية بركاء بمحافظة جنوب الباطنة",
@@ -6291,6 +6559,35 @@
       "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
       "grades": []
+    },
+    {
+      "id": "1395695",
+      "number": "",
+      "title": "استبدال وحدات التحكم بالهواء بمستشفى الرستاق",
+      "category": "اعمال الكهرباء والميكانيك",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "جنوب الباطنة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "29/10/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-10-29",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99787&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=a70cd14906dc393432d94774f58614e8e0f1db48c36745dc1db4154376c142ea",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
     },
     {
       "id": "1380830",
@@ -7267,22 +7564,48 @@
       ]
     },
     {
-      "id": "1378185",
+      "id": "1395673",
       "number": "",
-      "title": "توريد وتركيب واختبار وتشغيل نظام تجميع واستخلاص الغبار لقسم الاطراف الصناعية والاجهزة التعويضية بمستشفى نزوى",
-      "category": "التكييف، التبريد، التهوية، والمداخن",
+      "title": "اعمال تعديلات داخلية وتوسعة مركز العيون الوطني بمحافظة مسقط - المرحلة الثانية",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "04/11/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-11-04",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99469&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=b2c86bf1fef82e0e6e08490398c1b1458dff857617b18ecbb21699f23befdbd2",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى"
+      ]
+    },
+    {
+      "id": "1395839",
+      "number": "",
+      "title": "صيانة واصلاح انظمة الحماية من الحريق وانذار الحريق",
+      "category": "انظمة مكافحة الحريق",
       "parentCategory": "مقاولات الكهرباء والميكانيك",
       "classification": "كهرباء وميكانيك",
       "city": "مسقط",
       "governorate": "مسقط",
       "status": "جديد",
       "type": "مناقصة",
-      "publishedOn": "10/10/2026",
+      "publishedOn": "17/10/2026",
       "deadline": "04/11/2026",
-      "publishedIso": "2026-10-10",
+      "publishedIso": "2026-10-17",
       "deadlineIso": "2026-11-04",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99788&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=a2a7e504f4059f4702586b2ad5e8b39c4926cff90a457c9f3a6b8267f09233a2",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99940&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=181dd284cbdd110297379cc063710c5a76be6ede1035132da3d02af684077a22",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -7535,6 +7858,31 @@
       "originLabel": "تندرز عُمان",
       "grades": [
         "الرابعة"
+      ]
+    },
+    {
+      "id": "1395770",
+      "number": "",
+      "title": "الاستشارات والحوكمة في مجال تكنولوجيا المعلومات",
+      "category": "دراسات واستشارات عامة",
+      "parentCategory": "الدراسات والاستشارات",
+      "classification": "دراسات واستشارات",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "08/11/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-11-08",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99921&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=573be16f9a85b8911467db733750913f75c41ee68cea892857e3c3415fe4d72c",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة"
       ]
     },
     {
@@ -8307,6 +8655,32 @@
       ]
     },
     {
+      "id": "1395731",
+      "number": "",
+      "title": "صيانة شاملة لمبنى المشاريع",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "11/11/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-11-11",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99814&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=33adbbe6a94443c9268657d70d3f9de43a793af2b96cbd6d8a8963d95ee8cdc8",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1370955",
       "number": "",
       "title": "اعمال استشارية لتوسعة مركز فرق الصحي",
@@ -8354,6 +8728,32 @@
       "originLabel": "تندرز عُمان",
       "grades": [
         "الممتازة"
+      ]
+    },
+    {
+      "id": "1395685",
+      "number": "",
+      "title": "اعمـال الصيانة لمبنى مركز الوفاء لتأهيل الاشخاص ذوي الاعاقة بمحافظة البريمي",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "البريمي",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "13/11/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-11-13",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99800&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=6a25bfded6af6e90f1e417880420f975ddf5fc8ac258bae1ac28e4e112883840",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة",
+        "الرابعة"
       ]
     },
     {
@@ -8789,6 +9189,35 @@
       "grades": []
     },
     {
+      "id": "1395691",
+      "number": "",
+      "title": "توريد وتركيب واختبار وتشغيل نظام تجميع واستخلاص الغبار لقسم الاطراف الصناعية والاجهزة التعويضية بمستشفى نزوى",
+      "category": "التكييف، التبريد، التهوية، والمداخن",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "19/11/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-11-19",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99788&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=a2a7e504f4059f4702586b2ad5e8b39c4926cff90a457c9f3a6b8267f09233a2",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1378803",
       "number": "",
       "title": "صيانة الاسلاك الكهربائية بولايتي العامرات وقريات",
@@ -8935,6 +9364,32 @@
       "originLabel": "تندرز عُمان",
       "grades": [
         "الممتازة"
+      ]
+    },
+    {
+      "id": "1395712",
+      "number": "",
+      "title": "انشاء 10 فصول دراسية اضافية، ومختبر حاسوب، وقاعة متعددة الاغراض، ومركز مصادر التعلم، وتوسعة وتجديد مختبر العلوم، وغرفتي تبريد - مبردات، و 3 مخازن ومرافق اخرى",
+      "category": "الانشاءات",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "23/11/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-11-23",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98451&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=8208980da72f652666d832aff288d7e349babb800f0786a788df6e488271f994",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثانية",
+        "الثالثة"
       ]
     },
     {
@@ -9255,6 +9710,32 @@
       "grades": [
         "الثانية",
         "الثالثة"
+      ]
+    },
+    {
+      "id": "1395721",
+      "number": "",
+      "title": "توريد وتركيب نظام الاخلاء الصوتي بديوان عام الوزارة",
+      "category": "الانظمة الذكية وانظمة المباني",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "17/10/2026",
+      "deadline": "24/11/2026",
+      "publishedIso": "2026-10-17",
+      "deadlineIso": "2026-11-24",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98385&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=873ac103e2a05fded206f06ff6f29e635383c056eaa19cd0b1357f617072df49",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى"
       ]
     },
     {
