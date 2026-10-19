@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-18T22:25:01.446Z",
+  "syncedAt": "2026-10-19T03:26:52.280Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -10,9 +10,9 @@
     "دراسات واستشارات"
   ],
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
-  "totalAvailable": 9103,
-  "fetched": 9103,
-  "count": 355,
+  "totalAvailable": 9114,
+  "fetched": 9114,
+  "count": 364,
   "tenders": [
     {
       "id": "1361649",
@@ -226,15 +226,12 @@
       "publishedIso": "2026-10-13",
       "deadlineIso": "2026-10-19",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99738&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=3f1862664717ee16c44a9297bb54b694d8bf061916bafc45f228c4a9ef4cb82d",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1392437",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1380835",
@@ -1601,12 +1598,15 @@
       "publishedIso": "2026-09-30",
       "deadlineIso": "2026-10-21",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1369647",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98798&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=f10216d969d2fa5facf4b3dbc3f03a398a1134620d91d3c3e8b2fd2a233858b3",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الممتازة",
+        "الأولى"
+      ]
     },
     {
       "id": "1350309",
@@ -2108,6 +2108,35 @@
       "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
       "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
+      "id": "1397353",
+      "number": "",
+      "title": "طباعة وتركيب وفك لوحات اعلانات في اعمدة الانارة",
+      "category": "اشغال عامة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "19/10/2026",
+      "deadline": "21/10/2026",
+      "publishedIso": "2026-10-19",
+      "deadlineIso": "2026-10-21",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99985&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=1be99a45459a338566c8cab200647bd35871eeb54b6de4bc34bcd6b8a08c0025",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
         "الثالثة",
         "الرابعة"
       ]
@@ -3025,6 +3054,29 @@
       "grades": []
     },
     {
+      "id": "1347489",
+      "number": "",
+      "title": "Supply of Generator Offline Test Partial Discharge",
+      "category": "اعمال الكهرباء والميكانيك",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "اعادة طرح",
+      "type": "مناقصة",
+      "publishedOn": "19/10/2026",
+      "deadline": "22/10/2026",
+      "publishedIso": "2026-10-19",
+      "deadlineIso": "2026-10-22",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1347489",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
       "id": "1365157",
       "number": "",
       "title": "Technical Services in Disaster Risk Reduction",
@@ -3864,6 +3916,52 @@
       "grades": []
     },
     {
+      "id": "1397497",
+      "number": "",
+      "title": "Gate Valve",
+      "category": "المضخات، الضواغط، الصنابير، والصمامات",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "19/10/2026",
+      "deadline": "25/10/2026",
+      "publishedIso": "2026-10-19",
+      "deadlineIso": "2026-10-25",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1397497",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
+      "id": "1369704",
+      "number": "",
+      "title": "Gate Valve Spare Parts - 24 Inch L and T - DT",
+      "category": "المضخات، الضواغط، الصنابير، والصمامات",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "اعادة طرح",
+      "type": "مناقصة",
+      "publishedOn": "19/10/2026",
+      "deadline": "25/10/2026",
+      "publishedIso": "2026-10-19",
+      "deadlineIso": "2026-10-25",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1369704",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
       "id": "1365110",
       "number": "",
       "title": "HSE Deficiency Improvement Works in CETRP, SWIP and RO Plant",
@@ -3907,6 +4005,29 @@
       "source": "portal",
       "sourceLabel": "منصة توريد",
       "originLabel": "منصة توريد",
+      "grades": []
+    },
+    {
+      "id": "1397496",
+      "number": "",
+      "title": "Supplying Traffic Safety Equipment",
+      "category": "مستلزمات طرق",
+      "parentCategory": "الطرق والجسور والانفاق",
+      "classification": "طرق وجسور وأنفاق",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "19/10/2026",
+      "deadline": "25/10/2026",
+      "publishedIso": "2026-10-19",
+      "deadlineIso": "2026-10-25",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1397496",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
       "grades": []
     },
     {
@@ -4135,35 +4256,6 @@
       "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
       "grades": []
-    },
-    {
-      "id": "1321838",
-      "number": "",
-      "title": "تقديم اعمال الصيانة لاجهزة محطة رصد جودة الهواء بولاية نزوى في محافظة الداخلية",
-      "category": "التكييف، التبريد، التهوية، والمداخن",
-      "parentCategory": "مقاولات الكهرباء والميكانيك",
-      "classification": "كهرباء وميكانيك",
-      "city": "مسقط",
-      "governorate": "الداخلية",
-      "status": "اعادة طرح",
-      "type": "مناقصة",
-      "publishedOn": "05/10/2026",
-      "deadline": "26/10/2026",
-      "publishedIso": "2026-10-05",
-      "deadlineIso": "2026-10-26",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99872&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=7a56b81bffa62b98fafbeb84b3e22afdb5759e2116826dd5c8c728beb8b075ca",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
     },
     {
       "id": "1395827",
@@ -5358,14 +5450,12 @@
       "publishedIso": "2026-10-12",
       "deadlineIso": "2026-10-28",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99381&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=664dd3a23e2fe7d70f36324808314af505bd5046bf9258ec5484fdaeb7b878ee",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1282010",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثالثة"
-      ]
+      "grades": []
     },
     {
       "id": "1360911",
@@ -6528,6 +6618,35 @@
       "grades": []
     },
     {
+      "id": "1321838",
+      "number": "",
+      "title": "تقديم اعمال الصيانة لاجهزة محطة رصد جودة الهواء بولاية نزوى في محافظة الداخلية",
+      "category": "التكييف، التبريد، التهوية، والمداخن",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "الداخلية",
+      "status": "تمديد",
+      "type": "مناقصة",
+      "publishedOn": "19/10/2026",
+      "deadline": "03/11/2026",
+      "publishedIso": "2026-10-19",
+      "deadlineIso": "2026-11-03",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99872&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=7a56b81bffa62b98fafbeb84b3e22afdb5759e2116826dd5c8c728beb8b075ca",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1376405",
       "number": "",
       "title": "تقديم خدمات النظافة والصيانة لموقع البليد",
@@ -7072,6 +7191,32 @@
       ]
     },
     {
+      "id": "1397427",
+      "number": "",
+      "title": "تقديم خدمات التشغيل والصيانة لمباني جامعة التقنية والعلوم التطبيقية فرع - كلية التربية بالرستاق",
+      "category": "التشطيب والصيانة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "عبري",
+      "governorate": "جنوب الباطنة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "19/10/2026",
+      "deadline": "08/11/2026",
+      "publishedIso": "2026-10-19",
+      "deadlineIso": "2026-11-08",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99919&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=8010155fc285a61a185044f2872f29925f06a0883afcf7b1c96b9b5ed3b2189c",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى"
+      ]
+    },
+    {
       "id": "1366309",
       "number": "",
       "title": "توريد اجهزة التكييف والثلاجات وبرادات المياه - بسعر الوحدة",
@@ -7116,12 +7261,15 @@
       "publishedIso": "2026-09-30",
       "deadlineIso": "2026-11-08",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1369640",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=95465&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=5d29e34f3c51571071b20145d8f47875b5ef0509c4f5e9ab5ff1b3bcf2f5946f",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
     },
     {
       "id": "1282114",
@@ -7677,6 +7825,35 @@
       "grades": [
         "الثانية",
         "الثالثة"
+      ]
+    },
+    {
+      "id": "1357402",
+      "number": "",
+      "title": "تقديم اعمال الخراطة",
+      "category": "اشغال عامة",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "اعادة طرح",
+      "type": "مناقصة",
+      "publishedOn": "19/10/2026",
+      "deadline": "10/11/2026",
+      "publishedIso": "2026-10-19",
+      "deadlineIso": "2026-11-10",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99954&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d99ea812ef923a89911d2cd442493213e62f4c6b7430ce58536c1199dbf16c2a",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
       ]
     },
     {
@@ -9068,6 +9245,54 @@
       "deadlineIso": "2026-11-30",
       "documentPrice": null,
       "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1380100",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
+      "id": "1397457",
+      "number": "",
+      "title": "استبدال خطوط انابيب المياه والانابيب الاخرى في المختبر وغرفة المعدات رقم 6 بالمستشفى السلطاني",
+      "category": "اعمال المياه، الصرف الصحي، والبنية التحتية",
+      "parentCategory": "المياه والصرف الصحي",
+      "classification": "مياه وصرف صحي",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "19/10/2026",
+      "deadline": "06/12/2026",
+      "publishedIso": "2026-10-19",
+      "deadlineIso": "2026-12-06",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99724&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=468469cce4746fd77f50f732d5302da7e9f43e99728bab0343b952d87d80cd87",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الرابعة"
+      ]
+    },
+    {
+      "id": "1397528",
+      "number": "",
+      "title": "انشاء شبكات الصرف الصحي في شعبية بوشر والمناطق المجاورة - BVC",
+      "category": "الانشاءات",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "19/10/2026",
+      "deadline": "14/12/2026",
+      "publishedIso": "2026-10-19",
+      "deadlineIso": "2026-12-14",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1397528",
       "buyer": "",
       "source": "tenderoman",
       "sourceLabel": "تندرز عُمان",
