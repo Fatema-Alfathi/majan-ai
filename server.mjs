@@ -6,7 +6,7 @@ import { pullTenders, writeTenders } from "./sync.mjs";
 
 const root = dirname(fileURLToPath(import.meta.url));
 const publicDir = join(root, "docs");
-const INTERVAL_MS = 4 * 60 * 60 * 1000;
+const INTERVAL_MS = 6 * 60 * 60 * 1000;
 
 const state = {
   syncing: false,
