@@ -66,7 +66,15 @@
         </div>
         <div class="row">
           <input id="q" type="search" placeholder="ابحث بالاسم أو المدينة أو الرقم" />
-          <button id="send-whatsapp" type="button">أرسل المناقصات على واتساب</button>
+          <button id="download-pdf" class="ghost" type="button">نزّل PDF</button>
+          <button id="send-whatsapp" type="button">أرسل الملف على واتساب</button>
+        </div>
+        <div class="row" id="views">
+          <button type="button" class="ghost view-on" data-view="all">الكل</button>
+          <button type="button" class="ghost" data-view="fresh">جديدة</button>
+          <button type="button" class="ghost" data-view="soon">خلال 7 أيام</button>
+          <button type="button" class="ghost" data-view="kept">المحفوظة</button>
+          <button type="button" class="ghost" data-view="dismissed">المتجاهلة</button>
         </div>
         <p class="note" id="status-line"></p>
       </section>
@@ -107,9 +115,14 @@
       const classificationBox = document.querySelector("#classifications");
       const governorateBox = document.querySelector("#governorates");
       const savedNote = document.querySelector("#saved-note");
+      const DESK_KEY = "majan-desk";
+      const SEEN_KEY = "majan-seen";
       let payload = { tenders: [] };
       let visible = 30;
       let company = null;
+      let view = "all";
+      let freshIds = new Set();
+      let desk = loadDesk();
 
       function esc(value) {
         return String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -166,16 +179,56 @@
         const selected = new Set(profile.governorates || GOVERNORATES);
         governorateBox.innerHTML = GOVERNORATES.map((name) => `<label><input type="checkbox" value="${esc(name)}" ${selected.has(name) ? "checked" : ""} />${esc(name)}</label>`).join("");
       }
-      function fits(tender) {
+      function loadDesk() {
+        try {
+          const parsed = JSON.parse(localStorage.getItem(DESK_KEY) || "{}");
+          return { kept: new Set(parsed.kept || []), dismissed: new Set(parsed.dismissed || []) };
+        } catch {
+          return { kept: new Set(), dismissed: new Set() };
+        }
+      }
+      function saveDesk() {
+        localStorage.setItem(DESK_KEY, JSON.stringify({ kept: [...desk.kept], dismissed: [...desk.dismissed] }));
+      }
+      function rememberList(tenders, syncedAt) {
+        let stored = {};
+        try { stored = JSON.parse(localStorage.getItem(SEEN_KEY) || "{}"); } catch { stored = {}; }
+        const ids = tenders.map((tender) => String(tender.id));
+        if (stored.syncedAt === syncedAt) {
+          freshIds = new Set(stored.freshIds || []);
+          return;
+        }
+        const previous = new Set(stored.ids || []);
+        const fresh = stored.ids ? ids.filter((id) => !previous.has(id)) : [];
+        freshIds = new Set(fresh);
+        localStorage.setItem(SEEN_KEY, JSON.stringify({ syncedAt, ids, freshIds: fresh }));
+      }
+      function companyFit(tender) {
         const days = daysLeft(tender.deadlineIso);
         if (days === null || days < 0) return false;
         if (tender.governorate === "خارج عُمان") return false;
         if (!company.governorates.includes(tender.governorate)) return false;
         if (!(company.classifications || []).includes(tender.classification)) return false;
-        if (!gradeAllowed(tender, company.grade)) return false;
+        return gradeAllowed(tender, company.grade);
+      }
+      function fits(tender) {
+        if (!companyFit(tender)) return false;
         const term = q.value.trim();
         const haystack = `${tender.title} ${tender.city} ${tender.number} ${tender.category} ${tender.sourceLabel || ""}`;
         return !term || haystack.includes(term);
+      }
+      function inView(tender) {
+        const id = String(tender.id);
+        if (view === "dismissed") return desk.dismissed.has(id);
+        if (desk.dismissed.has(id)) return false;
+        if (view === "fresh") return freshIds.has(id);
+        if (view === "soon") return daysLeft(tender.deadlineIso) <= 7;
+        if (view === "kept") return desk.kept.has(id);
+        return true;
+      }
+      function feeText(tender) {
+        if (tender.documentPrice == null) return "الرسوم غير مذكورة";
+        return `الرسوم <bdi dir="ltr">${esc(tender.documentPrice)}</bdi> ر.ع`;
       }
       function reason(tender, days) {
         const grade = GRADE_LABELS[company.grade] || company.grade;
@@ -183,8 +236,25 @@
         const listed = tender.grades?.length ? `، ودرجتها المعلنة ${tender.grades.join("، ")}` : "";
         return `مناسبة لأن تصنيفها ${tender.classification}، وولايتها ${tender.governorate} ضمن نطاق الشركة درجة ${grade}${listed}، والموعد مفتوح (${whenText}).`;
       }
+      function viewLabel(name, total) {
+        const labels = { all: "الكل", fresh: "جديدة", soon: "خلال 7 أيام", kept: "المحفوظة", dismissed: "المتجاهلة" };
+        return `${labels[name]} ${total}`;
+      }
       function render() {
-        const filtered = payload.tenders.filter(fits);
+        const matched = payload.tenders.filter(fits);
+        const active = matched.filter((tender) => !desk.dismissed.has(String(tender.id)));
+        const counts = {
+          all: active.length,
+          fresh: active.filter((tender) => freshIds.has(String(tender.id))).length,
+          soon: active.filter((tender) => daysLeft(tender.deadlineIso) <= 7).length,
+          kept: active.filter((tender) => desk.kept.has(String(tender.id))).length,
+          dismissed: matched.filter((tender) => desk.dismissed.has(String(tender.id))).length,
+        };
+        document.querySelectorAll("#views button").forEach((button) => {
+          button.textContent = viewLabel(button.dataset.view, counts[button.dataset.view] || 0);
+          button.classList.toggle("view-on", button.dataset.view === view);
+        });
+        const filtered = matched.filter(inView);
         const rows = filtered.slice(0, visible);
         count.textContent = String(filtered.length);
         synced.innerHTML = `<bdi dir="ltr">${esc(when(payload.syncedAt))}</bdi>`;
@@ -192,26 +262,44 @@
         companyLine.textContent = company.name || "أدخل بيانات الشركة";
         const chosen = (company.classifications || []).join("، ");
         gradePill.textContent = company.name ? `الدرجة ${grade}${chosen ? ` — ${chosen}` : ""}` : "";
+        const notes = {
+          fresh: "هذه المناقصات ظهرت في آخر سحب ولم تكن في السحب السابق.",
+          soon: "هذه المناقصات يُغلق تقديمها خلال 7 أيام.",
+          kept: "هذه المناقصات محفوظة على هذا المتصفح، وهي التي تُرسل في الملف.",
+          dismissed: "هذه المناقصات متجاهلة. يمكن استعادتها إلى القائمة.",
+        };
         statusLine.textContent = !company.classifications?.length
           ? "اختر تصنيفًا واحدًا على الأقل حتى تظهر المناقصات."
-          : company.governorates.length
-            ? "تظهر المناقصات المفتوحة للتصنيفات المختارة، بدون تكرار."
-            : "اختر ولاية واحدة على الأقل حتى تظهر المناقصات.";
+          : !company.governorates.length
+            ? "اختر ولاية واحدة على الأقل حتى تظهر المناقصات."
+            : notes[view] || "تظهر المناقصات المفتوحة للتصنيفات المختارة، بدون تكرار. الملف وواتساب يعتمدان على المحفوظة.";
         more.hidden = rows.length >= filtered.length;
         list.innerHTML = rows.map((tender) => {
+          const id = String(tender.id);
           const days = daysLeft(tender.deadlineIso);
           const title = tender.url
             ? `<a href="${esc(tender.url)}" target="_blank" rel="noreferrer">${esc(tender.title)}</a>`
             : esc(tender.title);
+          const fresh = freshIds.has(id) ? `<span class="chip fresh">جديدة</span> ` : "";
           const left = days === 0 ? "آخر يوم" : `${days} يوم`;
-          const leftClass = days === 0 ? "chip warn" : "chip";
+          const leftClass = days <= 7 ? "chip warn" : "chip";
           const grades = tender.grades?.length ? esc(tender.grades.join("، ")) : "—";
           const known = tender.source === "esnad" || tender.source === "portal" || tender.source === "buyer";
           const source = known
             ? `<span class="chip">${esc(tender.sourceLabel)}</span>`
             : `<span class="chip muted">${esc(tender.sourceLabel || "تندرز عُمان")}</span>`;
+          const number = tender.number ? `<bdi dir="ltr">${esc(tender.number)}</bdi>` : "غير مذكور";
+          const published = tender.publishedOn ? `<bdi dir="ltr">${esc(tender.publishedOn)}</bdi>` : "غير مذكور";
+          const kept = desk.kept.has(id);
+          const actions = view === "dismissed"
+            ? `<button type="button" class="ghost" data-act="restore" data-id="${esc(id)}">استعادة</button>`
+            : `<button type="button" class="${kept ? "" : "ghost"}" data-act="keep" data-id="${esc(id)}">${kept ? "محفوظة" : "احتفظ"}</button><button type="button" class="ghost" data-act="dismiss" data-id="${esc(id)}">تجاهل</button>`;
           return `<tr>
-            <td>${title}<span class="why">${esc(reason(tender, days))}</span></td>
+            <td>${fresh}${title}
+              <span class="meta">الرقم ${number} · نُشرت ${published} · ${feeText(tender)}</span>
+              <details class="why"><summary>لماذا تناسب</summary><p>${esc(reason(tender, days))}</p></details>
+              <div class="tender-actions">${actions}</div>
+            </td>
             <td>${esc(tender.governorate)}</td>
             <td>${esc(tender.city || "—")}</td>
             <td><bdi dir="ltr">${esc(tender.deadline || "—")}</bdi></td>
@@ -236,6 +324,32 @@
         visible += 30;
         render();
       });
+      document.querySelector("#views").addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-view]");
+        if (!button) return;
+        view = button.dataset.view;
+        visible = 30;
+        render();
+      });
+      list.addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-act]");
+        if (!button) return;
+        const id = button.dataset.id;
+        if (button.dataset.act === "keep") {
+          if (desk.kept.has(id)) desk.kept.delete(id);
+          else {
+            desk.kept.add(id);
+            desk.dismissed.delete(id);
+          }
+        } else if (button.dataset.act === "dismiss") {
+          desk.dismissed.add(id);
+          desk.kept.delete(id);
+        } else if (button.dataset.act === "restore") {
+          desk.dismissed.delete(id);
+        }
+        saveDesk();
+        render();
+      });
       function omanPhone(value) {
         let digits = String(value || "").replace(/\D/g, "");
         if (digits.startsWith("00")) digits = digits.slice(2);
@@ -243,10 +357,133 @@
         if (digits.length === 8 && digits.startsWith("9")) digits = `968${digits}`;
         return digits.length >= 10 && digits.length <= 15 ? digits : "";
       }
-      document.querySelector("#send-whatsapp").addEventListener("click", () => {
+      function loadScript(src) {
+        return new Promise((resolve, reject) => {
+          const fail = () => reject(new Error("تعذر تحميل أداة الملف"));
+          const existing = document.querySelector(`script[src="${src}"]`);
+          if (existing) {
+            if (existing.dataset.ready === "1") {
+              resolve();
+              return;
+            }
+            existing.addEventListener("load", () => resolve(), { once: true });
+            existing.addEventListener("error", fail, { once: true });
+            return;
+          }
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = () => {
+            script.dataset.ready = "1";
+            resolve();
+          };
+          script.onerror = () => {
+            script.remove();
+            fail();
+          };
+          document.head.appendChild(script);
+        });
+      }
+      async function pdfTools() {
+        await document.fonts.ready;
+        await loadScript("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js");
+        await loadScript("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
+        return { html2canvas: window.html2canvas, jsPDF: window.jspdf.jsPDF };
+      }
+      function reportPage(matches, slice, page, pages) {
+        const grade = GRADE_LABELS[company.grade] || company.grade;
+        const names = (company.classifications || []).join("، ");
+        const whenText = new Intl.DateTimeFormat("ar-OM", { numberingSystem: "latn", day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Asia/Muscat" }).format(new Date());
+        const rows = slice.map((tender, index) => {
+          const days = daysLeft(tender.deadlineIso);
+          const left = days === 0 ? "آخر يوم" : `متبقي ${days} يوم`;
+          const link = tender.url ? `<div style="margin-top:4px;color:#5a6570;font-size:11px;word-break:break-all;">${esc(tender.url)}</div>` : "";
+          return `<div style="padding:10px 0;border-bottom:1px solid #e6e1d8;">
+            <div style="font-weight:600;">${page * 5 + index + 1}. ${esc(tender.title)}</div>
+            <div style="margin-top:4px;color:#5a6570;font-size:13px;">${esc(tender.governorate)} · ${esc(tender.city || "—")} · حتى ${esc(tender.deadline || "—")} · ${left} · ${tender.number ? `رقم ${esc(tender.number)}` : "الرقم غير مذكور"} · ${tender.documentPrice == null ? "الرسوم غير مذكورة" : `الرسوم ${esc(tender.documentPrice)} ر.ع`}</div>
+            <div style="margin-top:4px;font-size:13px;">${esc(tender.classification || "—")} · ${esc((tender.grades || []).join("، ") || "الدرجة غير مذكورة")} · ${esc(tender.sourceLabel || "تندرز عُمان")}</div>
+            ${link}
+          </div>`;
+        }).join("");
+        const head = page === 0
+          ? `<div style="background:#0b1f3a;color:#f8f7f3;border-radius:12px;padding:16px 18px;margin-bottom:14px;">
+              <div style="font-size:22px;font-weight:700;">مجـان AI</div>
+              <div style="margin-top:4px;">مناقصات مناسبة · ${esc(whenText)}</div>
+            </div>
+            <div style="margin-bottom:12px;font-size:14px;">${esc(company.name)} · الدرجة ${esc(grade)}${names ? ` · ${esc(names)}` : ""}</div>
+            <div style="margin-bottom:12px;color:#5a6570;font-size:13px;">${matches.length} مناقصة · https://majan-ai-mu.vercel.app/</div>`
+          : `<div style="margin-bottom:10px;color:#5a6570;font-size:13px;">مجـان AI · صفحة ${page + 1} من ${pages}</div>`;
+        return `<div dir="rtl" style="width:680px;background:#ffffff;color:#1c2430;font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;padding:8px 4px 12px;">${head}${rows}</div>`;
+      }
+      async function buildTenderPdf(matches) {
+        const { html2canvas, jsPDF } = await pdfTools();
+        const pdf = new jsPDF({ unit: "pt", format: "a4" });
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const chunks = [];
+        for (let index = 0; index < matches.length; index += 5) chunks.push(matches.slice(index, index + 5));
+        const host = document.createElement("div");
+        host.style.cssText = "position:fixed;left:0;top:0;width:680px;background:#fff;z-index:-1;pointer-events:none;";
+        document.body.appendChild(host);
+        try {
+          for (let page = 0; page < chunks.length; page += 1) {
+            host.innerHTML = reportPage(matches, chunks[page], page, chunks.length);
+            const canvas = await html2canvas(host.firstElementChild, { scale: 2, backgroundColor: "#ffffff" });
+            const image = canvas.toDataURL("image/jpeg", 0.92);
+            if (page > 0) pdf.addPage();
+            const margin = 28;
+            const maxWidth = pageWidth - margin * 2;
+            const maxHeight = pageHeight - margin * 2;
+            let width = maxWidth;
+            let height = canvas.height * (width / canvas.width);
+            if (height > maxHeight) {
+              height = maxHeight;
+              width = canvas.width * (height / canvas.height);
+            }
+            const x = margin + (maxWidth - width) / 2;
+            pdf.addImage(image, "JPEG", x, margin, width, height);
+          }
+        } finally {
+          host.remove();
+        }
+        return pdf.output("blob");
+      }
+      function downloadBlob(blob, name) {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = name;
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+      }
+      function pdfName() {
+        const day = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Muscat", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+        return `majan-tenders-${day}.pdf`;
+      }
+      function matchingTenders() {
+        company = readForm();
+        const matched = payload.tenders.filter(companyFit);
+        const kept = matched.filter((tender) => desk.kept.has(String(tender.id)));
+        return kept.length ? kept : matched.filter((tender) => !desk.dismissed.has(String(tender.id)));
+      }
+      document.querySelector("#download-pdf").addEventListener("click", async () => {
+        const matches = matchingTenders();
+        if (!matches.length) {
+          savedNote.textContent = "لا توجد مناقصات مناسبة لتنزيلها.";
+          return;
+        }
+        savedNote.textContent = "جارٍ تجهيز الملف…";
+        try {
+          downloadBlob(await buildTenderPdf(matches), pdfName());
+          savedNote.textContent = `نزل ملف فيه ${matches.length} مناقصة.`;
+        } catch (error) {
+          console.error(error);
+          savedNote.textContent = "تعذر تجهيز الملف. حاول مرة أخرى.";
+        }
+      });
+      document.querySelector("#send-whatsapp").addEventListener("click", async () => {
         company = readForm();
         const phone = omanPhone(company.whatsapp);
-        const matches = payload.tenders.filter(fits);
+        const matches = matchingTenders();
         if (!phone) {
           savedNote.textContent = "أدخل رقم واتساب عُمان، مثل 9689XXXXXXX.";
           document.querySelector("#whatsapp").focus();
@@ -256,28 +493,19 @@
           savedNote.textContent = "لا توجد مناقصات مناسبة لإرسالها.";
           return;
         }
-        const grade = GRADE_LABELS[company.grade] || company.grade;
-        const names = (company.classifications || []).join("، ");
-        const header = [
-          `مجان — ${company.name} · درجة ${grade}${names ? ` · ${names}` : ""}`,
-          "https://majan-ai-mu.vercel.app/",
-          "",
-        ];
-        const blocks = matches.map((tender) => {
-          const title = tender.title.length > 50 ? `${tender.title.slice(0, 50)}…` : tender.title;
-          return `${title} · ${tender.governorate} · ${tender.deadline}`;
-        });
-        let count = Math.min(blocks.length, 4);
-        let url = "";
-        while (count > 0) {
-          const lines = [...header, ...blocks.slice(0, count).map((block, index) => `${index + 1}. ${block}`)];
-          if (matches.length > count) lines.push(`و${matches.length - count} مناقصة أخرى في الموقع.`);
-          url = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join("\n"))}`;
-          if (url.length <= 1800) break;
-          count -= 1;
+        const kept = payload.tenders.some((tender) => desk.kept.has(String(tender.id)));
+        const text = kept
+          ? `قائمة المناقصات المحفوظة لـ ${company.name} في الملف المرفق. أرفق ملف PDF ثم اضغط إرسال.`
+          : `قائمة المناقصات المناسبة لـ ${company.name} في الملف المرفق. أرفق ملف PDF ثم اضغط إرسال.`;
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+        savedNote.textContent = "جارٍ تجهيز الملف…";
+        try {
+          downloadBlob(await buildTenderPdf(matches), pdfName());
+          savedNote.textContent = "نزل الملف وانفتحت واتساب. أرفق الملف في المحادثة ثم اضغط إرسال.";
+        } catch (error) {
+          console.error(error);
+          savedNote.textContent = "انفتحت واتساب، وتعذر تجهيز الملف. حاول التنزيل مرة أخرى.";
         }
-        window.open(url, "_blank", "noopener");
-        savedNote.textContent = "انفتحت رسالة واتساب. اضغط إرسال من هناك.";
       });
       form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -296,6 +524,7 @@
       fillForm(profile);
       company = readForm();
       payload = await fetch("tenders.json").then((response) => response.json());
+      rememberList(payload.tenders || [], payload.syncedAt || "");
       render();
     </script>
   </body>
