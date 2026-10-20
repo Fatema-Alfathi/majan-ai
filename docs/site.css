@@ -148,6 +148,14 @@ td a:hover { color: var(--gold); }
 .chip.warn { background: var(--gold-bg); color: var(--gold); }
 .chip.bad { background: var(--red-bg); color: var(--red); }
 .chip.muted { background: #f1efe8; color: var(--muted); font-weight: 500; }
+.chip.fresh { background: var(--navy); color: #f8f7f3; }
+#views button.view-on { background: var(--navy); color: white; border-color: var(--navy); }
+.meta { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.tender-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tender-actions button { padding: 4px 10px; font-size: 12px; }
+details.why { margin-top: 6px; }
+details.why summary { cursor: pointer; color: var(--gold); font-size: 12px; font-weight: 600; }
+details.why p { margin: 4px 0 0; color: var(--muted); font-size: 12px; font-weight: 400; }
 .why { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; font-weight: 400; }
 .banner { border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; font-weight: 600; }
 .banner.bad { background: var(--red-bg); color: var(--red); }
