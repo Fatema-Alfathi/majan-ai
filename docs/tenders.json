@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-21T03:33:45.383Z",
+  "syncedAt": "2026-10-21T11:27:24.417Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -658,18 +658,12 @@
       "publishedIso": "2026-10-12",
       "deadlineIso": "2026-10-21",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99498&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=bdbb18240468ba34858e434adff1491f6a0f398bd4e6472f0ee93bf1b1b5061d",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1380810",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1350324",
@@ -739,7 +733,7 @@
       "publishedIso": "2026-10-19",
       "deadlineIso": "2026-10-21",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99985&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=1be99a45459a338566c8cab200647bd35871eeb54b6de4bc34bcd6b8a08c0025",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100251&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=b9459c1f63ac9fe581b229ea0f89aa1f3276ef47ca4f40f93b8d07040ec69478",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -2758,12 +2752,16 @@
       "publishedIso": "2026-10-19",
       "deadlineIso": "2026-10-26",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1398162",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100003&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=bf4e28fc85bbd3f6b6850eb34e40987c3ce470a825f29bc044a9f755cdf73c7e",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية"
+      ]
     },
     {
       "id": "1380703",
@@ -5234,7 +5232,7 @@
       "publishedIso": "2026-10-11",
       "deadlineIso": "2026-11-01",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99435&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=0344fb2eeb7f9e651d020c37ecd101726e0eb32ca7c0aa5055a1008996da940b",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=97646&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=cf3932cc8284ec4ed466596970a5f70f6381c74a80bbe659aa75d1c218977104",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -8192,12 +8190,14 @@
       "publishedIso": "2026-10-20",
       "deadlineIso": "2026-11-17",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1399615",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99952&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=3948acd4bb9d8949c4381d30ee92bf5213e34dc7b84d36c5570f237efd01d8e6",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الثانية"
+      ]
     },
     {
       "id": "1376457",
