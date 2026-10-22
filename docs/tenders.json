@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-22T11:23:04.659Z",
+  "syncedAt": "2026-10-22T16:50:31.871Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -7870,14 +7870,12 @@
       "publishedIso": "2026-10-14",
       "deadlineIso": "2026-11-18",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99145&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=e151f980b22af6d85872786f7ffb193439a77ec54278121bb9027e6e2da70055",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1393967",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1397216",
