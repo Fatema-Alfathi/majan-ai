@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-22T21:25:15.709Z",
+  "syncedAt": "2026-10-23T03:43:06.997Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -116,10 +116,7 @@
       "source": "esnad",
       "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1381020",
