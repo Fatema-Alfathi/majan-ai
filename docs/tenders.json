@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-24T20:26:52.995Z",
+  "syncedAt": "2026-10-25T03:27:18.587Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -10,9 +10,9 @@
     "دراسات واستشارات"
   ],
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
-  "totalAvailable": 9234,
-  "fetched": 9234,
-  "count": 348,
+  "totalAvailable": 9242,
+  "fetched": 9242,
+  "count": 352,
   "tenders": [
     {
       "id": "1353982",
@@ -1103,7 +1103,7 @@
       "publishedIso": "2026-10-19",
       "deadlineIso": "2026-10-26",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100045&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=72fd5cabded284b45b3da51fb6fbb1783835c5529eff8b93b33188e9206d8db5",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100076&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=a2e4e04526d42d294eedb5eef835daf632eac9b83cf3b20157e7b071742009af",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -2512,12 +2512,15 @@
       "publishedIso": "2026-10-17",
       "deadlineIso": "2026-10-28",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1395760",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99887&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=e45ab750b2beb3de97ca0ff4ef23497102c8ae01d01d761d426617369fd4f853",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
     },
     {
       "id": "1282010",
@@ -3292,6 +3295,29 @@
       "grades": []
     },
     {
+      "id": "1403458",
+      "number": "",
+      "title": "Procurement of a High-Pressure Compression System, Water Chiller and Mechanical Rebuilding Kits - for El Alto Generating Plant, Bolivia",
+      "category": "المضخات، الضواغط، الصنابير، والصمامات",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "24/10/2026",
+      "deadline": "29/10/2026",
+      "publishedIso": "2026-10-24",
+      "deadlineIso": "2026-10-29",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1403458",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
       "id": "1361756",
       "number": "",
       "title": "Structural Steel Materials - 3 Years",
@@ -3827,12 +3853,18 @@
       "publishedIso": "2026-10-11",
       "deadlineIso": "2026-11-01",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1345378",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99499&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=f0cf53987259d49c6698e06112d0212116011214a0dc93f90df29b79b4be5835",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
     },
     {
       "id": "1369623",
@@ -3879,12 +3911,16 @@
       "publishedIso": "2026-10-21",
       "deadlineIso": "2026-11-01",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1401243",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100224&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=5dbfd42ff655834c2c7bc5c240723a3efebe4883b827bf1007e2c09d2e377b59",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
     },
     {
       "id": "1379259",
@@ -4036,6 +4072,29 @@
       "deadlineIso": "2026-11-01",
       "documentPrice": null,
       "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1398149",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
+      "id": "1403481",
+      "number": "",
+      "title": "Research Assistant - External Collaborator - Consultant – ILO Regional Office for Africa",
+      "category": "دراسات واستشارات عامة",
+      "parentCategory": "الدراسات والاستشارات",
+      "classification": "دراسات واستشارات",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "24/10/2026",
+      "deadline": "01/11/2026",
+      "publishedIso": "2026-10-24",
+      "deadlineIso": "2026-11-01",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1403481",
       "buyer": "",
       "source": "tenderoman",
       "sourceLabel": "تندرز عُمان",
@@ -4233,18 +4292,12 @@
       "publishedIso": "2026-10-14",
       "deadlineIso": "2026-11-02",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=91318&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=7473ae21330ef037d121e65ba607fa98bca29a3e87517db788561ce8cec1c9e4",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1393571",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1398091",
@@ -4449,7 +4502,7 @@
       "publishedIso": "2026-10-14",
       "deadlineIso": "2026-11-02",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99791&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=ac9579882835bb7662c10f5ec445fc45d863ac68a545d20d8ba511d388291b91",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98313&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=ee239f7b805ff84b59bceeaa90b79b699880c5a1181de1824fcf09abd7049b80",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -5377,6 +5430,52 @@
       ]
     },
     {
+      "id": "1403472",
+      "number": "",
+      "title": "Clustered Mid-Term Independent Evaluation of FAIRWAY and STREAM Programmes",
+      "category": "دراسات واستشارات عامة",
+      "parentCategory": "الدراسات والاستشارات",
+      "classification": "دراسات واستشارات",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "24/10/2026",
+      "deadline": "05/11/2026",
+      "publishedIso": "2026-10-24",
+      "deadlineIso": "2026-11-05",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1403472",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
+      "id": "1403487",
+      "number": "",
+      "title": "Extending Social Protection to Workers in Diverse Forms of Employment in the GCC",
+      "category": "دراسات واستشارات عامة",
+      "parentCategory": "الدراسات والاستشارات",
+      "classification": "دراسات واستشارات",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "24/10/2026",
+      "deadline": "05/11/2026",
+      "publishedIso": "2026-10-24",
+      "deadlineIso": "2026-11-05",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1403487",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
       "id": "1324879",
       "number": "",
       "title": "اعمال العزل المائي لسقف منطقة الالعاب بمستشفى البريمي",
@@ -5989,15 +6088,12 @@
       "publishedIso": "2026-10-11",
       "deadlineIso": "2026-11-09",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99478&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=b2405200e327e459329fdabf1a0fba14d98b58bed08749cca63bd95e91beb237",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1379267",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى"
-      ]
+      "grades": []
     },
     {
       "id": "1369669",
@@ -7997,12 +8093,14 @@
       "publishedIso": "2026-10-12",
       "deadlineIso": "2026-11-23",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1380080",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99514&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=47232315cf6746cb29085b343fd6563bd6d073c20c1a7fa2cad011dee1ed25b7",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الممتازة"
+      ]
     },
     {
       "id": "1395712",
@@ -8401,12 +8499,15 @@
       "publishedIso": "2026-10-13",
       "deadlineIso": "2026-11-24",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1392502",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99437&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=aa277c8f5070b3fbcd654beca30d6f0551a26a3900af8430cef7c1d459355b23",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الثانية",
+        "الثالثة"
+      ]
     },
     {
       "id": "1392501",
@@ -8579,12 +8680,14 @@
       "publishedIso": "2026-10-12",
       "deadlineIso": "2026-11-29",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1380685",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99514&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=47232315cf6746cb29085b343fd6563bd6d073c20c1a7fa2cad011dee1ed25b7",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الممتازة"
+      ]
     },
     {
       "id": "1399468",
