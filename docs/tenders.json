@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-26T22:31:38.377Z",
+  "syncedAt": "2026-10-27T03:58:28.924Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -2247,12 +2247,15 @@
       "publishedIso": "2026-10-05",
       "deadlineIso": "2026-11-01",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1297109",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98923&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=facca941a3064d809df5fb7b5cac76ace0613b27be2e71fa17b4e8b6d9616dfd",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
     },
     {
       "id": "1399513",
@@ -5370,6 +5373,32 @@
       ]
     },
     {
+      "id": "1261444",
+      "number": "",
+      "title": "اضافة درج في مدرسة هند بنت عمرو للبنات 5-9 بولاية السويق",
+      "category": "الانشاءات",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "مسقط",
+      "governorate": "شمال الباطنة",
+      "status": "اعادة طرح",
+      "type": "مناقصة",
+      "publishedOn": "26/10/2026",
+      "deadline": "10/11/2026",
+      "publishedIso": "2026-10-26",
+      "deadlineIso": "2026-11-10",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99886&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=a4b066eb6457504bfd177df4b23368adc78c440f86dc4ce670de972fe51bfbdb",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
       "id": "1404954",
       "number": "",
       "title": "اعمال صيانة مظلة لمواقف السيارات لمركز التنمية الاجتماعية بلوى",
@@ -6258,32 +6287,6 @@
       "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
       "grades": []
-    },
-    {
-      "id": "1261444",
-      "number": "",
-      "title": "اضافة درج في مدرسة هند بنت عمرو للبنات 5-9 بولاية السويق",
-      "category": "الانشاءات",
-      "parentCategory": "انشاءات الابنية",
-      "classification": "إنشاءات عامة",
-      "city": "مسقط",
-      "governorate": "شمال الباطنة",
-      "status": "اعادة طرح",
-      "type": "مناقصة",
-      "publishedOn": "26/10/2026",
-      "deadline": "14/11/2026",
-      "publishedIso": "2026-10-26",
-      "deadlineIso": "2026-11-14",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99886&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=a4b066eb6457504bfd177df4b23368adc78c440f86dc4ce670de972fe51bfbdb",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثالثة",
-        "الرابعة"
-      ]
     },
     {
       "id": "1401212",
@@ -7210,12 +7213,15 @@
       "publishedIso": "2026-10-11",
       "deadlineIso": "2026-11-19",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1379346",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99451&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=b337060bc924921fc42ceda6cdfe011f1becda408c4c5ae963dc684bec77d2a7",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الممتازة",
+        "الأولى"
+      ]
     },
     {
       "id": "1379282",
@@ -7285,12 +7291,15 @@
       "publishedIso": "2026-10-11",
       "deadlineIso": "2026-11-19",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1379350",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99508&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=99a9fc27d0059093608107d4d6eaee4aa2a652366e6939f8989ae1b7bb34f8c8",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الممتازة",
+        "الأولى"
+      ]
     },
     {
       "id": "1378801",
