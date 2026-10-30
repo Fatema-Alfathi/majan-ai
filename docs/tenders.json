@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-30T12:20:01.991Z",
+  "syncedAt": "2026-10-30T22:07:58.379Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -12,31 +12,8 @@
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
   "totalAvailable": 9326,
   "fetched": 500,
-  "count": 211,
+  "count": 210,
   "tenders": [
-    {
-      "id": "1378359",
-      "number": "",
-      "title": "Communication Strategy for Child-Lens Investing - CLI",
-      "category": "دراسات واستشارات عامة",
-      "parentCategory": "الدراسات والاستشارات",
-      "classification": "دراسات واستشارات",
-      "city": "مسقط",
-      "governorate": "مسقط",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "10/10/2026",
-      "deadline": "30/10/2026",
-      "publishedIso": "2026-10-10",
-      "deadlineIso": "2026-10-30",
-      "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1378359",
-      "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
-      "originLabel": "تندرز عُمان",
-      "grades": []
-    },
     {
       "id": "1401198",
       "number": "",
