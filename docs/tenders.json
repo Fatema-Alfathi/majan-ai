@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-10-31T21:10:05.586Z",
+  "syncedAt": "2026-11-01T04:44:03.041Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -10,9 +10,9 @@
     "دراسات واستشارات"
   ],
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
-  "totalAvailable": 9354,
+  "totalAvailable": 9363,
   "fetched": 500,
-  "count": 214,
+  "count": 217,
   "tenders": [
     {
       "id": "1411607",
@@ -173,35 +173,6 @@
       ]
     },
     {
-      "id": "1369624",
-      "number": "",
-      "title": "توريد وتركيب عزل لقنوات التهوية الخاصة بمجففات الملابس في قسم المغسلة",
-      "category": "التكييف، التبريد، التهوية، والمداخن",
-      "parentCategory": "مقاولات الكهرباء والميكانيك",
-      "classification": "كهرباء وميكانيك",
-      "city": "مسقط",
-      "governorate": "مسقط",
-      "status": "اعادة طرح",
-      "type": "مناقصة",
-      "publishedOn": "19/10/2026",
-      "deadline": "01/11/2026",
-      "publishedIso": "2026-10-19",
-      "deadlineIso": "2026-11-01",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100037&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=14f3cfdddfc47b09830327f2bf68d28a2f557ce4a9170e65e08493550bfddcf9",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
-    },
-    {
       "id": "1401243",
       "number": "",
       "title": "توريد وتركيب عزل مائي بالالياف الزجاجية لمزاريب الامطار",
@@ -244,18 +215,12 @@
       "publishedIso": "2026-10-26",
       "deadlineIso": "2026-11-01",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100545&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=24dddae70c66015461f88a51572349b9cc741fdd316ffa66b4adfed241a4ebb4",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1365055",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1406569",
@@ -550,29 +515,6 @@
       "deadlineIso": "2026-11-02",
       "documentPrice": null,
       "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1398258",
-      "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
-      "originLabel": "تندرز عُمان",
-      "grades": []
-    },
-    {
-      "id": "1398091",
-      "number": "",
-      "title": "توريد وتركيب اعمدة انارة والعاب اطفال بمحافظة جنوب الشرقية",
-      "category": "وحدات الانارة",
-      "parentCategory": "مقاولات الكهرباء والميكانيك",
-      "classification": "كهرباء وميكانيك",
-      "city": "صور",
-      "governorate": "جنوب الشرقية",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "19/10/2026",
-      "deadline": "02/11/2026",
-      "publishedIso": "2026-10-19",
-      "deadlineIso": "2026-11-02",
-      "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1398091",
       "buyer": "",
       "source": "tenderoman",
       "sourceLabel": "تندرز عُمان",
@@ -1446,6 +1388,29 @@
       "grades": []
     },
     {
+      "id": "1411811",
+      "number": "",
+      "title": "Revision of the ILO Tool on National Action Plans for Youth, EMPLAB",
+      "category": "دراسات واستشارات عامة",
+      "parentCategory": "الدراسات والاستشارات",
+      "classification": "دراسات واستشارات",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "01/11/2026",
+      "deadline": "06/11/2026",
+      "publishedIso": "2026-11-01",
+      "deadlineIso": "2026-11-06",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1411811",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
       "id": "1411589",
       "number": "",
       "title": "توريد جهاز الاعارة الذاتية للمكتبة",
@@ -2046,18 +2011,12 @@
       "publishedIso": "2026-10-31",
       "deadlineIso": "2026-11-09",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100785&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=481d9a9c398b0b12b8111c593819f2b40d512c04fa97434c2f5a95dc44d3a6a3",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1370957",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1406143",
@@ -2086,32 +2045,6 @@
         "الثانية",
         "الثالثة",
         "الرابعة"
-      ]
-    },
-    {
-      "id": "1370933",
-      "number": "",
-      "title": "توفير خبير ادارة المخاطر",
-      "category": "دراسات واستشارات عامة",
-      "parentCategory": "الدراسات والاستشارات",
-      "classification": "دراسات واستشارات",
-      "city": "مسقط",
-      "governorate": "مسقط",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "03/10/2026",
-      "deadline": "09/11/2026",
-      "publishedIso": "2026-10-03",
-      "deadlineIso": "2026-11-09",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98872&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=3bc4374c592c8e425bdc7965bd58aca5e394158d31c4feef6985a812950bb543",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثانية",
-        "الثالثة"
       ]
     },
     {
@@ -2791,31 +2724,6 @@
       "grades": []
     },
     {
-      "id": "1370955",
-      "number": "",
-      "title": "اعمال استشارية لتوسعة مركز فرق الصحي",
-      "category": "الانشطة المعمارية والهندسية والخدمات الاستشارية",
-      "parentCategory": "الدراسات والاستشارات",
-      "classification": "دراسات واستشارات",
-      "city": "مسقط",
-      "governorate": "مسقط",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "03/10/2026",
-      "deadline": "12/11/2026",
-      "publishedIso": "2026-10-03",
-      "deadlineIso": "2026-11-12",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98864&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d84f64bc51893301899c23f7b26b7f5ba82aa091daa274c86618e64a0c069c37",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الأولى"
-      ]
-    },
-    {
       "id": "1316409",
       "number": "",
       "title": "اعمال الصيانة لمباني ديوان عام الوزارة بالخوير",
@@ -3379,6 +3287,29 @@
       "grades": []
     },
     {
+      "id": "1411799",
+      "number": "",
+      "title": "Supply, Installation, Operation and Maintenance of Outdoor LED Screens",
+      "category": "وحدات الانارة",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "01/11/2026",
+      "deadline": "15/11/2026",
+      "publishedIso": "2026-11-01",
+      "deadlineIso": "2026-11-15",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1411799",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
       "id": "1319949",
       "number": "",
       "title": "استبدال فاصل الزيت في مبرد الحلقة رقم 31 ب بالمستشفى السلطاني",
@@ -3761,6 +3692,29 @@
       "deadlineIso": "2026-11-16",
       "documentPrice": null,
       "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1398349",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
+      "id": "1411806",
+      "number": "",
+      "title": "Supply and Installation of Split AC Units at Dawa Switching Station Al Wusta - Masirah",
+      "category": "التكييف، التبريد، التهوية، والمداخن",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "01/11/2026",
+      "deadline": "16/11/2026",
+      "publishedIso": "2026-11-01",
+      "deadlineIso": "2026-11-16",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1411806",
       "buyer": "",
       "source": "tenderoman",
       "sourceLabel": "تندرز عُمان",
@@ -4346,6 +4300,58 @@
       ]
     },
     {
+      "id": "1411790",
+      "number": "",
+      "title": "صيانة الطرق المتضررة الانواء المناخية - منخفض الـمسرّات - بولايات الرستاق ونخل ووادي المعاول والعوابي - محافظة جنوب الباطنة",
+      "category": "صيانة طرق، ارصفة واطاريف، اشغال عامة",
+      "parentCategory": "الطرق والجسور والانفاق",
+      "classification": "طرق وجسور وأنفاق",
+      "city": "مسقط",
+      "governorate": "جنوب الباطنة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "01/11/2026",
+      "deadline": "20/11/2026",
+      "publishedIso": "2026-11-01",
+      "deadlineIso": "2026-11-20",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98516&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=c7a8ee5178992f23fcbc9c5e3d6228293c6ed939a09fc64eca2be92011c7b5a5",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى"
+      ]
+    },
+    {
+      "id": "1411791",
+      "number": "",
+      "title": "صيانة الطرق المتضررة بالانواء المناخية - منخفض الـمسرّات - بولايتي بركاء والمصنعة بمحافظة جنوب الباطنة",
+      "category": "صيانة طرق، ارصفة واطاريف، اشغال عامة",
+      "parentCategory": "الطرق والجسور والانفاق",
+      "classification": "طرق وجسور وأنفاق",
+      "city": "مسقط",
+      "governorate": "جنوب الباطنة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "01/11/2026",
+      "deadline": "20/11/2026",
+      "publishedIso": "2026-11-01",
+      "deadlineIso": "2026-11-20",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=98513&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=6864733cfc51da8f34ec114ccf8c3e64dd0f763e4dd3708718e48adc992ac626",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى"
+      ]
+    },
+    {
       "id": "1400537",
       "number": "",
       "title": "انشاء مبنى اداري خدمي متكامل تابع لوزارة التنمية الاجتماعية - ولاية بوشر - بوشر - قطعة رقم 334",
@@ -4830,6 +4836,29 @@
       ]
     },
     {
+      "id": "1411807",
+      "number": "",
+      "title": "Consultancy Services – Data Governance Framework Design and Data Catalog System Implementation, UNICEF Supply Division",
+      "category": "دراسات واستشارات عامة",
+      "parentCategory": "الدراسات والاستشارات",
+      "classification": "دراسات واستشارات",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "01/11/2026",
+      "deadline": "23/11/2026",
+      "publishedIso": "2026-11-01",
+      "deadlineIso": "2026-11-23",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1411807",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
       "id": "1408124",
       "number": "",
       "title": "Maintenance for the Fire Alarm System and Fire Extinguishers at NEDC Offices and Stores at North Al Batinah and Al Buraimi",
@@ -4916,17 +4945,12 @@
       "publishedIso": "2026-10-28",
       "deadlineIso": "2026-11-24",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100608&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=36643c961a9189d7e615f0702e24627f576a3420baa5f62dc3732cf0ffa57f13",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1409143",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1401230",
@@ -4975,6 +4999,29 @@
       "grades": [
         "الأولى"
       ]
+    },
+    {
+      "id": "1411764",
+      "number": "",
+      "title": "خدمات استشارية لتقييم الصحة والسلامة والامن والبيئة وقياس مستوى النضج والمراجعة لوضع اطار تشغيلي لميناء صحار والمنطقة الحرة",
+      "category": "الانشطة المعمارية والهندسية والخدمات الاستشارية",
+      "parentCategory": "الدراسات والاستشارات",
+      "classification": "دراسات واستشارات",
+      "city": "صحار",
+      "governorate": "شمال الباطنة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "01/11/2026",
+      "deadline": "26/11/2026",
+      "publishedIso": "2026-11-01",
+      "deadlineIso": "2026-11-26",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1411764",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
     },
     {
       "id": "1399505",
@@ -5342,15 +5389,12 @@
       "publishedIso": "2026-10-26",
       "deadlineIso": "2026-12-07",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=99901&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=f9b0094b7c1ae95ab87335b970b9b23aa086d4c359ba11d9f5168eb89894a459",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1406096",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1411513",
