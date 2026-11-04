@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Majan AI — Siraj Tender Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./site.css" />
+    <style>
+      .agent-head { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; justify-content: space-between; }
+      .agent-head h1 { margin-top: 4px; }
+      .lang { padding: 6px 12px; font-size: 13px; }
+      .loop { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; counter-reset: s; }
+      .loop li { background: #f7f5f0; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font-size: 13px; color: var(--muted); counter-increment: s; }
+      .loop li b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 2px; }
+      .loop li b::before { content: counter(s) ". "; color: var(--gold); }
+      .summary { font-size: 16px; line-height: 1.7; margin: 10px 0 0; }
+      .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+      .tcard { border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: white; border-inline-start: 4px solid var(--line); display: grid; gap: 8px; align-content: start; }
+      .tcard.pursue { border-inline-start-color: var(--teal); }
+      .tcard.watch { border-inline-start-color: var(--gold); }
+      .tcard.skip { border-inline-start-color: #c24141; }
+      .tcard-top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+      .tcard h3 { font-size: 15px; line-height: 1.5; margin: 0; }
+      .tcard h3 a { color: var(--ink); text-decoration: none; }
+      .tcard h3 a:hover { color: var(--gold); }
+      .score { font-size: 26px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+      .score small { font-size: 12px; color: var(--muted); font-weight: 500; }
+      .tcard ul { margin: 0; padding-inline-start: 18px; font-size: 13px; line-height: 1.6; }
+      .tcard ul.risks { color: var(--red); }
+      .tcard p { margin: 0; font-size: 14px; color: var(--muted); }
+      .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; max-height: 460px; overflow: auto; }
+      .timeline li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 13px; line-height: 1.55; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+      .timeline li:last-child { border-bottom: 0; }
+      .dot { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 700; background: #f1efe8; color: var(--muted); }
+      .dot.ok { background: var(--teal-bg); color: var(--teal); }
+      .dot.bad { background: var(--red-bg); color: var(--red); }
+      .dot.think { background: var(--gold-bg); color: var(--gold); }
+      .timeline code { font-size: 12px; background: #f4f1ea; border-radius: 6px; padding: 1px 6px; direction: ltr; unicode-bidi: isolate; }
+      .shell { overflow-x: clip; }
+      .alert-box { overflow-wrap: anywhere; white-space: pre-wrap; background: #f7f5f0; border-radius: 12px; padding: 12px 14px; font-size: 14px; line-height: 1.7; direction: rtl; text-align: right; margin: 8px 0; }
+      .spin { display: inline-block; width: 12px; height: 12px; border: 2px solid currentColor; border-inline-end-color: transparent; border-radius: 50%; animation: r .8s linear infinite; vertical-align: -1px; }
+      @keyframes r { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
+      @media (max-width: 860px) { .loop { grid-template-columns: 1fr 1fr; } .cards { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <small>MAJAN AI · SIRAJ</small>
+        <strong data-t="brand">Majan AI</strong>
+      </div>
+      <p class="company-name" id="company-line"></p>
+      <nav>
+        <a href="./" data-t="navTenders">Tenders</a>
+        <a class="active" href="./agent.html" data-t="navAgent">Siraj agent</a>
+        <a href="./guardian.html" data-t="navAudit">Financial audit</a>
+        <a href="./icv.html" data-t="navIcv">In-country value</a>
+      </nav>
+    </aside>
+    <div class="shell">
+      <div class="agent-head">
+        <div>
+          <p class="eyebrow" data-t="eyebrow">Autonomous tender agent</p>
+          <h1 data-t="title">Siraj finds the tenders worth bidding on</h1>
+          <p class="sub" data-t="sub">After every tender sync, Siraj reviews the open tenders, reads the promising ones, scores each against the company profile, and drafts a WhatsApp alert for the owner.</p>
+        </div>
+        <button class="ghost lang" id="lang" type="button">العربية</button>
+      </div>
+
+      <section class="card">
+        <ol class="loop">
+          <li><b data-t="l1">Watch</b><span data-t="l1d">Runs on its own after each 6-hour sync</span></li>
+          <li><b data-t="l2">Shortlist</b><span data-t="l2d">Filters by classification, area, grade</span></li>
+          <li><b data-t="l3">Read</b><span data-t="l3d">Opens each tender page to check details</span></li>
+          <li><b data-t="l4">Decide</b><span data-t="l4d">Scores 0–100: pursue, watch or skip</span></li>
+          <li><b data-t="l5">Act</b><span data-t="l5d">Drafts the alert and remembers its work</span></li>
+        </ol>
+      </section>
+
+      <section class="card">
+        <div class="stats">
+          <div><span class="label" data-t="sMode">Mode</span><strong class="num" id="mode">—</strong></div>
+          <div><span class="label" data-t="sLast">Last run</span><strong class="num" id="last">—</strong></div>
+          <div><span class="label" data-t="sAssessed">Assessed</span><strong class="num" id="assessed">—</strong></div>
+          <div><span class="label" data-t="sPursue">Worth bidding</span><strong class="num" id="pursue">—</strong></div>
+        </div>
+        <div class="row">
+          <button id="run" type="button" data-t="run">Run Siraj now</button>
+          <button id="fresh" class="ghost" type="button" data-t="fresh">Start over (forget past runs)</button>
+          <span class="note" id="run-note"></span>
+        </div>
+        <p class="summary" id="summary" dir="auto"></p>
+        <p class="note" id="mode-note"></p>
+      </section>
+
+      <section class="card" id="alert-card" hidden>
+        <h2 data-t="alertTitle">WhatsApp alert ready</h2>
+        <p class="note" data-t="alertNote">Siraj drafts the message; the owner sends it with one tap.</p>
+        <div class="alert-box" id="alert-text"></div>
+        <a id="alert-link" target="_blank" rel="noopener"><button type="button" data-t="alertSend">Open in WhatsApp</button></a>
+      </section>
+
+      <section class="card">
+        <h2 data-t="decisions">Decisions</h2>
+        <div class="cards" id="cards"></div>
+      </section>
+
+      <section class="card">
+        <h2 data-t="trace">What Siraj did, step by step</h2>
+        <ol class="timeline" id="timeline"></ol>
+      </section>
+    </div>
+    <script type="module">
+      const T = {
+        en: {
+          brand: "Majan AI", navTenders: "Tenders", navAgent: "Siraj agent", navAudit: "Financial audit", navIcv: "In-country value",
+          eyebrow: "Autonomous tender agent", title: "Siraj finds the tenders worth bidding on",
+          sub: "After every tender sync, Siraj reviews the open tenders, reads the promising ones, scores each against the company profile, and drafts a WhatsApp alert for the owner.",
+          l1: "Watch", l1d: "Runs on its own after each 6-hour sync", l2: "Shortlist", l2d: "Filters by classification, area, grade",
+          l3: "Read", l3d: "Opens each tender page to check details", l4: "Decide", l4d: "Scores 0–100: pursue, watch or skip",
+          l5: "Act", l5d: "Drafts the alert and remembers its work",
+          sMode: "Mode", sLast: "Last run", sAssessed: "Assessed", sPursue: "Worth bidding",
+          run: "Run Siraj now", fresh: "Start over (forget past runs)",
+          alertTitle: "WhatsApp alert ready", alertNote: "Siraj drafts the message; the owner sends it with one tap.", alertSend: "Open in WhatsApp",
+          decisions: "Decisions", trace: "What Siraj did, step by step",
+          claude: "Claude", demo: "Demo rules", none: "No run yet",
+          demoNote: "Demo mode: fixed rules stand in for the model because no Anthropic API key is set. Add ANTHROPIC_API_KEY to run Siraj on Claude.",
+          claudeNote: "Running on Claude with tool use: the model chooses which tools to call and in what order.",
+          staticNote: "This is a saved run. Start the server (npm start) to run Siraj live.",
+          running: "Siraj is working…", busy: "Already running", noCards: "No decisions in this run.",
+          pursue: "Pursue", watch: "Watch", skip: "Skip", closes: "Closes", daysLeft: (d) => d <= 0 ? "closes today" : `${d} days left`,
+          pageRead: "Page read", pageNot: "Judged from listing",
+          tools: { get_company_profile: "Read company profile", list_candidate_tenders: "Listed open tenders", fetch_tender_page: "Opened tender page", record_assessment: "Recorded decision", draft_whatsapp_alert: "Drafted WhatsApp alert" },
+          lang: "العربية",
+        },
+        ar: {
+          brand: "مجـان AI", navTenders: "المناقصات", navAgent: "الوكيل سراج", navAudit: "التدقيق المالي", navIcv: "القيمة المحلية المضافة",
+          eyebrow: "وكيل مناقصات ذاتي", title: "سراج يلقى لك المناقصات اللي تستاهل التقديم",
+          sub: "بعد كل سحب للمناقصات، سراج يراجع المفتوحة منها، ويقرأ الواعدة، ويقيّم كل وحدة حسب بيانات الشركة، ويجهز رسالة واتساب لصاحب الشركة.",
+          l1: "يراقب", l1d: "يشتغل من نفسه بعد كل سحب كل 6 ساعات", l2: "يفرز", l2d: "حسب التصنيف والولاية والدرجة",
+          l3: "يقرأ", l3d: "يفتح صفحة كل مناقصة ويتحقق", l4: "يقرر", l4d: "تقييم من 100: تقدّم، راقب، تجاهل",
+          l5: "ينفذ", l5d: "يجهز التنبيه ويتذكر شغله",
+          sMode: "الوضع", sLast: "آخر تشغيل", sAssessed: "تم تقييمها", sPursue: "تستاهل التقديم",
+          run: "شغّل سراج الحين", fresh: "ابدأ من جديد (انسَ التشغيلات السابقة)",
+          alertTitle: "رسالة الواتساب جاهزة", alertNote: "سراج يجهز الرسالة، وصاحب الشركة يرسلها بضغطة.", alertSend: "افتح في واتساب",
+          decisions: "القرارات", trace: "شو سوى سراج خطوة بخطوة",
+          claude: "Claude", demo: "قواعد تجريبية", none: "ما اشتغل بعد",
+          demoNote: "وضع تجريبي: قواعد ثابتة بدل النموذج لأن مفتاح Anthropic غير مضاف. أضيفي ANTHROPIC_API_KEY عشان يشتغل سراج على Claude.",
+          claudeNote: "يشتغل على Claude باستخدام الأدوات: النموذج يختار أي أداة يستخدم وبأي ترتيب.",
+          staticNote: "هذا تشغيل محفوظ. شغّلي الخادم (npm start) عشان تشغلين سراج مباشرة.",
+          running: "سراج يشتغل…", busy: "شغال من قبل", noCards: "ما فيه قرارات في هالتشغيل.",
+          pursue: "تقدّم", watch: "راقب", skip: "تجاهل", closes: "تغلق", daysLeft: (d) => d <= 0 ? "تغلق اليوم" : `باقي ${d} يوم`,
+          pageRead: "قرأ الصفحة", pageNot: "من بيانات الإعلان فقط",
+          tools: { get_company_profile: "قرأ بيانات الشركة", list_candidate_tenders: "عرض المناقصات المفتوحة", fetch_tender_page: "فتح صفحة المناقصة", record_assessment: "سجّل القرار", draft_whatsapp_alert: "جهّز رسالة واتساب" },
+          lang: "English",
+        },
+      };
+      let lang = "en";
+      try { lang = localStorage.getItem("majan-agent-lang") || "en"; } catch {}
+      let run = null;
+      let live = false;
+      let polling = null;
+
+      const $ = (s) => document.querySelector(s);
+      const esc = (v) => String(v ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      const t = (k) => T[lang][k];
+      function when(value) {
+        if (!value) return "—";
+        const p = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Muscat", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date(value));
+        const g = (type) => p.find((x) => x.type === type)?.value || "";
+        return `${g("day")}/${g("month")}/${g("year")} ${g("hour")}:${g("minute")}`;
+      }
+
+      function applyLang() {
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+        document.querySelectorAll("[data-t]").forEach((el) => { el.textContent = t(el.dataset.t); });
+        $("#lang").textContent = t("lang");
+        document.title = lang === "ar" ? "مجـان AI — الوكيل سراج" : "Majan AI — Siraj Tender Agent";
+        render();
+      }
+
+      function stepLine(step) {
+        if (step.type === "thought") return `<li><span class="dot think">✦</span><span>${esc(step.text)}</span></li>`;
+        const label = t("tools")[step.name] || step.name;
+        const arg = step.input?.tender_id ? ` <code>#${esc(step.input.tender_id)}</code>` : step.input?.classification ? ` <code>${esc(step.input.classification)}</code>` : "";
+        return `<li><span class="dot ${step.ok ? "ok" : "bad"}">${step.ok ? "✓" : "!"}</span><span><b>${esc(label)}</b>${arg} — ${esc(step.result)}</span></li>`;
+      }
+
+      function card(a) {
+        const reasons = (a.reasons_en || []).map((r) => `<li>${esc(r)}</li>`).join("");
+        const risks = (a.risks_en || []).map((r) => `<li>${esc(r)}</li>`).join("");
+        const chipClass = { pursue: "", watch: "warn", skip: "bad" }[a.decision];
+        return `<article class="tcard ${esc(a.decision)}">
+          <div class="tcard-top">
+            <h3 dir="rtl"><a href="${esc(a.url || "#")}" target="_blank" rel="noopener">${esc(a.title)}</a></h3>
+            <div class="score">${a.score}<small>/100</small></div>
+          </div>
+          <div class="row">
+            <span class="chip ${chipClass}">${esc(t(a.decision))}</span>
+            <span class="chip muted">${esc(a.governorate)}</span>
+            <span class="chip muted">${esc(t("closes"))} ${esc(a.deadline)} · ${esc(t("daysLeft")(a.days_left))}</span>
+            <span class="chip muted">${esc(a.page_read ? t("pageRead") : t("pageNot"))}</span>
+          </div>
+          <p ${lang === "ar" ? 'dir="rtl"' : ""}>${esc(lang === "ar" ? a.summary_ar : a.summary_en)}</p>
+          ${reasons ? `<ul dir="ltr">${reasons}</ul>` : ""}
+          ${risks ? `<ul class="risks" dir="ltr">${risks}</ul>` : ""}
+        </article>`;
+      }
+
+      function render(liveSteps) {
+        const r = run || {};
+        $("#company-line").textContent = r.company || "";
+        $("#mode").textContent = r.mode ? t(r.mode) : t("none");
+        $("#last").textContent = when(r.finishedAt);
+        $("#assessed").textContent = r.assessments ? r.assessments.length : "—";
+        $("#pursue").textContent = r.assessments ? r.assessments.filter((a) => a.decision === "pursue").length : "—";
+        $("#summary").textContent = r.summary || "";
+        $("#mode-note").textContent = [r.mode === "demo" ? t("demoNote") : r.mode === "claude" ? t("claudeNote") : "", r.note || "", live ? "" : t("staticNote")].filter(Boolean).join(" ");
+        $("#run").hidden = !live;
+        $("#fresh").hidden = !live;
+        const cards = r.assessments || [];
+        $("#cards").innerHTML = cards.length ? cards.map(card).join("") : `<p class="note">${esc(t("noCards"))}</p>`;
+        const alert = (r.alerts || [])[0];
+        $("#alert-card").hidden = !alert;
+        if (alert) {
+          $("#alert-text").textContent = alert.message_ar;
+          $("#alert-link").hidden = !alert.link;
+          if (alert.link) $("#alert-link").href = alert.link;
+        }
+        const steps = liveSteps || r.steps || [];
+        $("#timeline").innerHTML = steps.map(stepLine).join("");
+      }
+
+      async function loadRun() {
+        try {
+          run = await fetch("agent-run.json", { cache: "no-store" }).then((res) => (res.ok ? res.json() : null));
+        } catch { run = null; }
+      }
+
+      async function poll() {
+        const status = await fetch("api/agent/status", { cache: "no-store" }).then((res) => res.json());
+        if (status.running) {
+          $("#run-note").innerHTML = `<span class="spin"></span> ${esc(t("running"))}`;
+          $("#run").disabled = $("#fresh").disabled = true;
+          render(status.steps);
+          return;
+        }
+        clearInterval(polling);
+        polling = null;
+        $("#run-note").textContent = status.error || "";
+        $("#run").disabled = $("#fresh").disabled = false;
+        await loadRun();
+        render();
+      }
+
+      async function start(fresh) {
+        const res = await fetch(`api/agent/run${fresh ? "?fresh=1" : ""}`, { method: "POST" }).then((r) => r.json());
+        if (!res.started) $("#run-note").textContent = t("busy");
+        if (!polling) polling = setInterval(poll, 1000);
+        poll();
+      }
+
+      $("#run").addEventListener("click", () => start(false));
+      $("#fresh").addEventListener("click", () => start(true));
+      $("#lang").addEventListener("click", () => {
+        lang = lang === "en" ? "ar" : "en";
+        try { localStorage.setItem("majan-agent-lang", lang); } catch {}
+        applyLang();
+      });
+
+      await loadRun();
+      try {
+        const status = await fetch("api/agent/status", { cache: "no-store" });
+        live = status.ok;
+        if (live && (await status.json()).running) polling = setInterval(poll, 1000);
+      } catch { live = false; }
+      applyLang();
+    </script>
+  </body>
+</html>

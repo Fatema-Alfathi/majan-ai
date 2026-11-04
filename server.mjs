@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { pullTenders, writeTenders } from "./sync.mjs";
+import { hasModelAccess, runAgent } from "./agent.mjs";
 
 const root = dirname(fileURLToPath(import.meta.url));
 const publicDir = join(root, "docs");
@@ -14,6 +15,25 @@ const state = {
   fetched: 0,
   totalAvailable: 0,
 };
+
+const agent = { running: false, error: null, steps: [], startedAt: null };
+
+async function startAgent({ fresh = false } = {}) {
+  if (agent.running) return;
+  agent.running = true;
+  agent.error = null;
+  agent.steps = [];
+  agent.startedAt = new Date().toISOString();
+  try {
+    const run = await runAgent({ fresh, onStep: (step) => agent.steps.push(step) });
+    console.log(`agent (${run.mode}): ${run.assessments.length} assessed, ${run.alerts.length} alert(s)`);
+  } catch (error) {
+    agent.error = error instanceof Error ? error.message : "Agent run failed";
+    console.error(agent.error);
+  } finally {
+    agent.running = false;
+  }
+}
 
 async function sync() {
   if (state.syncing) return;
@@ -28,6 +48,7 @@ async function sync() {
     state.syncing = false;
     state.error = null;
     console.log(`synced ${payload.count} open tenders`);
+    startAgent();
   } catch (error) {
     state.syncing = false;
     state.error = error instanceof Error ? error.message : "تعذر سحب المناقصات";
@@ -40,6 +61,8 @@ const files = {
   "/index.html": "index.html",
   "/guardian.html": "guardian.html",
   "/icv.html": "icv.html",
+  "/agent.html": "agent.html",
+  "/agent-run.json": "agent-run.json",
   "/site.css": "site.css",
   "/tenders.json": "tenders.json",
   "/company.json": "company.json",
@@ -62,6 +85,19 @@ const server = createServer(async (request, response) => {
   if (url.pathname === "/api/status") {
     response.writeHead(200, { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" });
     response.end(JSON.stringify(state));
+    return;
+  }
+  if (url.pathname === "/api/agent/run" && request.method === "POST") {
+    const fresh = url.searchParams.get("fresh") === "1";
+    const already = agent.running;
+    startAgent({ fresh });
+    response.writeHead(202, { "content-type": "application/json; charset=utf-8" });
+    response.end(JSON.stringify({ started: !already, running: true }));
+    return;
+  }
+  if (url.pathname === "/api/agent/status") {
+    response.writeHead(200, { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" });
+    response.end(JSON.stringify({ ...agent, mode: hasModelAccess() ? "claude" : "demo" }));
     return;
   }
   const fileName = files[url.pathname];
