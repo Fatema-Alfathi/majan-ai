@@ -4,6 +4,10 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "sync": "node sync.mjs"
+    "sync": "node sync.mjs",
+    "agent": "node agent.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.4.0"
   }
 }

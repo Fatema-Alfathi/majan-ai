@@ -23,9 +23,16 @@ jobs:
         with:
           node-version: 22
       - run: node sync.mjs
+      - run: npm ci
+      - name: Run the Siraj agent
+        # Uses Claude when the ANTHROPIC_API_KEY secret is set, demo rules otherwise.
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node agent.mjs --fresh
       - name: Save the updated list
         run: |
-          git add -- docs/tenders.json
+          git add -- docs/tenders.json docs/agent-run.json
           if git diff --cached --quiet; then
             echo "No tender changes to save."
             exit 0
