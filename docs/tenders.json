@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-11-06T13:57:02.099Z",
+  "syncedAt": "2026-11-06T22:55:26.682Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -12,31 +12,8 @@
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
   "totalAvailable": 9489,
   "fetched": 500,
-  "count": 201,
+  "count": 200,
   "tenders": [
-    {
-      "id": "1411811",
-      "number": "",
-      "title": "Revision of the ILO Tool on National Action Plans for Youth, EMPLAB",
-      "category": "دراسات واستشارات عامة",
-      "parentCategory": "الدراسات والاستشارات",
-      "classification": "دراسات واستشارات",
-      "city": "مسقط",
-      "governorate": "مسقط",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "01/11/2026",
-      "deadline": "06/11/2026",
-      "publishedIso": "2026-11-01",
-      "deadlineIso": "2026-11-06",
-      "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1411811",
-      "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
-      "originLabel": "تندرز عُمان",
-      "grades": []
-    },
     {
       "id": "1411589",
       "number": "",
