@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-11-06T22:55:26.682Z",
+  "syncedAt": "2026-11-07T04:52:51.697Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -1783,12 +1783,14 @@
       "publishedIso": "2026-11-01",
       "deadlineIso": "2026-11-15",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1412658",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100566&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=cce8ecbb4f290cbf9816c45b827cfec4650ef5a741193a58bd632ec2acd2b060",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الرابعة"
+      ]
     },
     {
       "id": "1412662",
@@ -2014,14 +2016,12 @@
       "publishedIso": "2026-11-01",
       "deadlineIso": "2026-11-15",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100569&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=a318749806700b9fbcafeafb85971cec7223bc5f139f145707831ce2c21a1db5",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1412657",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1411535",
@@ -2627,13 +2627,14 @@
       "publishedIso": "2026-10-27",
       "deadlineIso": "2026-11-17",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=11834&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=2674f194e798eb6b0930c02214167f0980174de0ae071d6b02a4c4dfb56cf028",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100393&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=0d77864b3c93e8cd12b24c7e2752cc7c21cbf1ff293c2f86c2a1347e72c37690",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
       "grades": [
-        "الثانية"
+        "الثانية",
+        "الثالثة"
       ]
     },
     {
