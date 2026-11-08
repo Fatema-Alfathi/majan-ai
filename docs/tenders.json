@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-11-07T21:41:56.987Z",
+  "syncedAt": "2026-11-08T04:47:45.381Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -10,9 +10,9 @@
     "دراسات واستشارات"
   ],
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
-  "totalAvailable": 9515,
+  "totalAvailable": 9521,
   "fetched": 500,
-  "count": 210,
+  "count": 212,
   "tenders": [
     {
       "id": "1406316",
@@ -1675,12 +1675,14 @@
       "publishedIso": "2026-11-01",
       "deadlineIso": "2026-11-15",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1412661",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100563&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=3a4e15e9aab5491b2769ecbc143a85b394c25ef38700339b3b52df8e91e43dde",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الرابعة"
+      ]
     },
     {
       "id": "1412658",
@@ -1721,12 +1723,14 @@
       "publishedIso": "2026-11-01",
       "deadlineIso": "2026-11-15",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1412662",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=7228&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=c4467b0a24e8be8134fa7eadf6f0c5e5b8cffb1334c55d1c95f48083baf694b7",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الأولى"
+      ]
     },
     {
       "id": "1412708",
@@ -2082,7 +2086,7 @@
       "publishedIso": "2026-11-07",
       "deadlineIso": "2026-11-15",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101170&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=17079ff7875e8422de146772a8b4c170264a9bb2bd9f714ac169095bffc367e3",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=97273&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=9eb6401ad533137c64c3441ff198fc9cfec21d46fc040b801e3ff6ba6a09e426",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -3482,6 +3486,52 @@
       "grades": []
     },
     {
+      "id": "1419088",
+      "number": "",
+      "title": "تصميم وتنفيذ اعمال تعديل مستوى الطريق وادارة جريان المياه السطحية - ولاية السيب - الحزمة 5",
+      "category": "صيانة طرق، ارصفة واطاريف، اشغال عامة",
+      "parentCategory": "الطرق والجسور والانفاق",
+      "classification": "طرق وجسور وأنفاق",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "08/11/2026",
+      "deadline": "21/11/2026",
+      "publishedIso": "2026-11-08",
+      "deadlineIso": "2026-11-21",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1419088",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
+      "id": "1419091",
+      "number": "",
+      "title": "تصميم وتنفيذ اعمال تعديل مستوى الطريق وادارة جريان المياه السطحية - ولاية السيب - الحزمة 6",
+      "category": "صيانة طرق، ارصفة واطاريف، اشغال عامة",
+      "parentCategory": "الطرق والجسور والانفاق",
+      "classification": "طرق وجسور وأنفاق",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "08/11/2026",
+      "deadline": "21/11/2026",
+      "publishedIso": "2026-11-08",
+      "deadlineIso": "2026-11-21",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1419091",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
       "id": "1413900",
       "number": "",
       "title": "توريد وتركيب مولد كهربائي احتياطي في مركز بحوث الثروة السمكية بمحافظة مسندم - خصب",
@@ -4143,7 +4193,7 @@
       "publishedIso": "2026-11-04",
       "deadlineIso": "2026-11-23",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100989&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=5abbac07db57242e38a88b3767a94b3308d881d4d08fcd9d75e6c3f227494807",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101092&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d9fed8fae61cfb0696a291fda8407dfb88b7bf90f5dd518d7256bbd56c85fe71",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
