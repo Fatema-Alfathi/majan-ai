@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-11-08T04:47:45.381Z",
+  "syncedAt": "2026-11-08T12:57:39.347Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -1723,14 +1723,12 @@
       "publishedIso": "2026-11-01",
       "deadlineIso": "2026-11-15",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=7228&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=c4467b0a24e8be8134fa7eadf6f0c5e5b8cffb1334c55d1c95f48083baf694b7",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1412662",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الأولى"
-      ]
+      "grades": []
     },
     {
       "id": "1412708",
@@ -2086,7 +2084,7 @@
       "publishedIso": "2026-11-07",
       "deadlineIso": "2026-11-15",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=97273&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=9eb6401ad533137c64c3441ff198fc9cfec21d46fc040b801e3ff6ba6a09e426",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101205&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=3e57c51eeaf0bcbb7f7d7c59801ebc2943c522a9d91dba89020eab000368a3e1",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -4193,7 +4191,7 @@
       "publishedIso": "2026-11-04",
       "deadlineIso": "2026-11-23",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101092&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d9fed8fae61cfb0696a291fda8407dfb88b7bf90f5dd518d7256bbd56c85fe71",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100989&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=5abbac07db57242e38a88b3767a94b3308d881d4d08fcd9d75e6c3f227494807",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
