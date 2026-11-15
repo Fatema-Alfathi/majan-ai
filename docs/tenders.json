@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-11-14T22:09:39.488Z",
+  "syncedAt": "2026-11-15T05:01:25.146Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -10,9 +10,9 @@
     "دراسات واستشارات"
   ],
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
-  "totalAvailable": 9645,
+  "totalAvailable": 9650,
   "fetched": 500,
-  "count": 192,
+  "count": 190,
   "tenders": [
     {
       "id": "1380678",
@@ -41,31 +41,6 @@
       ]
     },
     {
-      "id": "1412661",
-      "number": "",
-      "title": "اعمال صيانة جزئية بمدرسة الرضوان بولاية السيب",
-      "category": "التشطيب والصيانة",
-      "parentCategory": "انشاءات الابنية",
-      "classification": "إنشاءات عامة",
-      "city": "مسقط",
-      "governorate": "مسقط",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "01/11/2026",
-      "deadline": "15/11/2026",
-      "publishedIso": "2026-11-01",
-      "deadlineIso": "2026-11-15",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100563&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=3a4e15e9aab5491b2769ecbc143a85b394c25ef38700339b3b52df8e91e43dde",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الرابعة"
-      ]
-    },
-    {
       "id": "1412658",
       "number": "",
       "title": "اعمال صيانة جزئية بمدرسة العلاء بولاية بوشر",
@@ -87,54 +62,6 @@
       "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
       "grades": []
-    },
-    {
-      "id": "1412662",
-      "number": "",
-      "title": "اعمال صيانة جزئية بمدرسة المعبيلة الشمالية بولاية السيب",
-      "category": "التشطيب والصيانة",
-      "parentCategory": "انشاءات الابنية",
-      "classification": "إنشاءات عامة",
-      "city": "مسقط",
-      "governorate": "مسقط",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "01/11/2026",
-      "deadline": "15/11/2026",
-      "publishedIso": "2026-11-01",
-      "deadlineIso": "2026-11-15",
-      "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1412662",
-      "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
-      "originLabel": "تندرز عُمان",
-      "grades": []
-    },
-    {
-      "id": "1412708",
-      "number": "",
-      "title": "اعمال صيانة وتهيئة قاعات حاضنات الابتكار بمدرسة انس بن النظر ودارسيت والبلجاء وشمساء الخليلي بمحافظة مسقط",
-      "category": "التشطيب والصيانة",
-      "parentCategory": "انشاءات الابنية",
-      "classification": "إنشاءات عامة",
-      "city": "مسقط",
-      "governorate": "مسقط",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "01/11/2026",
-      "deadline": "15/11/2026",
-      "publishedIso": "2026-11-01",
-      "deadlineIso": "2026-11-15",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100866&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=68abd7bb6bd0a6af3eaac567400bbb37278745f83c9fa9968f0d8682c3609644",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الرابعة"
-      ]
     },
     {
       "id": "1401212",
@@ -2320,14 +2247,12 @@
       "publishedIso": "2026-11-09",
       "deadlineIso": "2026-11-22",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101301&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d78d2000efa94a64640a765cb4e6598253ed424a4517b862dabdca549180b8ad",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1421382",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1418917",
@@ -2926,7 +2851,7 @@
       "publishedIso": "2026-11-04",
       "deadlineIso": "2026-11-23",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=100989&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=5abbac07db57242e38a88b3767a94b3308d881d4d08fcd9d75e6c3f227494807",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101092&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d9fed8fae61cfb0696a291fda8407dfb88b7bf90f5dd518d7256bbd56c85fe71",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -3516,18 +3441,12 @@
       "publishedIso": "2026-11-08",
       "deadlineIso": "2026-11-29",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=96684&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=659ea68a7cd52c0ac9d8e262b6ddaac875a64fc5ee910fd4bbdb86d4d831f103",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1419949",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1422952",
@@ -4725,6 +4644,29 @@
       "deadlineIso": "2026-12-18",
       "documentPrice": null,
       "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1420216",
+      "buyer": "",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
+      "grades": []
+    },
+    {
+      "id": "1426984",
+      "number": "",
+      "title": "اعمال الانشاءات والتجديدات والتحسينات المدنية والكهروميكانيكية بالحرم الحرم الجامعي",
+      "category": "الانشاءات",
+      "parentCategory": "انشاءات الابنية",
+      "classification": "إنشاءات عامة",
+      "city": "صحار",
+      "governorate": "شمال الباطنة",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "15/11/2026",
+      "deadline": "20/12/2026",
+      "publishedIso": "2026-11-15",
+      "deadlineIso": "2026-12-20",
+      "documentPrice": null,
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1426984",
       "buyer": "",
       "source": "tenderoman",
       "sourceLabel": "تندرز عُمان",
