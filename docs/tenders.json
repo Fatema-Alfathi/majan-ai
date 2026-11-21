@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-11-20T23:52:24.816Z",
+  "syncedAt": "2026-11-21T05:51:11.237Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -341,7 +341,7 @@
     {
       "id": "1421719",
       "number": "",
-      "title": "تجهيز مواقع التخييم بمحافظة جنوب الشرقية",
+      "title": "تجهيز مواقع التخييم بالجهة المعلنة",
       "category": "صيانة طرق، ارصفة واطاريف، اشغال عامة",
       "parentCategory": "الطرق والجسور والانفاق",
       "classification": "طرق وجسور وأنفاق",
@@ -990,7 +990,7 @@
     {
       "id": "1429784",
       "number": "",
-      "title": "توريد وتركيب نظام انذار الحريق لكلية عمان للعلوم الصحية - فرع شمال الباطنة",
+      "title": "توريد وتركيب نظام انذار الحريق لالجهة المعلنة - فرع شمال الباطنة",
       "category": "انظمة مكافحة الحريق",
       "parentCategory": "مقاولات الكهرباء والميكانيك",
       "classification": "كهرباء وميكانيك",
@@ -1003,18 +1003,12 @@
       "publishedIso": "2026-11-16",
       "deadlineIso": "2026-11-23",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101472&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=19f9789839c67b87f7f9a6abd3f3b95f98efc50d956b4ed901f6c8eb1a583867",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1429784",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1380091",
@@ -2022,7 +2016,7 @@
     {
       "id": "1429870",
       "number": "",
-      "title": "اعمال تركيب مصعد خارجي من مواقف طابق الى طابق المواقف بمبنى صندوق الحماية الاجتماعية بمرتفعات المطار",
+      "title": "اعمال تركيب مصعد خارجي من مواقف طابق الى طابق المواقف بمبنى الجهة المعلنة بمرتفعات المطار",
       "category": "اعمال الكهرباء والميكانيك",
       "parentCategory": "مقاولات الكهرباء والميكانيك",
       "classification": "كهرباء وميكانيك",
@@ -2097,7 +2091,7 @@
     {
       "id": "1431085",
       "number": "",
-      "title": "بناء دورة مياه لغرفة الحراس لبلدية مسقط بالسيب",
+      "title": "بناء دورة مياه لغرفة الحراس لالجهة المعلنة بالسيب",
       "category": "الانشاءات",
       "parentCategory": "انشاءات الابنية",
       "classification": "إنشاءات عامة",
@@ -2120,7 +2114,7 @@
     {
       "id": "1415578",
       "number": "",
-      "title": "تصميم وتنفيذ اعمال ربط مباني بلدية مسقط بشبكة الصرف الصحي",
+      "title": "تصميم وتنفيذ اعمال ربط مباني الجهة المعلنة بشبكة الصرف الصحي",
       "category": "التشطيب والصيانة",
       "parentCategory": "انشاءات الابنية",
       "classification": "إنشاءات عامة",
@@ -2149,7 +2143,7 @@
     {
       "id": "1421365",
       "number": "",
-      "title": "تقديم خدمات التشغيل والصيانة لمباني جامعة التقنية والعلوم التطبيقية فرع نزوى",
+      "title": "تقديم خدمات التشغيل والصيانة لمباني الجهة المعلنة فرع نزوى",
       "category": "التشطيب والصيانة",
       "parentCategory": "انشاءات الابنية",
       "classification": "إنشاءات عامة",
@@ -2162,15 +2156,12 @@
       "publishedIso": "2026-11-09",
       "deadlineIso": "2026-11-29",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101289&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=13a121a4643c8203712f32a15229bc472f839621dadaef37351c225c7671b639",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1421365",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى"
-      ]
+      "grades": []
     },
     {
       "id": "1290378",
@@ -2518,7 +2509,7 @@
     {
       "id": "1423144",
       "number": "",
-      "title": "تصميم وتنفيذ محطة طاقة شمسية بقدرة 1,060 كيلوواط kWp بجامعة الشرقية بحرم ابراء",
+      "title": "تصميم وتنفيذ محطة طاقة شمسية بقدرة 1,060 كيلوواط kWp بالجهة المعلنة بحرم ابراء",
       "category": "البويلرات، التدفئة، والسخانات الشمسية",
       "parentCategory": "مقاولات الكهرباء والميكانيك",
       "classification": "كهرباء وميكانيك",
@@ -2531,11 +2522,11 @@
       "publishedIso": "2026-11-10",
       "deadlineIso": "2026-11-30",
       "documentPrice": null,
-      "url": "https://www.asu.edu.om/",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1423144",
       "buyer": "",
-      "source": "portal",
-      "sourceLabel": "جامعة الشرقية",
-      "originLabel": "جامعة الشرقية",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
+      "originLabel": "تندرز عُمان",
       "grades": []
     },
     {
@@ -3068,7 +3059,7 @@
     {
       "id": "1225610",
       "number": "",
-      "title": "تعزيز المواقع السياحية بالخدمات الاساسية في محافظة البريمي",
+      "title": "تعزيز المواقع السياحية بالخدمات الاساسية في الجهة المعلنة",
       "category": "التشطيب والصيانة",
       "parentCategory": "انشاءات الابنية",
       "classification": "إنشاءات عامة",
@@ -3280,7 +3271,7 @@
     {
       "id": "1427559",
       "number": "",
-      "title": "تصميم وتنفيذ جناح البنك المركزي العماني في كومكس 2027",
+      "title": "تصميم وتنفيذ جناح الجهة المعلنة في كومكس 2027",
       "category": "الانشطة المعمارية والهندسية والخدمات الاستشارية",
       "parentCategory": "الدراسات والاستشارات",
       "classification": "دراسات واستشارات",
@@ -3293,17 +3284,12 @@
       "publishedIso": "2026-11-15",
       "deadlineIso": "2026-12-06",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101505&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=a77d80fcc1fa37098f75cf5ef0fa9f2f53e48b32baf3b5163d18533dac671942",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1427559",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة"
-      ]
+      "grades": []
     },
     {
       "id": "1422880",
@@ -3768,12 +3754,12 @@
     {
       "id": "1369691",
       "number": "",
-      "title": "توريد معدة لتخطيط الطرق لمحافظة الداخلية",
+      "title": "توريد معدة لتخطيط الطرق لالجهة المعلنة",
       "category": "مستلزمات طرق",
       "parentCategory": "الطرق والجسور والانفاق",
       "classification": "طرق وجسور وأنفاق",
       "city": "مسقط",
-      "governorate": "الداخلية",
+      "governorate": "مسقط",
       "status": "اعادة طرح",
       "type": "مناقصة",
       "publishedOn": "18/11/2026",
@@ -3820,7 +3806,7 @@
     {
       "id": "1380827",
       "number": "",
-      "title": "نطاق عمل صيانة مخزن غلا التابع لوزارة المالية",
+      "title": "نطاق عمل صيانة مخزن غلا التابع لالجهة المعلنة",
       "category": "الانشطة المعمارية والهندسية والخدمات الاستشارية",
       "parentCategory": "الدراسات والاستشارات",
       "classification": "دراسات واستشارات",
@@ -3903,7 +3889,7 @@
     {
       "id": "1429857",
       "number": "",
-      "title": "تهيئة بعض مرافق جامعة التقنية والعلوم التطبيقية بفرع ابراء",
+      "title": "تهيئة بعض مرافق الجهة المعلنة بفرع ابراء",
       "category": "التشطيب والصيانة",
       "parentCategory": "انشاءات الابنية",
       "classification": "إنشاءات عامة",
@@ -4119,7 +4105,7 @@
     {
       "id": "1427682",
       "number": "",
-      "title": "انشاء سياج حديدي على جانبي شارع السلطان ثويني بن سعيد يمحافظة الظاهرة",
+      "title": "انشاء سياج حديدي على جانبي شارع السلطان ثويني بن سعيد يالجهة المعلنة",
       "category": "الانشاءات",
       "parentCategory": "انشاءات الابنية",
       "classification": "إنشاءات عامة",
@@ -4276,7 +4262,7 @@
     {
       "id": "1413108",
       "number": "",
-      "title": "تنظيف وتأهيل مجرى وادي الابيض بولاية نخل بمحافظة جنوب الباطنة",
+      "title": "تنظيف وتأهيل مجرى وادي الابيض بولاية نخل بالجهة المعلنة",
       "category": "صيانة طرق، ارصفة واطاريف، اشغال عامة",
       "parentCategory": "الطرق والجسور والانفاق",
       "classification": "طرق وجسور وأنفاق",
@@ -4299,12 +4285,12 @@
     {
       "id": "1413111",
       "number": "",
-      "title": "تنظيف وتأهيل مجرى وادي اللآجال بولاية وادي المعاول بمحافظة جنوب الباطنة",
+      "title": "تنظيف وتأهيل مجرى وادي اللآجال بولاية وادي المعاول بالجهة المعلنة",
       "category": "صيانة طرق، ارصفة واطاريف، اشغال عامة",
       "parentCategory": "الطرق والجسور والانفاق",
       "classification": "طرق وجسور وأنفاق",
       "city": "مسقط",
-      "governorate": "جنوب الباطنة",
+      "governorate": "مسقط",
       "status": "جديد",
       "type": "مناقصة",
       "publishedOn": "02/11/2026",
