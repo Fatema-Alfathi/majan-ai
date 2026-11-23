@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderoman.com/Default.aspx",
-  "syncedAt": "2026-11-23T06:01:22.616Z",
+  "syncedAt": "2026-11-23T17:36:19.003Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -10,7 +10,7 @@
     "دراسات واستشارات"
   ],
   "categoryLabel": "إنشاءات عامة، طرق وجسور وأنفاق، مياه وصرف صحي، كهرباء وميكانيك، دراسات واستشارات",
-  "totalAvailable": 9831,
+  "totalAvailable": 9834,
   "fetched": 500,
   "count": 191,
   "tenders": [
@@ -106,29 +106,6 @@
       "deadlineIso": "2026-11-23",
       "documentPrice": null,
       "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1380089",
-      "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
-      "originLabel": "تندرز عُمان",
-      "grades": []
-    },
-    {
-      "id": "1380092",
-      "number": "",
-      "title": "تصميم وتوريد وتركيب واختبار وتشغيل وحدة التحكم بالروائح مع كافة ملحقاتها في محطة معالجة مياه الصرف الصحي ومحطة الضخ 1 بولاية بركاء",
-      "category": "اعمال المياه، الصرف الصحي، والبنية التحتية",
-      "parentCategory": "المياه والصرف الصحي",
-      "classification": "مياه وصرف صحي",
-      "city": "مسقط",
-      "governorate": "جنوب الباطنة",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "12/10/2026",
-      "deadline": "23/11/2026",
-      "publishedIso": "2026-10-12",
-      "deadlineIso": "2026-11-23",
-      "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1380092",
       "buyer": "",
       "source": "tenderoman",
       "sourceLabel": "تندرز عُمان",
@@ -699,18 +676,12 @@
       "publishedIso": "2026-11-18",
       "deadlineIso": "2026-11-24",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101858&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=f5a7206e30a475c02d6ae35654cbb7b76e839b904c5c933743d0fe3ce66f074f",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1432343",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1432315",
@@ -815,35 +786,6 @@
       "deadlineIso": "2026-11-24",
       "documentPrice": null,
       "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101110&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d8e80260351b7988ae606bdbffc4846a2f8d6674e35d33873a25732a77c95400",
-      "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
-      "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
-    },
-    {
-      "id": "1422893",
-      "number": "",
-      "title": "توريد وتركيب وفحص وتشغيل نظام البطاريات الاحتياطية بمركز نخل الصحي",
-      "category": "توليد الطاقة والطاقة المتجددة",
-      "parentCategory": "مقاولات الكهرباء والميكانيك",
-      "classification": "كهرباء وميكانيك",
-      "city": "مسقط",
-      "governorate": "مسقط",
-      "status": "جديد",
-      "type": "مناقصة",
-      "publishedOn": "10/11/2026",
-      "deadline": "24/11/2026",
-      "publishedIso": "2026-11-10",
-      "deadlineIso": "2026-11-24",
-      "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101323&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=73a613ddf1b65a03bce4d41a674dfbd6117b847ac6c5cf3efa4172c9d9cef563",
       "buyer": "",
       "source": "esnad",
       "sourceLabel": "إسناد",
@@ -1002,18 +944,12 @@
       "publishedIso": "2026-11-15",
       "deadlineIso": "2026-11-25",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101441&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=8cad1798f6c45d0df24d59ed5c93ee5883b68e14b790d444fe0a79cd5de637c4",
+      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1427587",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ]
+      "grades": []
     },
     {
       "id": "1429809",
@@ -1947,12 +1883,14 @@
       "publishedIso": "2026-11-16",
       "deadlineIso": "2026-11-30",
       "documentPrice": null,
-      "url": "https://www.tenderoman.com/TenderDetails.aspx?tdc_id=1429923",
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101532&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=d04951f9dd22fb684a71433a5d37bbedfe6b31fe1ec11faee36352ece657652e",
       "buyer": "",
-      "source": "tenderoman",
-      "sourceLabel": "تندرز عُمان",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
-      "grades": []
+      "grades": [
+        "الرابعة"
+      ]
     },
     {
       "id": "1429706",
@@ -2814,6 +2752,35 @@
       "sourceLabel": "إسناد",
       "originLabel": "تندرز عُمان",
       "grades": [
+        "الثالثة",
+        "الرابعة"
+      ]
+    },
+    {
+      "id": "1437491",
+      "number": "",
+      "title": "مصابيح زينون لاجهزة المجاهر الطبية التخصصية",
+      "category": "وحدات الانارة",
+      "parentCategory": "مقاولات الكهرباء والميكانيك",
+      "classification": "كهرباء وميكانيك",
+      "city": "مسقط",
+      "governorate": "مسقط",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "23/11/2026",
+      "deadline": "06/12/2026",
+      "publishedIso": "2026-11-23",
+      "deadlineIso": "2026-12-06",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=102042&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=1f2517e430eb56e2fae13c6e5469763f0b5df22d9c979e2f946eef109e31a52a",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
         "الثالثة",
         "الرابعة"
       ]
@@ -4240,6 +4207,35 @@
       "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
       "grades": []
+    },
+    {
+      "id": "1437476",
+      "number": "",
+      "title": "توريد وتركيب واختبار وتشغيل خزانات تخزين المياه ونظام مضخات تعزيز الضغط بمستشفى بهلاء",
+      "category": "اعمال المياه، الصرف الصحي، والبنية التحتية",
+      "parentCategory": "المياه والصرف الصحي",
+      "classification": "مياه وصرف صحي",
+      "city": "مسقط",
+      "governorate": "الداخلية",
+      "status": "جديد",
+      "type": "مناقصة",
+      "publishedOn": "23/11/2026",
+      "deadline": "17/12/2026",
+      "publishedIso": "2026-11-23",
+      "deadlineIso": "2026-12-17",
+      "documentPrice": null,
+      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101973&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=b606e56567760411d89bd8027f091f2b05f79343e07d0d9f3b47b005a3a2d2da",
+      "buyer": "",
+      "source": "esnad",
+      "sourceLabel": "إسناد",
+      "originLabel": "تندرز عُمان",
+      "grades": [
+        "الممتازة",
+        "الأولى",
+        "الثانية",
+        "الثالثة",
+        "الرابعة"
+      ]
     },
     {
       "id": "1426984",
