@@ -15,7 +15,7 @@
         <small>MAJAN AI · SIRAJ</small>
         <strong>مجـان AI</strong>
       </div>
-      <p class="company-name" id="company-line">الشركة</p>
+      <p class="company-name" id="company-line">أدخل بيانات الشركة</p>
       <span class="grade-pill" id="grade-pill">الدرجة الثانية — إنشاءات عامة</span>
       <nav>
         <a href="./">المناقصات</a>
@@ -129,7 +129,7 @@
       }
       function paintCompany() {
         const profile = company();
-        const name = profile.name || "الشركة";
+        const name = profile.name || "أدخل بيانات الشركة";
         const grade = GRADE_LABELS[profile.grade] || "الثانية";
         document.querySelector("#company-line").textContent = name;
         document.querySelector("#grade-pill").textContent = `الدرجة ${grade} — ${profile.classification || "إنشاءات عامة"}`;
