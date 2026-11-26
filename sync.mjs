@@ -119,24 +119,45 @@ function fold(value) {
     .replace(/ة/g, "ه");
 }
 
-export function governorateFromTitle(title) {
+// أسماء ولايات هي كلمات عادية أيضاً (طاقة، صور، نخل...)، فلا تُحسب إلا بعد كلمة "ولاية".
+const AMBIGUOUS_PLACES = new Set(["طاقة", "صور", "منح", "ادم", "نخل", "لوى", "دبا", "ينقل", "سدح", "دولي"].map(fold));
+const UNKNOWN_GOVERNORATE = "غير محددة";
+
+function titleWords(title) {
+  return fold(title)
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter(Boolean)
+    .flatMap((word) => {
+      const forms = [word];
+      for (const prefix of ["وبال", "بال", "وال", "لل", "ال", "وب", "ب", "و", "ل"]) {
+        if (word.startsWith(prefix) && word.length - prefix.length >= 3) forms.push(word.slice(prefix.length));
+      }
+      return forms;
+    });
+}
+
+// يرجع أول مكان مذكور في العنوان: { place, governorate }، والمكان ولاية إذا عُرفت.
+export function placeFromTitle(title) {
   const text = fold(title);
-  const named = [...GOVERNORATE_NAMES].sort((a, b) => fold(b).length - fold(a).length);
-  for (const name of named) {
-    if (text.includes(fold(name))) return name;
-  }
   const places = Object.entries(CITY_GOVERNORATE).sort((a, b) => fold(b[0]).length - fold(a[0]).length);
   for (const [name, governorate] of places) {
-    const place = fold(name);
-    if (place.length < 3) continue;
-    if (text.includes(fold(`ولاية ${name}`)) || text.includes(fold(`بولاية ${name}`))) return governorate;
+    if (text.includes(fold(`ولاية ${name}`)) || text.includes(fold(`بولاية ${name}`))) return { place: name, governorate };
   }
+  const named = [...GOVERNORATE_NAMES].sort((a, b) => fold(b).length - fold(a).length);
+  for (const name of named) {
+    if (text.includes(fold(name))) return { place: null, governorate: name };
+  }
+  const words = new Set(titleWords(title));
   for (const [name, governorate] of places) {
     const place = fold(name);
-    if (place.length < 5) continue;
-    if (text.includes(place)) return governorate;
+    if (place.length < 3 || AMBIGUOUS_PLACES.has(place)) continue;
+    if (words.has(place)) return { place: name, governorate };
   }
   return null;
+}
+
+export function governorateFromTitle(title) {
+  return placeFromTitle(title)?.governorate || null;
 }
 
 function governorateFor(city) {
@@ -144,7 +165,15 @@ function governorateFor(city) {
   for (const [name, governorate] of Object.entries(CITY_GOVERNORATE)) {
     if (norm(name) === key) return governorate;
   }
-  return city ? "غير محددة" : "غير محددة";
+  return UNKNOWN_GOVERNORATE;
+}
+
+// Tender Oman يكتب "مسقط" لمناقصات الوزارات أينما كان المشروع، فلا نثق بها وحدها.
+function deriveGovernorate(title, city) {
+  const fromTitle = governorateFromTitle(title);
+  if (fromTitle) return fromTitle;
+  if (!city || norm(city) === norm("مسقط")) return UNKNOWN_GOVERNORATE;
+  return governorateFor(city);
 }
 
 function isClosed(status) {
@@ -237,7 +266,7 @@ function mapRow(row, classification) {
     parentCategory: row.cat_ParentName || classification,
     classification,
     city,
-    governorate: governorateFromTitle(title) || governorateFor(city),
+    governorate: deriveGovernorate(title, city),
     status: row.tnd_sts || "",
     type: row.tender_ad_type || "",
     publishedOn: row.tnd_publish_date || "",
@@ -300,13 +329,15 @@ function tokensOf(value) {
 
 function matchNotice(tender, notices) {
   const exact = notices.find((notice) => notice.key === titleKey(tender.title));
-  if (exact) return exact;
+  if (exact) return { notice: exact, score: 2 };
   const wanted = [...new Set(tokensOf(tender.title))];
   if (wanted.length < 2) return null;
+  const place = placeFromTitle(tender.title);
   let best = null;
   let bestScore = 0;
   let second = 0;
   for (const notice of notices) {
+    if (placesConflict(place, notice.place)) continue;
     let shared = 0;
     for (const token of wanted) {
       if (notice.tokens.has(token) || notice.key.includes(token)) shared += 1;
@@ -321,7 +352,7 @@ function matchNotice(tender, notices) {
     }
   }
   if (!best || bestScore < 0.6 || bestScore - second < 0.15) return null;
-  return best;
+  return { notice: best, score: bestScore };
 }
 
 function parseNotices(html) {
@@ -350,12 +381,64 @@ function parseGrades(html) {
     .filter((part) => part && part !== "-" && part !== "—");
 }
 
+function pageText(html) {
+  return decodeHtml(
+    html
+      .replace(/<script[\s\S]*?<\/script>/gi, "")
+      .replace(/<style[\s\S]*?<\/style>/gi, "")
+      .replace(/<[^>]+>/g, "|"),
+  )
+    .replace(/ /g, " ")
+    .replace(/\s*\|[\s|]*/g, " | ")
+    .replace(/[ \t\r\n]+/g, " ");
+}
+
+function field(text, pattern) {
+  const match = pattern.exec(text);
+  return match ? match[1].trim() : "";
+}
+
+export function parseNoticeDetails(html) {
+  const text = pageText(html);
+  const governorate = field(text, /المحافظة\s*:\s*\|\s*([^|]+)/).replace(/^محافظة\s+/, "").trim();
+  const wilayat = field(text, /الولايات\s*:\s*\|\s*([^|]+)/)
+    .split(/[,،]/)
+    .map((part) => part.replace(/^ولاية\s+/, "").trim())
+    .filter(Boolean);
+  const fee = Number(field(text, /رسوم المناقص[ةه]\s*:\s*\|\s*([\d.,]+)/).replace(/,/g, ""));
+  return {
+    grades: parseGrades(html),
+    governorate: GOVERNORATE_NAMES.find((name) => fold(name) === fold(governorate)) || "",
+    wilayat,
+    number: field(text, /رقم المناقصة\s*:\s*\|\s*([^|]+)/),
+    entity: field(text, /الجهة الحكومية\s*:\s*([^|]+)/),
+    fee: Number.isFinite(fee) && fee > 0 ? fee : null,
+  };
+}
+
+// مكانان مذكوران في عنوانين مختلفين = مناقصتان مختلفتين.
+// (حقل المحافظة في صفحة إسناد هو مقر الجهة المعلنة، لا مكان المشروع، فلا يصلح للمقارنة.)
+function placesConflict(a, b) {
+  if (!a || !b) return false;
+  if (a.governorate !== b.governorate) return true;
+  return Boolean(a.place && b.place && norm(a.place) !== norm(b.place));
+}
+
 async function attachGrades(tenders) {
   const targets = tenders.filter((tender) => tender.source === "esnad" && tender.url);
   let done = 0;
   await mapPool(targets, 4, async (tender) => {
     try {
-      tender.grades = parseGrades(await fetchText(tender.url));
+      const details = parseNoticeDetails(await fetchText(tender.url));
+      tender.grades = details.grades;
+      // نكمل المحافظة المجهولة فقط: من محافظة الجهة في إسناد، إلا مسقط لأنها غالباً مقر الوزارة فقط.
+      if (tender.governorate === UNKNOWN_GOVERNORATE && details.governorate && details.governorate !== "مسقط") {
+        tender.governorate = details.governorate;
+        if (details.wilayat.length === 1) tender.city = details.wilayat[0];
+      }
+      if (details.number) tender.number = details.number;
+      if (details.entity) tender.entity = details.entity;
+      if (details.fee != null) tender.documentPrice = details.fee;
     } catch (error) {
       tender.grades = [];
       console.log(`grade miss ${tender.id}: ${error.message}`);
@@ -413,26 +496,40 @@ function applyCatalog(tenders, raw) {
     ...notice,
     key: titleKey(notice.title),
     tokens: new Set(tokensOf(notice.title)),
+    place: placeFromTitle(notice.title),
   }));
   if (!notices.length) throw new Error("تعذر قراءة مناقصات إسناد");
   const byKey = new Map();
   for (const notice of notices) {
     if (notice.key && !byKey.has(notice.key)) byKey.set(notice.key, notice);
   }
-  let matched = 0;
+  // كل إعلان يُربط بمناقصة واحدة فقط: الأقرب عنواناً. البقية تأخذ رابطها الأصلي.
+  const owner = new Map();
+  const picks = new Map();
   for (const tender of tenders) {
-    const notice = byKey.get(titleKey(tender.title)) || matchNotice(tender, notices);
-    if (!notice) {
+    const exact = byKey.get(titleKey(tender.title));
+    const pick = exact ? { notice: exact, score: 2 } : matchNotice(tender, notices);
+    if (!pick) continue;
+    picks.set(tender, pick);
+    const current = owner.get(pick.notice.tenderNo);
+    if (!current || pick.score > picks.get(current).score) owner.set(pick.notice.tenderNo, tender);
+  }
+  let matched = 0;
+  let shared = 0;
+  for (const tender of tenders) {
+    const pick = picks.get(tender);
+    if (!pick || owner.get(pick.notice.tenderNo) !== tender) {
+      if (pick) shared += 1;
       assignPublisher(tender);
       continue;
     }
     matched += 1;
-    tender.url = esnadUrl(notice.tenderNo);
+    tender.url = esnadUrl(pick.notice.tenderNo);
     tender.source = "esnad";
     tender.sourceLabel = "إسناد";
-    if (!tender.number && notice.number) tender.number = notice.number;
+    if (!tender.number && pick.notice.number) tender.number = pick.notice.number;
   }
-  return { matched, catalog: notices.length };
+  if (shared) console.log(`unlinked ${shared} tenders that pointed at an Esnad notice already used`);  return { matched, catalog: notices.length };
 }
 
 export async function attachSourceUrls(tenders) {
@@ -611,6 +708,7 @@ if (isMain) {
     console.log(`grades on ${withGrades}/${payload.tenders.length}`);
   } else if (process.argv.includes("--sources") || process.argv.includes("--cached")) {
     const payload = JSON.parse(await readFile(outputPath, "utf8"));
+    for (const tender of payload.tenders) tender.governorate = deriveGovernorate(tender.title, tender.city);
     const stats = process.argv.includes("--cached")
       ? applyCatalog(payload.tenders, JSON.parse(await readFile(join(root, "data", "esnad-catalog.json"), "utf8")))
       : await attachSourceUrls(payload.tenders);

@@ -103,6 +103,7 @@
       const GOVERNORATES = ["مسقط", "ظفار", "مسندم", "البريمي", "الداخلية", "شمال الباطنة", "جنوب الباطنة", "جنوب الشرقية", "شمال الشرقية", "الظاهرة", "الوسطى"];
       const CLASSIFICATIONS = ["إنشاءات عامة", "طرق وجسور وأنفاق", "مياه وصرف صحي", "كهرباء وميكانيك", "دراسات واستشارات"];
       const GRADE_LABELS = { excellent: "ممتازة", 1: "الأولى", 2: "الثانية", 3: "الثالثة", 4: "الرابعة" };
+      const UNKNOWN = "غير محددة";
       const list = document.querySelector("#list");
       const q = document.querySelector("#q");
       const count = document.querySelector("#count");
@@ -207,7 +208,8 @@
         const days = daysLeft(tender.deadlineIso);
         if (days === null || days < 0) return false;
         if (tender.governorate === "خارج عُمان") return false;
-        if (!company.governorates.includes(tender.governorate)) return false;
+        // الولاية غير المعروفة تظهر للكل، حتى ما تفوت الشركة مناقصة ممكن تكون في ولايتها.
+        if (tender.governorate !== UNKNOWN && !company.governorates.includes(tender.governorate)) return false;
         if (!(company.classifications || []).includes(tender.classification)) return false;
         return gradeAllowed(tender, company.grade);
       }
@@ -234,7 +236,10 @@
         const grade = GRADE_LABELS[company.grade] || company.grade;
         const whenText = days === 0 ? "آخر يوم للتقديم" : `متبقي ${days} يوماً`;
         const listed = tender.grades?.length ? `، ودرجتها المعلنة ${tender.grades.join("، ")}` : "";
-        return `مناسبة لأن تصنيفها ${tender.classification}، وولايتها ${tender.governorate} ضمن نطاق الشركة درجة ${grade}${listed}، والموعد مفتوح (${whenText}).`;
+        const place = tender.governorate === UNKNOWN
+          ? "ومحافظتها غير مذكورة في المصدر فتأكد منها في الإعلان"
+          : `ومحافظتها ${tender.governorate} ضمن نطاق الشركة`;
+        return `مناسبة لأن تصنيفها ${tender.classification}، ${place}، للدرجة ${grade}${listed}، والموعد مفتوح (${whenText}).`;
       }
       function viewLabel(name, total) {
         const labels = { all: "الكل", fresh: "جديدة", soon: "خلال 7 أيام", kept: "المحفوظة", dismissed: "المتجاهلة" };
