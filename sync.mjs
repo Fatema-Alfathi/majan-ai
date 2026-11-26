@@ -5,9 +5,17 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = dirname(fileURLToPath(import.meta.url));
 const outputPath = join(root, "docs", "tenders.json");
-const SOURCE = "https://www.tenderoman.com/Default.aspx";
+const TENDER_OMAN = "https://www.tenderom.com";
+const SOURCE = `${TENDER_OMAN}/Default.aspx`;
 const ESNAD = "https://etendering.tenderboard.gov.om";
+// منذ 29 أكتوبر 2026 يرجع Tender Oman أول 100 نتيجة فقط لكل طلب، وما بعدها يرجع فاضي،
+// ويوقف الجهاز أكثر من 10 دقائق بعد قرابة 5 طلبات. لذلك نرسل طلباً واحداً لكل تصنيف (5 طلبات)،
+// نطلب فيه المفتوحة فقط (الحالة 2) مرتبة من الأحدث نشراً، ونُبقي المفتوحة من السحب السابق
+// للتصنيف الذي وصل للحد، لأن كل سحب يلتقط الجديد فقط.
 const PAGE_SIZE = 100;
+const OPEN_STATUS = "2";
+const NEWEST_FIRST = "0";
+const REQUEST_GAP_MS = 5000;
 const CLASSIFICATIONS = [
   { id: "6", label: "إنشاءات عامة" },
   { id: "36", label: "طرق وجسور وأنفاق" },
@@ -211,7 +219,7 @@ function assignPublisher(tender) {
     tender.originLabel = platform.label;
     return;
   }
-  tender.url = `https://www.tenderoman.com/TenderDetails.aspx?tdc_id=${encodeURIComponent(tender.id)}`;
+  tender.url = `${TENDER_OMAN}/TenderDetails.aspx?tdc_id=${encodeURIComponent(tender.id)}`;
   tender.source = "tenderoman";
   tender.sourceLabel = "تندرز عُمان";
   tender.originLabel = "تندرز عُمان";
@@ -446,7 +454,11 @@ export async function attachSourceUrls(tenders) {
   };
 }
 
-async function fetchPage(from, to, categoryId) {
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function fetchPage(categoryId) {
   const params = new URLSearchParams({
     id: "1",
     Country_Code: "om",
@@ -454,27 +466,43 @@ async function fetchPage(from, to, categoryId) {
     buyerid: "",
     cityid: "",
     tendertypeid: "",
-    tenderstatusid: "1",
-    sortbyid: "0",
+    tenderstatusid: OPEN_STATUS,
+    sortbyid: NEWEST_FIRST,
     tendernameid: "",
-    IDFrom: String(from),
-    IDTo: String(to),
+    IDFrom: "1",
+    IDTo: String(PAGE_SIZE),
     User: "",
     startDate: "",
     endDate: "",
     ComeFrom: "1",
   });
-  const response = await fetch(`https://www.tenderoman.com/api/HomePage/GetValue?${params}`, {
+  const response = await fetch(`${TENDER_OMAN}/api/HomePage/GetValue?${params}`, {
     headers: { Accept: "application/json", "User-Agent": "MajanAI/1.0" },
+    signal: AbortSignal.timeout(60000),
   });
+  const text = await response.text();
+  let data = null;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    data = null;
+  }
+  if (Array.isArray(data)) return data;
+  // الإيقاف يطول أكثر من 10 دقائق، فإعادة المحاولة لا تفيد.
+  if (response.status === 429 || /too many requests/i.test(String(data?.error || text))) {
+    throw new Error("Tender Oman أوقف الطلبات مؤقتاً بسبب كثرتها");
+  }
   if (!response.ok) throw new Error(`Tender Oman رد بحالة ${response.status}`);
-  const data = await response.json();
-  if (!Array.isArray(data)) throw new Error("رد Tender Oman ليس قائمة مناقصات");
-  return data;
+  throw new Error("رد Tender Oman ليس قائمة مناقصات");
 }
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+async function previousTenders() {
+  try {
+    const previous = JSON.parse(await readFile(outputPath, "utf8"));
+    return Array.isArray(previous?.tenders) ? previous.tenders : [];
+  } catch {
+    return [];
+  }
 }
 
 function dedupeOpen(tenders, today) {
@@ -500,30 +528,40 @@ export async function pullTenders(onProgress) {
   const seen = new Set();
   const collected = [];
   let totalAvailable = 0;
-  for (const item of CLASSIFICATIONS) {
-    let categoryTotal = 0;
-    let processed = 0;
-    for (let from = 1; from < 20000; from += PAGE_SIZE) {
-      const rows = await fetchPage(from, from + PAGE_SIZE - 1, item.id);
-      if (!rows.length) break;
-      categoryTotal = Number(rows[0].TenderCount) || categoryTotal;
-      let fresh = 0;
-      for (const row of rows) {
-        const id = String(row.tdc_id || "");
-        if (!id || seen.has(id)) continue;
-        seen.add(id);
-        fresh += 1;
-        processed += 1;
-        if (isClosed(row.tnd_sts) || isUnrelated(row.tnd_name)) continue;
-        collected.push(mapRow(row, item.label));
-      }
-      onProgress?.({ label: item.label, fetched: processed, totalAvailable: categoryTotal });
-      if (fresh === 0 || rows.length < PAGE_SIZE) break;
-      if (categoryTotal && processed >= categoryTotal) break;
-      await sleep(200);
+  const coverage = [];
+  const capped = new Set();
+  for (const [index, item] of CLASSIFICATIONS.entries()) {
+    if (index > 0) await sleep(REQUEST_GAP_MS);
+    const rows = await fetchPage(item.id);
+    const categoryTotal = rows.length ? Number(rows[0].TenderCount) || rows.length : 0;
+    for (const row of rows) {
+      const id = String(row.tdc_id || "");
+      if (!id || seen.has(id)) continue;
+      seen.add(id);
+      if (isClosed(row.tnd_sts) || isUnrelated(row.tnd_name)) continue;
+      collected.push(mapRow(row, item.label));
     }
+    onProgress?.({ label: item.label, fetched: rows.length, totalAvailable: categoryTotal });
+    coverage.push({ label: item.label, fetched: rows.length, available: categoryTotal });
+    if (categoryTotal > rows.length) capped.add(item.label);
     totalAvailable += categoryTotal;
   }
+  if (!collected.length) throw new Error("لم يرجع Tender Oman أي مناقصة مفتوحة");
+  // التصنيف اللي وصل للحد: نُبقي مناقصاته المفتوحة من السحب السابق اللي ما رجعت هالمرة.
+  let kept = 0;
+  for (const old of await previousTenders()) {
+    if (!capped.has(old.classification) || seen.has(String(old.id))) continue;
+    if (!old.deadlineIso || old.deadlineIso < today) continue;
+    seen.add(String(old.id));
+    collected.push({ ...old, carried: true });
+    kept += 1;
+  }
+  for (const item of coverage) {
+    if (capped.has(item.label)) {
+      console.log(`::notice::${item.label}: وصلنا ${item.fetched} من ${item.available}، وأبقينا المفتوحة من السحب السابق`);
+    }
+  }
+  if (kept) console.log(`kept ${kept} open tenders from the previous sync`);
   const tenders = dedupeOpen(collected, today);
   await attachSourceUrls(tenders);
   await attachGrades(tenders);
@@ -535,12 +573,30 @@ export async function pullTenders(onProgress) {
     categoryLabel: CLASSIFICATIONS.map((item) => item.label).join("، "),
     totalAvailable,
     fetched: seen.size,
+    coverage,
     count: tenders.length,
     tenders,
   };
 }
 
-export async function writeTenders(payload) {
+// يمنع استبدال القائمة بقائمة أقصر بكثير، حتى ما يختفي نص المناقصات بصمت إذا تغيّر الموقع مرة ثانية.
+const MIN_KEEP_RATIO = 0.6;
+
+async function guardAgainstDrop(payload) {
+  let previous = null;
+  try {
+    previous = JSON.parse(await readFile(outputPath, "utf8"));
+  } catch {
+    return;
+  }
+  const before = Number(previous?.count) || 0;
+  if (before >= 50 && payload.count < before * MIN_KEEP_RATIO) {
+    throw new Error(`السحب رجع ${payload.count} مناقصة فقط بعد ما كانت ${before}. لم تُحفظ القائمة. تأكد من موقع Tender Oman.`);
+  }
+}
+
+export async function writeTenders(payload, { force = false } = {}) {
+  if (!force) await guardAgainstDrop(payload);
   await mkdir(dirname(outputPath), { recursive: true });
   await writeFile(outputPath, JSON.stringify(payload, null, 2), "utf8");
 }
@@ -568,7 +624,8 @@ if (isMain) {
     const payload = await pullTenders((progress) => {
       console.log(`${progress.label || ""} ${progress.fetched}/${progress.totalAvailable || "?"}`);
     });
-    await writeTenders(payload);
+    await writeTenders(payload, { force: process.argv.includes("--force") });
     console.log(`saved ${payload.count} open tenders`);
+    console.log(JSON.stringify(payload.coverage));
   }
 }
