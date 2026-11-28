@@ -1,6 +1,6 @@
 {
   "source": "https://www.tenderom.com/Default.aspx",
-  "syncedAt": "2026-11-28T01:20:09.803Z",
+  "syncedAt": "2026-11-28T15:21:41.655Z",
   "classification": "إنشاءات عامة",
   "classifications": [
     "إنشاءات عامة",
@@ -801,7 +801,7 @@
     },
     {
       "id": "1426152",
-      "number": "2026/764/و ز ث س م/م ع ز س م ظ-44",
+      "number": "",
       "title": "تأهيل واجهة مبنى المديرية العامة للثروة الزراعية والسمكية وموارد المياه بظفار",
       "category": "التشطيب والصيانة",
       "parentCategory": "انشاءات الابنية",
@@ -815,16 +815,12 @@
       "publishedIso": "2026-11-14",
       "deadlineIso": "2026-11-30",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101573&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=2c9d6c80629436836199c4c5d92e5fb28df645ad44289a6dd57132763978fa5a",
+      "url": "https://www.tenderom.com/TenderDetails.aspx?tdc_id=1426152",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الثالثة",
-        "الرابعة"
-      ],
-      "entity": "وزارة الثروة الزراعية والسمكية وموارد المياه"
+      "grades": []
     },
     {
       "id": "1439458",
@@ -1670,7 +1666,7 @@
     },
     {
       "id": "1416597",
-      "number": "2026/49/م م ب/ م ر -49",
+      "number": "",
       "title": "توريد وتركيب زينة مضيئة بالجهة المعلنة لعام 2027م",
       "category": "وحدات الانارة",
       "parentCategory": "مقاولات الكهرباء والميكانيك",
@@ -1684,19 +1680,12 @@
       "publishedIso": "2026-11-04",
       "deadlineIso": "2026-12-03",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101008&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=07cb51df6d45823759dad8d86ed6ae295f54449f0a23279e3bdc55a030ef1adc",
+      "url": "https://www.tenderom.com/TenderDetails.aspx?tdc_id=1416597",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى",
-        "الثانية",
-        "الثالثة",
-        "الرابعة"
-      ],
-      "entity": "مكتب محافظ البريمي"
+      "grades": []
     },
     {
       "id": "1432285",
@@ -2472,7 +2461,7 @@
     },
     {
       "id": "1430883",
-      "number": "2026/32/عُمران/ م ر -32",
+      "number": "",
       "title": "الخدمات الاستشارية لتصميم وتطوير مشروع كهف الهوتة بمحافظة الداخلية",
       "category": "الانشطة المعمارية والهندسية والخدمات الاستشارية",
       "parentCategory": "الدراسات والاستشارات",
@@ -2486,16 +2475,12 @@
       "publishedIso": "2026-11-17",
       "deadlineIso": "2026-12-07",
       "documentPrice": null,
-      "url": "https://etendering.tenderboard.gov.om/product/nitParameterView?mode=public&tenderNo=101702&PublicUrl=1&CTRL_STRDIRECTION=RTL&encparam=mode,tenderNo,PublicUrl,CTRL_STRDIRECTION,randomno&hashval=9f3fa1aebfeb0e9be9e8810bcc400785b3d93d288d8ce93784d6291dbad90f7e",
+      "url": "https://www.tenderom.com/TenderDetails.aspx?tdc_id=1430883",
       "buyer": "",
-      "source": "esnad",
-      "sourceLabel": "إسناد",
+      "source": "tenderoman",
+      "sourceLabel": "تندرز عُمان",
       "originLabel": "تندرز عُمان",
-      "grades": [
-        "الممتازة",
-        "الأولى"
-      ],
-      "entity": "الشركة العمانية لإدارة التنمية السياحية"
+      "grades": []
     },
     {
       "id": "1437626",
